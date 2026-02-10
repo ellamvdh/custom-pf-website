@@ -1,0 +1,44 @@
+body{
+    background-color: black;
+    /* font-family: "Funnel Sans", sans-serif; */
+    font-family: "Doto", sans-serif;
+    
+  font-style: normal;
+}
+header{
+    border-width: 0px;
+    border-bottom: 1px;
+    border-style: solid;
+    border-color: rgba(220, 208, 255);
+    color: rgba(220, 208, 255);
+    
+}
+.image-centre{
+    padding-top: 50px;
+    display: flex;
+    justify-content: center;
+}
+.imgg{
+    width: 200px;
+    height: 200px;
+    border-color: rgba(220, 208, 255);
+    border-width: 5px;
+    border-style: solid;
+    border-radius: 50%;
+    
+}
+.white-text{
+    color: white;
+}
+
+.lilac-text{
+    color: rgba(220, 208, 255);
+}
+
+.text-center{
+    text-align: center;
+}
+
+.text-big{
+    font-size: 45px;
+}
