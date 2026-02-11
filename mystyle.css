@@ -71,3 +71,27 @@ a:active {
     color: inherit;
     text-decoration: none;
 }
+
+.about-boxes{
+    
+    display: flex;
+    flex-direction: row;
+    margin: 100px;
+}
+.about-boxes-info{
+    background-color: rgb(73, 82, 82);
+    margin: auto;
+    padding-bottom: 100px;
+    width: 500px;
+    height: 600px;
+    display: flex;
+    justify-content: center; /* horizontal center */
+    align-items: center;     /* vertical center */
+    border-radius: 20px;
+}
+
+.img-about{
+    width: 400px;
+    border-width: 100px;
+    border-radius: 20px;
+}
