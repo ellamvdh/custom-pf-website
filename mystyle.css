@@ -76,10 +76,11 @@ a:active {
     
     display: flex;
     flex-direction: row;
-    margin: 100px;
+    margin: 20px 100px 100px 100px;
+    /* margin: 100px; */
 }
 .about-boxes-info{
-    background-color: rgb(73, 82, 82);
+    background-color: rgb(29, 29, 29);
     margin: auto;
     padding-bottom: 100px;
     width: 500px;
@@ -92,6 +93,8 @@ a:active {
 
 .img-about{
     width: 400px;
-    border-width: 100px;
+    border-color: rgba(220, 208, 255);
+    border-width: 5px;
+    border-style: solid;
     border-radius: 20px;
 }
