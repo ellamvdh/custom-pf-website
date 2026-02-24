@@ -109,11 +109,15 @@ a:active {
 
 .about-boxes{
     
-    display: flex;
     flex-direction: row;
     margin: 20px 100px 100px 100px;
     gap: 30px;
 
+    display: flex;
+    gap: 30px;
+    align-items: stretch; 
+    /* align-items: flex-start; */
+    
 }
 
 
@@ -126,8 +130,8 @@ a:active {
 }
 
 .about-boxes-info{
-    background-color: rgb(29, 29, 29);
-    margin: auto;
+    
+    
     display: flex;
     justify-content: center; /* horizontal center */
     align-items: center;     /* vertical center */
@@ -135,11 +139,13 @@ a:active {
     flex: 1;
     width: 100%;
     flex-direction: column;   /* dit is de sleutel */
+    
+    
 }
 
 .about-img{
     background-color: rgb(29, 29, 29);
-    margin: auto;
+    
     display: flex;
     justify-content: center; /* horizontal center */
     align-items: center;     /* vertical center */
@@ -147,6 +153,14 @@ a:active {
     padding: 2.5% 2.5% 2.5% 2.5%;
     flex: 1;
     width: 100%;
+    border-color: rgb(55, 55, 55);
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 20px;
+    flex-direction: column;
+    
+    
+    
 }
 .about-text{
     margin-bottom: 20px;
@@ -156,12 +170,14 @@ a:active {
     border-radius: 20px;
     text-align: center;
     flex: 1;
-
-    border-color: rgba(220, 208, 255);
+    border-color: rgb(55, 55, 55);
     border-width: 1px;
     border-style: solid;
     border-radius: 20px;
     padding: 2.5%;
+    background-color: rgb(29, 29, 29);
+    
+    
 }
 .about-text-2{
     display: flex;
@@ -170,14 +186,16 @@ a:active {
     border-radius: 20px;
     width: 100%;
     padding: 2.5%;
+    align-items: stretch; /* dit is belangrijk */
+    /* margin-bottom: 20px; */
     
-
 }
 
 .skills-text{
     display: flex;
     flex-direction: row;
     gap: 30px;
+    
     
 }
 @media (max-width: 1000px) {
@@ -187,16 +205,18 @@ a:active {
   }
 }
 .skills-list{
+    padding-top: 10px;
     width: 100%;
     flex: 1;
     border-width: 1px;
     border-style: solid;
     border-radius: 20px;
-    border-color: rgba(220, 208, 255);
+    border-color: rgb(55, 55, 55);
+    background-color: rgb(29, 29, 29);
 }
 
 .cv-name{
-    margin-top: 10px;
+    /* margin-top: 10px; */
     font-size: 30px;
 }
 .cv-title{
@@ -209,6 +229,18 @@ a:active {
     border-width: 5px;
     border-style: solid;
     border-radius: 20px;
+    
+}
+.button-cv{
+   width: 100%;
+   justify-content: center; /* horizontal center */
+   align-items: flex-end;      /* verticaal naar beneden */
+    border-color: rgba(220, 208, 255);
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 20px;
+    padding: 2.5% 0; 
+    background-color: rgb(29, 29, 29);
     
 }
 
