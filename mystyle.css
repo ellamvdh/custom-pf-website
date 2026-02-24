@@ -113,17 +113,31 @@ a:active {
     flex-direction: row;
     margin: 20px 100px 100px 100px;
     gap: 30px;
+
 }
 
-/* When screen is 768px or smaller */
-@media (max-width: 768px) {
+
+@media (max-width: 1000px) {
   .about-boxes {
     flex-direction: column;
     margin: 20px;
     flex: 1;
   }
 }
+
 .about-boxes-info{
+    background-color: rgb(29, 29, 29);
+    margin: auto;
+    display: flex;
+    justify-content: center; /* horizontal center */
+    align-items: center;     /* vertical center */
+    border-radius: 20px;
+    flex: 1;
+    width: 100%;
+    flex-direction: column;   /* dit is de sleutel */
+}
+
+.about-img{
     background-color: rgb(29, 29, 29);
     margin: auto;
     display: flex;
@@ -134,12 +148,59 @@ a:active {
     flex: 1;
     width: 100%;
 }
+.about-text{
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center; /* horizontal center */
+    align-items: center;     /* vertical center */
+    border-radius: 20px;
+    text-align: center;
+    flex: 1;
+
+    border-color: rgba(220, 208, 255);
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 20px;
+    padding: 2.5%;
+}
+.about-text-2{
+    display: flex;
+    justify-content: center; /* horizontal center */
+    align-items: center;     /* vertical center */
+    border-radius: 20px;
+    width: 100%;
+    padding: 2.5%;
+    
+
+}
+
+.skills-text{
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    
+}
+@media (max-width: 1000px) {
+  .skills-text {
+    flex-direction: column;
+    width: 100%;
+  }
+}
+.skills-list{
+    width: 100%;
+    flex: 1;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 20px;
+    border-color: rgba(220, 208, 255);
+}
+
 .cv-name{
     margin-top: 10px;
     font-size: 30px;
 }
 .cv-title{
-    margin-top: -20                              px;
+    margin-top: -20px;
     font-size: 20px;
 }
 .img-about{
@@ -150,5 +211,7 @@ a:active {
     border-radius: 20px;
     
 }
+
+
 
 
