@@ -7,19 +7,18 @@ body{
     font-style: normal;
 }
 header{
-    border-width: 0px;
-    border-bottom: 1px;
-    border-style: solid;
-    border-color: rgba(220, 208, 255);
-    color: rgba(220, 208, 255);
-
-    position: sticky;
+    position: fixed;      /* FIXED, not sticky */
     top: 0;
     left: 0;
     width: 100%;
-    background: rgb(0, 0, 0); /* important so content doesn’t show through */
-    /* z-index: 1000; keeps it above other content */
+    z-index: 1000;        /* make sure it’s above all content */
     
+    border-bottom: 1px solid rgba(220, 208, 255);
+    color: rgba(220, 208, 255);
+    background-color: rgb(0, 0, 0);
+}
+main {
+    padding-top: 30px; /* match your header height */
 }
 footer{
     border-width: 0px;
