@@ -149,6 +149,7 @@ a:active {
     display: flex;
     justify-content: center; /* horizontal center */
     align-items: center;     /* vertical center */
+    justify-content: space-between;  /* push first child top, last child bottom */
     border-radius: 20px;
     padding: 2.5% 2.5% 2.5% 2.5%;
     flex: 1;
@@ -159,9 +160,9 @@ a:active {
     border-radius: 20px;
     flex-direction: column;
     
-    
-    
 }
+
+
 .about-text{
     margin-bottom: 20px;
     display: flex;
@@ -181,15 +182,15 @@ a:active {
 }
 .about-text-2{
     display: flex;
-    justify-content: center; /* horizontal center */
-    align-items: center;     /* vertical center */
+    justify-content: center; 
+    align-items: center;     
     border-radius: 20px;
     width: 100%;
-    padding: 2.5%;
-    align-items: stretch; /* dit is belangrijk */
-    /* margin-bottom: 20px; */
+    align-items: stretch; 
     
 }
+
+
 
 .skills-text{
     display: flex;
