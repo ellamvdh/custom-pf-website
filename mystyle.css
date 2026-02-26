@@ -274,7 +274,7 @@ a:active {
     flex: 1;
     width: auto;
     flex-direction: column;   /* dit is de sleutel */
-    background-color: rgb(29, 29, 29);
+    background-color: rgb(84, 84, 84);
     
 }
 @media (max-width: 1000px) {
@@ -293,6 +293,16 @@ a:active {
     background-color: rgba(220, 208, 255);
     border-radius: 50%;
     color: black;
+}
+.contact-links{
+    background-color: blue;
+    flex: 1;
+    width: 100%;
+    border-width: 10px;
+    border-color: rgb(255, 255, 255);
+    
+    border-radius: 20px;
+    
 }
 
 
