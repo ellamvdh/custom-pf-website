@@ -196,8 +196,6 @@ a:active {
     display: flex;
     flex-direction: row;
     gap: 30px;
-    
-    
 }
 @media (max-width: 1000px) {
   .skills-text {
@@ -266,7 +264,7 @@ a:active {
 
 
 .contact-boxes-seperated-1{
-    
+    gap: 10px;
     display: flex;
     justify-content: center; /* horizontal center */
     align-items: center;     /* vertical center */
@@ -274,14 +272,27 @@ a:active {
     flex: 1;
     width: auto;
     flex-direction: column;   /* dit is de sleutel */
-    background-color: rgb(84, 84, 84);
     
+}
+.contact-links{
+    background-color: rgb(29, 29, 29);
+    flex: 1;
+    padding:0px 15px 0px 15px;
+    width: calc(100% - 30px);
+    border-width: 10px;
+    border-color: rgb(255, 255, 255);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
 }
 @media (max-width: 1000px) {
   .contact-boxes {
     flex-direction: column;
-    flex: 1;
-    
+  }
+  .
+  
+  .contact-links{
+    padding:15px;
   }
 }
 
@@ -293,23 +304,14 @@ a:active {
     background-color: rgba(220, 208, 255);
     border-radius: 50%;
     color: black;
-}
-.contact-links{
-    background-color: blue;
-    flex: 1;
-    width: 100%;
-    border-width: 10px;
-    border-color: rgb(255, 255, 255);
     
-    border-radius: 20px;
     
 }
-
 
 .email-button{
     width: 100%;
-   justify-content: center; /* horizontal center */
-   align-items: flex-end;      /* verticaal naar beneden */
+    justify-content: center; /* horizontal center */
+    align-items: flex-end;      /* verticaal naar beneden */
     border-color: rgba(220, 208, 255);
     border-width: 1px;
     border-style: solid;
@@ -317,4 +319,7 @@ a:active {
     padding: 2.5% 0; 
     background-color: rgb(29, 29, 29);
     width: 60%;
+    font-size: clamp(0.8rem, 1.5vw, 1rem);
+    word-break: break-word;
+
 }
