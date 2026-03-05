@@ -77,6 +77,9 @@ footer{
 .text-big{
     font-size: 45px;
 }
+.text-mid{
+    font-size: 30px;
+}
 nav{
     display: flex;
     flex-direction: row;
@@ -289,8 +292,6 @@ a:active {
   .contact-boxes {
     flex-direction: column;
   }
-  .
-  
   .contact-links{
     padding:15px;
   }
@@ -323,3 +324,83 @@ a:active {
     word-break: break-word;
 
 }
+
+
+
+.project-parent {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin:50px;
+    border-radius: 20px;
+    
+}
+    
+
+.div1{
+    background-color: darkblue;
+    border-radius: 20px;
+    padding: 20px;
+    background-color: rgb(29, 29, 29);
+}
+
+
+
+.project-img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+.project-buttons{
+    display: flex;
+    justify-content: flex-start;
+    margin: 0px 50px;
+    
+
+}
+@media (max-width: 1000px) {
+  .project-parent {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: auto;
+  }
+  .project-buttons{
+    display: flex;
+    width: 100%;
+    margin: 0px;
+  }
+}
+
+.buttons-project{
+    padding: 10px 20px;
+    justify-content: center; /* horizontal center */
+    align-items: flex-end;      /* verticaal naar beneden */
+    border-color: rgba(220, 208, 255);
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 20px;
+    background-color: rgb(29, 29, 29);
+}
+
+.buttons-project:active{
+    color: rgba(220, 208, 255);
+}
+
+.active{
+    background-color: rgba(220, 208, 255, 0.342);
+    color: rgba(220, 208, 255);
+}
+
+
+
+
+
+
+
+
+
+
+        

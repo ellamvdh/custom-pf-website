@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <link rel="stylesheet" href="mystyle.css" >
+    <script src="script.js"></script>
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Funnel+Sans:ital,wght@0,300..800;1,300..800&display=swap');
     @import url('https://fonts.googleapis.com/css2?family=Doto:wght@100..900&family=Funnel+Sans:ital,wght@0,300..800;1,300..800&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=VT323&display=swap'); 
@@ -11,6 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ella's Portfolio</title>
 </head>
+
 <body>
     <header>
         
@@ -30,12 +32,59 @@
     <p class="white-text text-center">Ik bouw interactieve games voor verschillende hardware</p>
 
 
-    <p id = "projects" class = "lilac-text"> Projects Here</p>
+    <br><br><br>
+    <p id = "projects" class = "lilac-text text-center text-mid"> Mijn Projecten</p>
 
+    <div class = "project-buttons">
+        <a class= "active buttons-project white-text"data-name="all">Show All</a>
+        <a class= "buttons-project white-text"data-name="Unity">Unity</a>
+        <a class= "buttons-project white-text"data-name="Unreal Engine">Unreal Engine</a>
+        <a class= "buttons-project white-text"data-name="Godot">Godot</a>
+        <a class= "buttons-project white-text"data-name="C++">C++</a>
+
+    </div>
+
+
+    <div class="project-parent">
+        <div class="div1 lilac-text">
+            <img class= "project-img" src="images/njg.jpg" alt="'not just gold diggers' GAME" data-name="Unity">
+
+        </div>
+        <div class="div1 lilac-text">
+            <img class= "project-img" src="images/Replay Platformer2.jpg" alt="Replay Platformer img" data-name="Unity">
+
+        </div>
+        <div class="div1 lilac-text">
+            <img class= "project-img" src="images/cpp.jpg" alt="C++ console game" data-name="C++">
+
+        </div>
+        <div class="div1 lilac-text">
+            <img class= "project-img" src="images/Disco frenzy.jpg" alt="Disco frenzy" data-name="Unity">
+
+        </div>
+        <div class="div1 lilac-text">
+            <img class= "project-img" src="images/GhostShooter.jpg" alt="GhostShooter" data-name="Unity">
+        </div>
+        <div class="div1 lilac-text">
+            <img class= "project-img" src="images/save christmas.jpg" alt="'save christmas' GAME" data-name="Godot">
+        </div>
+        <div class="div1 lilac-text">
+            <img class= "project-img" src="images/Cafe Game.jpg" alt="'not just gold diggers' GAME" data-name="Unity">
+        </div>
+        <!-- <div class="div1 lilac-text">8</div>
+        <div class="div1 lilac-text">9</div>
+        <div class="div1 lilac-text">10</div>
+        <div class="div1 lilac-text">11</div>
+        <div class="div1 lilac-text">12</div>
+        <div class="div1 lilac-text">13</div>
+        <div class="div1 lilac-text">14</div>
+        <div class="div1 lilac-text">15</div> -->
+    </div>
+    
     </main>
 
-    <!-- <footer class = "lilac-text text-center">
+    <footer class = "lilac-text text-center">
         © 2026 Ella Marije van den Hoogenband. All rights reserved.
-    </footer> -->
+    </footer>
 </body>
 </html>
