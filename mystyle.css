@@ -415,13 +415,59 @@ a:active {
     color: rgba(220, 208, 255);
 }
 
+.project-link{
+    border-radius: 20px;
+    padding: 10px 20px;
+    border-color: rgba(220, 208, 255);
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 20px;
+}
 
 
+.project-hero {
+    width: 100%;
+    height: 300px;                  /* vaste hoogte */
+    background-image: 
+        linear-gradient(to bottom, rgba(0,0,0,0) 25%, rgba(0,0,0,0.5) 100%),
+        url('images/njg.jpg');
+    background-size: cover;         /* zoom/crop in plaats van stretchen */
+    background-position: center;    /* houdt het midden zichtbaar */
+    background-repeat: no-repeat;
+    position: relative;             /* nodig voor absolute positionering van de titel */
+}
 
+.game-title {
+    position: absolute;             /* positioneer binnen de container */
+    bottom: 10px;                   /* afstand vanaf onderkant */
+    left: 20px;                     /* afstand vanaf linkerkant */
+    margin: 0;
+    color: white;                   /* of lilac zoals je wilt */
+    font-size: 2rem;                /* pas grootte aan */
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7); /* <-- text shadow added */
+}
 
-
-
-
-
+.hero-content {
+    text-align: center;
+    color: white;                /* adjust for readability */
+    max-width: 800px;            /* optional to limit text width */
+}
 
         
+.project-info{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between; /* push description left, details right */
+}
+.project-details{
+    background-color: blue;
+    width: 300px;
+}
+@media (max-width: 1000px) {
+    .project-info{
+        flex-direction: column;
+    }
+    .project-details{
+        width: auto;
+    }
+}
