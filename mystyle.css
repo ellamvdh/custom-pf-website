@@ -338,19 +338,23 @@ a:active {
     
 
 .div1{
-    background-color: darkblue;
     border-radius: 20px;
     padding: 20px;
     background-color: rgb(29, 29, 29);
+    /* padding-bottom: 40px; */
+    
 }
 
 
 
 .project-img{
     width: 100%;
-    height: 100%;
     object-fit: cover;
     border-radius: 20px;
+}
+
+.project-img:hover{
+    cursor: pointer;
 }
 
 .project-buttons{
@@ -358,7 +362,24 @@ a:active {
     justify-content: flex-start;
     margin: 0px 50px;
     
+}
+.project-buttons:hover{
+    cursor: pointer;
+}
 
+.project-tags{
+    /* background-color: blue; */
+    display: flex;
+    flex-direction: row;
+}
+
+.project-tag{
+    background-color: rgba(111, 23, 123, 0.305);
+    border-color: rgba(220, 208, 255);
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 20px;
+    padding: 5px 10px 5px 10px;
 }
 @media (max-width: 1000px) {
   .project-parent {
