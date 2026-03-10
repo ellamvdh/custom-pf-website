@@ -423,45 +423,40 @@ a:active {
     border-style: solid;
     border-radius: 20px;
 }
-
-
-.project-hero {
-    width: 100%;
-    height: 300px;                  /* vaste hoogte */
-    background-image: 
-        linear-gradient(to bottom, rgba(0,0,0,0) 25%, rgba(0,0,0,0.5) 100%),
-        url('images/njg.jpg');
-    background-size: cover;         /* zoom/crop in plaats van stretchen */
-    background-position: center;    /* houdt het midden zichtbaar */
-    background-repeat: no-repeat;
-    position: relative;             /* nodig voor absolute positionering van de titel */
-}
-
-.game-title {
-    position: absolute;             /* positioneer binnen de container */
-    bottom: 10px;                   /* afstand vanaf onderkant */
-    left: 20px;                     /* afstand vanaf linkerkant */
-    margin: 0;
-    color: white;                   /* of lilac zoals je wilt */
-    font-size: 2rem;                /* pas grootte aan */
-    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7); /* <-- text shadow added */
-}
-
-.hero-content {
-    text-align: center;
-    color: white;                /* adjust for readability */
-    max-width: 800px;            /* optional to limit text width */
-}
-
-        
 .project-info{
     display: flex;
     flex-direction: row;
     justify-content: space-between; /* push description left, details right */
+    gap:20px;
+    
+}
+
+
+.project-text{
+    background-color: rgb(29, 29, 29);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    padding: 20px;
+}
+
+
+.project-page-img {
+    width: 100%;         /* Vul de container breedte */
+    max-width: 600px;    /* Limiteer de maximale breedte */
+    height: auto;        /* Hoogte automatisch, behoud aspect ratio */
+    border-radius: 20px;
+    display: block;
+    margin: auto;
 }
 .project-details{
-    background-color: blue;
-    width: 300px;
+    padding: 20px;
+    background-color: rgb(29, 29, 29);
+    border-radius: 20px;
+    width: 1700px;
+    height: auto;
+    
 }
 @media (max-width: 1000px) {
     .project-info{
@@ -470,4 +465,60 @@ a:active {
     .project-details{
         width: auto;
     }
+}
+
+.project-contribution{
+    background-color: rgb(29,29,29);
+    border-radius: 20px;
+    padding:10px
+}
+
+
+.contribution-section {
+    display: flex;
+    flex-direction: row;
+    gap:10px;
+    margin-top: 10px;
+}
+
+.project-contribution-text {
+    flex: 1 1 400px; /* groeit maar minimaal 400px */
+    background-color: rgb(29,29,29);
+    padding: 20px;
+    border-radius: 20px;
+    color: white;
+}
+
+.project-contribution-images {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    flex: 1 1 400px;
+
+    background-color: rgb(29,29,29);
+    border-radius: 20px;
+    padding: 10px
+}
+
+
+.project-contribution-images img {
+    max-width: 100%;
+    max-height: 100%;
+    height: auto;
+    width: auto;
+    border-radius: 20px;
+}
+
+
+
+@media (max-width: 1300px) {
+    .contribution-section {
+        flex-direction: column;
+    
+        
+    }
+    .project-contribution-images{
+        flex:0;
+    }
+   
 }

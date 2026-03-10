@@ -26,27 +26,63 @@
         
         <div class="project-hero">
             <div class="hero-content">
-                <h1 class="lilac-text text-center game-title">Naam Game</h1>
+                <h1 class="lilac-text text-center game-title">Not Just Gold Diggers</h1>
+                <p class="white-text text-center">-Geologisch educatief spel voor kinderen-</p>
             </div>
         </div>
 
         <div class = "project-info">
-            <div class="text-center lilac-text">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod impedit eos quisquam voluptatem unde. 
-                        Alias quos nostrum totam, ex ratione quo at expedita tenetur culpa delectus tempora earum vel voluptatum?
-                    
+            <img class = "project-page-img"src="images/njg.jpg" alt="'not just gold diggers' GAME">
+            <div class="text-center white-text project-text">
+                Tijdens dit project heb ik samengewerkt in een teamverband met zowel artists als developers. Voor een museumopdracht hebben we samen een geologisch avontuur ontwikkeld voor kinderen tussen acht en tien jaar. Door dit spel door kinderen te laten spelen, wilden we hen inzicht geven in hoe het is om een geoloog te zijn en ze tegelijkertijd iets leren over verschillende stenen en fossielen. Dit project hebben we werkend gekregen op een touchtafel waarover onze school beschikt.
             </div>
-
-    
             <div class="white-text text-center project-details">
                 <div><b>Details</b></div>
-                <p>Rol: VR dev</p>
+                <p>Uitgekomen: December 2025</p>
+                <p>Engine: Unity</p>
+                <p>Taal: C#</p>
+                <p>Teamgrootte: 7</p>
+                <p>Rol: Gameplay Developer</p>
                 <p>Tijd: 4 weken</p>
-                <p><a href="#" class = "project-link">Github</a></p>
+                <p><a href="https://github.com/ellamvdh/GoldDiggers" class = "project-link">Github</a></p>
             </div>
-    
         </div>
-    
+         
+        <div class="contribution-section">
+            <div class="project-contribution white-text">
+                <h2>Mijn bijdrage</h2>
+
+                <p>Fossielen/Steen Display System</p>
+                <ul>
+                    <li>Toont gevonden fossielen en stenen in de main scene.</li>
+                    <li>Zorgt dat ontdekkingen blijven als je teruggaat naar de main scene.</li>
+                </ul>
+
+                <p>Mining & Interactie</p>
+                <ul>
+                    <li>Systeem om stenen te breken met geluid, animatie en visuele feedback.</li>
+                    <li>Verwijdert stenen en activeert objecten zoals dirt en gems.</li>
+                </ul>
+
+                <p>Scene-specifiek gedrag & input</p>
+                <ul>
+                    <li>Objecten worden pas interactief als de omgeving dat toestaat.</li>
+                    <li>Touch input via raycast.</li>
+                </ul>
+
+                <p>Game state management</p>
+                <ul>
+                    <li>Update stone counts bij pickups.</li>
+                    <li>Houdt bij welke rocks gekozen zijn en beheert scene-transities.</li>
+                </ul>
+            </div>
+            <div class="project-contribution-images">
+            <img src="images/njg2.jpg" alt="img 1">
+            <img src="images/njg6.jpg" alt="img 2">
+            <img src="images/njg4.jpg" alt="img 3">
+            <img src="images/njg5.jpg" alt="img4 4">
+        </div>
+    </div>
 
     </main>
     <footer class = "lilac-text text-center">
