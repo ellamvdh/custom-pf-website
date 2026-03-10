@@ -1,24 +1,26 @@
 document.addEventListener("DOMContentLoaded", function () {
 
     const buttons = document.querySelectorAll(".buttons-project");
-    const projects = document.querySelectorAll(".project-img");
+    const projects = document.querySelectorAll(".div1");
 
     buttons.forEach(button => {
         button.addEventListener("click", () => {
 
-            // 1️⃣ update welke knop active is
-            buttons.forEach(btn => btn.classList.remove("active")); // verwijder active van alle knoppen
-            button.classList.add("active"); // voeg active toe aan de geklikte knop
+            buttons.forEach(btn => btn.classList.remove("active"));
+            button.classList.add("active");
 
-            // 2️⃣ filter projecten
             const filter = button.dataset.name;
 
             projects.forEach(project => {
-                if (filter === "all" || project.dataset.name === filter) {
-                    project.parentElement.style.display = "block";
+
+                const tag = project.querySelector(".project-img").dataset.name;
+
+                if (filter === "all" || tag === filter) {
+                    project.style.display = "block";
                 } else {
-                    project.parentElement.style.display = "none";
+                    project.style.display = "none";
                 }
+
             });
 
         });

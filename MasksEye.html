@@ -71,99 +71,61 @@ Mijn focus lag vooral op het ontwerpen en implementeren van de mini-games die no
         <div class="contribution-section">
             <div class="project-contribution white-text">
                 <h2>Mijn bijdrage</h2>
-
-                <p>Fossielen/Steen Display System</p>
+                <p>Mini Games</p>
                 <ul>
-                    <li>Toont gevonden fossielen en stenen in de main scene.</li>
-                    <li>Zorgt dat ontdekkingen blijven als je teruggaat naar de main scene.</li>
+                    <li>Snake mini-game ontwikkeld en geïmplementeerd</li>
+                    <li>Bat mini-game ontwikkeld en geïmplementeerd</li>
+                    <li>Color matching mini-game ontwikkeld (kameleon puzzel)</li>
+                    
+                    <li>Alle mini-games volledig geïmplementeerd op een Canvas-based UI systeem</li>
                 </ul>
-
-                <p>Mining & Interactie</p>
+                <p>Masker</p>
                 <ul>
-                    <li>Systeem om stenen te breken met geluid, animatie en visuele feedback.</li>
-                    <li>Verwijdert stenen en activeert objecten zoals dirt en gems.</li>
-                </ul>
-
-                <p>Scene-specifiek gedrag & input</p>
-                <ul>
-                    <li>Objecten worden pas interactief als de omgeving dat toestaat.</li>
-                    <li>Touch input via raycast.</li>
-                </ul>
-
-                <p>Game state management</p>
-                <ul>
-                    <li>Update stone counts bij pickups.</li>
-                    <li>Houdt bij welke rocks gekozen zijn en beheert scene-transities.</li>
+                <li>Camouflage-masker mechanic geprogrammeerd waarmee spelers door lasers kunnen bewegen</li>
                 </ul>
             </div>
 
             <!-- Code block with Prism highlighting -->
             <pre class="code language-csharp"><code class="language-csharp">
-private void Update()
-{
-    _sceneName = SceneManager.GetActiveScene().name;
-    //als je in een van de graaf scenes zit
-    if ((_sceneName == "fossils" || _sceneName == "rocks" ) )
+    private void FixedUpdate()
     {
-        //vind de fossiel/steen  die gespawned is
-        _gemObj = GameObject.Find("gem");
-        _gemScipt = _gemObj.GetComponent<Stonerarity>();
-
-        //als fossiel nog niet toegeveogd is 
-        if (_fossilAdded == false && _gemObj.activeInHierarchy)
+        //move the segments
+        for (int i = _segments.Count - 1; i > 0; i--)
         {
-            //haal de prefab van de steen of fossiel op
-            FossilPrefabs.Add(_gemScipt.SelectedPrefab);
-            _fossilAdded = true;
+            _segments[i].position = _segments[i - 1].position;
         }
-    }
-    else
-    {
-        //als je uit de graafscene bent zet fossiltoegevoegd of false
-        //hierdoor kan je later weer een fossiel opgraven
-        //en laten tonen op het algemene graafscherm
-        _fossilAdded = false;
-    }
-    if(_sceneName == "SplashScreen")
-    {
-        //als je terug gaat naar menu 
-        //haal alle stenen info weg
-        DugUpRocks.Clear();
-        NameOfRocks.Clear();
-        FossilPrefabs.Clear();
+        //use anchoredPosition for canvas transform
+        //this game was made on a canvas
+        Vector2 pos = rect.anchoredPosition;
+        pos += _direction * gridSize;
+        rect.anchoredPosition = pos;
+
     }
 
-    if(_sceneName == "level 1")
+    private void Grow()
     {
-        
-        //vind de opgegraven stenen doormiddel van de naam
-        if(_rocksFound == false)
+        for ( int i = 0; i <6; i++)
         {
-            //zoek doormiddel van de namen de locaties van de gegraven stenen op
-            foreach (string name in NameOfRocks)
-            {
-                DugUpRocks.Add(GameObject.Find(name));
-            }
-            _rocksFound = true;
+            //grow snake up to 5 times
+            Transform segment = Instantiate(segmentPrefab.transform, c.transform);
+            segment.transform.position = _segments[_segments.Count - 1].position;
+            _segments.Add(segment);
+            
         }
-        //afhankelijk van welke hopen al gegraven zijn
-        //spawn op elke hoop de juiste fossiel/steen prefab 
-        //haal daarna de hopen weg
-        for(int i = 0; i < DugUpRocks.Count; i++)
-        {
-            Instantiate(FossilPrefabs[i], DugUpRocks[i].transform.position, DugUpRocks[i].transform.rotation);
-            Destroy(DugUpRocks[i]);
-        }
-        DugUpRocks.Clear();
     }
-    else
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        //maak de lijst schoon zodat het geen probelemen veroorzaakt in lvl1
-        RockChosen = false;
-        DugUpRocks.Clear();
-        _rocksFound= false;
+        //grow the snake if food is eaten
+        if (collision.tag == "Food")
+        {
+            Grow();
+        }
+        //respawn snake if wall is hit
+        if(collision.tag == "Wall")
+        {
+            rect.anchoredPosition = new Vector2(0f, 0f);
+        }
     }
-}
             </code></pre>
 
 
@@ -175,7 +137,7 @@ private void Update()
             <img src="images/MasksEye5.png" alt="img 3">
             <div class="video-wrapper">
                 <iframe 
-                    src="https://www.youtube.com/embed/fl2-pdxtwgw" 
+                    src="https://www.youtube.com/embed/NJ61iZgjwV0" 
                     title="YouTube video" 
                     frameborder="0" 
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
