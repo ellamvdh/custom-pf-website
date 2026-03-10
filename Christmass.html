@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-okaidia.css" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-csharp.min.js"></script>
+    <link rel="stylesheet" href="mystyle.css" >
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Funnel+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Doto:wght@100..900&family=Funnel+Sans:ital,wght@0,300..800;1,300..800&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=VT323&display=swap'); 
+   
+        pre[class*="language-"],
+        code[class*="language-"] {
+        background: rgb(29,29,29)!important; /* removes the dark box */
+        padding: 10 !important;       /* optional: remove theme padding */
+        margin-top: 20px;   
+        margin-bottom: 20px;     /* optional */
+        border: none !important;
+        border-radius: 20px;
+        box-shadow: none !important;
+        font-family: 'Fira Code', monospace;
+        font-size: inherit;
+
+        
+    }
+   </style>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ella's Portfolio</title>
+</head>
+<body>
+    <header>
+        
+         <nav>
+            <div class = "nav-stuff"><a href="index.html">Portfolio</a></div>
+            <div class = "nav-stuff"><a href="index.html#projects">Projects</a></div>
+            <div class = "nav-stuff"><a href="AboutMe.html">About Me</a></div>
+            <div class = "nav-stuff"><a href="ContactMe.html">Contact Me</a></div>
+            
+         </nav>
+    </header>
+    <main>
+        
+        <div class="project-hero">
+            <div class="hero-content">
+                <h1 class="lilac-text text-center game-title">Save Christmas</h1>
+                <p class="white-text text-center">-Red kerst door sterren te verzamelen-</p>
+            </div>
+        </div>
+
+        <div class = "project-info">
+            <img class = "project-page-img"src="images/save christmas.jpg" alt="'not just gold diggers' GAME">
+            <div class="text-center white-text project-text">
+                Tijdens de kerstvakantie wilde ik een klein project maken in een engine waar ik nog niet eerder mee had gewerkt. Daarom heb ik een korte game ontwikkeld in Godot waarin de speler Kerstmis moet redden door sterren te verzamelen die verspreid liggen door het level.
+<br><br>
+Met dit project wilde ik vooral ervaring opdoen met een nieuwe engine en GDScript.Tijdens de ontwikkeling heb ik gewerkt met verschillende gameplay-mechanics, zoals player movement, interactie met objecten en het opzetten van een duidelijke game loop. Het project gaf me de kans om snel vertrouwd te raken met de workflow van Godot en te experimenteren met GDScript binnen een klein maar volledig speelbaar spel.
+            </div>
+            <div class="white-text text-center project-details">
+                <div><b>Details</b></div>
+                <p>Uitgekomen: Januari 2026</p>
+                <p>Engine: Godot</p>
+                <p>Taal: GDScript</p>
+                <p>Teamgrootte: 2</p>
+                <p>Rol: Gameplay Developer</p>
+                <p>Tijd: 1 week</p>
+                <p><a href="https://github.com/Dmdmym/christmass-2025" class = "project-link">Github</a></p>
+            </div>
+        </div>
+         
+        <div class="contribution-section">
+            <div class="project-contribution white-text">
+                <h2>Mijn bijdrage</h2>
+                <p>Gameplay Mechanics</p>
+                <ul>
+                    <li>Enemy movement en aanvalsgedrag geïmplementeerd</li>
+                    <li>Player attack mechanic ontwikkeld</li>
+                </ul>
+                <p>Progression System</p>
+                <ul>
+                    <li>Level progression systeem gebouwd (volgend level wanneer alle enemies verslagen of sterren verzameld zijn)</li>
+                </ul>
+
+                <p>Collectibles</p>
+                <ul>
+                    <li>Sterren-verzamel systeem gemaakt</li>
+                </ul>
+                <p>Feedback</p>
+                <ul>
+                     <li>Tekst pop-ups toegevoegd voor in-game feedback</li>
+                    <li>Animaties geïmplementeerd voor vijanden en Santa</li>
+                </ul>
+            </div>
+
+            <!-- Code block with Prism highlighting -->
+            <pre class="code language-csharp"><code class="language-csharp">
+func _physics_process(delta: float) -> void:
+	# update healthbar based on hp
+	progressBar.value = CurrentHealth
+	timer += delta
+	# fsm for wandering, attacking and death
+	match state:
+		State.Wandering:
+			current_pos = position.x
+			position.x += movement * delta
+			_wandering()
+		State.Attacking:
+			_attacking()
+		State.Dead:
+			if star != null:
+				star.process_mode = Node.PROCESS_MODE_INHERIT
+				star.visible = true
+			queue_free()
+
+# check if player entered aura to start attacking
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if body.name == "CharacterBody2D":
+		state = State.Attacking
+		in_area = true
+
+# check if player exited aura to stop attacking
+func _on_area_2d_body_exited(body: Node2D) -> void:
+	state = State.Wandering
+	in_area = false
+
+# function for wandering
+func _wandering() -> void:
+	if CurrentHealth <= 0:
+		state = State.Dead
+		anim_slime.play("default")
+
+	# update movement direction
+	if moving_left:
+		movement = -10
+	elif moving_right:
+		movement = 10
+
+	# change direction at bounds
+	if current_pos <= loc2:
+		moving_right = true
+		moving_left = false
+		scale = Vector2(-1, 1)
+	elif current_pos >= loc1:
+		moving_right = false
+		moving_left = true
+		scale = Vector2(1, 1)
+
+# function for attacking
+func _attacking() -> void:
+	if CurrentHealth <= 0:
+		state = State.Dead
+
+	# player attacking slime
+	if Player.attacked:
+		CurrentHealth -= 34
+		Player.attacked = false
+
+	# slime attacking player
+	if Player.attack_playing == false:
+		anim_slime.play("attack")
+		if timer > 1:
+			attack_sound.play()
+			timer = 0
+			Player._take_damage(5)
+            </code></pre>
+
+
+        </div>
+            
+        <div class="project-contribution-images">
+            <img src="images/njg2.jpg" alt="img 1">
+            <img src="images/njg6.jpg" alt="img 2">
+            <img src="images/njg5.jpg" alt="img 3">
+            <div class="video-wrapper">
+                <iframe 
+                    src="https://www.youtube.com/embed/fl2-pdxtwgw" 
+                    title="YouTube video" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </div> 
+    </div>
+
+    </main>
+    <footer class = "lilac-text text-center">
+        © 2026 Ella Marije van den Hoogenband. All rights reserved.
+    </footer>
+    
+</body>
+</html>
