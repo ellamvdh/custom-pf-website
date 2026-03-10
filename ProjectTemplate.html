@@ -1,11 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-okaidia.css" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-csharp.min.js"></script>
     <link rel="stylesheet" href="mystyle.css" >
     <style>
-    @import url('https://fonts.googleapis.com/css2?family=Funnel+Sans:ital,wght@0,300..800;1,300..800&display=swap');
-    @import url('https://fonts.googleapis.com/css2?family=Doto:wght@100..900&family=Funnel+Sans:ital,wght@0,300..800;1,300..800&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=VT323&display=swap'); 
-    </style>
+        @import url('https://fonts.googleapis.com/css2?family=Funnel+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Doto:wght@100..900&family=Funnel+Sans:ital,wght@0,300..800;1,300..800&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=VT323&display=swap'); 
+   
+        pre[class*="language-"],
+        code[class*="language-"] {
+        background: rgb(29,29,29)!important; /* removes the dark box */
+        padding: 10 !important;       /* optional: remove theme padding */
+        margin-top: 20px;   
+        margin-bottom: 20px;     /* optional */
+        border: none !important;
+        border-radius: 20px;
+        box-shadow: none !important;
+        font-family: 'Fira Code', monospace;
+        font-size: inherit;
+
+        
+    }
+   </style>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -76,13 +94,93 @@
                     <li>Houdt bij welke rocks gekozen zijn en beheert scene-transities.</li>
                 </ul>
             </div>
+
+            <!-- Code block with Prism highlighting -->
+            <pre class="code language-csharp"><code class="language-csharp">
+private void Update()
+{
+    _sceneName = SceneManager.GetActiveScene().name;
+    //als je in een van de graaf scenes zit
+    if ((_sceneName == "fossils" || _sceneName == "rocks" ) )
+    {
+        //vind de fossiel/steen  die gespawned is
+        _gemObj = GameObject.Find("gem");
+        _gemScipt = _gemObj.GetComponent<Stonerarity>();
+
+        //als fossiel nog niet toegeveogd is 
+        if (_fossilAdded == false && _gemObj.activeInHierarchy)
+        {
+            //haal de prefab van de steen of fossiel op
+            FossilPrefabs.Add(_gemScipt.SelectedPrefab);
+            _fossilAdded = true;
+        }
+    }
+    else
+    {
+        //als je uit de graafscene bent zet fossiltoegevoegd of false
+        //hierdoor kan je later weer een fossiel opgraven
+        //en laten tonen op het algemene graafscherm
+        _fossilAdded = false;
+    }
+    if(_sceneName == "SplashScreen")
+    {
+        //als je terug gaat naar menu 
+        //haal alle stenen info weg
+        DugUpRocks.Clear();
+        NameOfRocks.Clear();
+        FossilPrefabs.Clear();
+    }
+
+    if(_sceneName == "level 1")
+    {
+        
+        //vind de opgegraven stenen doormiddel van de naam
+        if(_rocksFound == false)
+        {
+            //zoek doormiddel van de namen de locaties van de gegraven stenen op
+            foreach (string name in NameOfRocks)
+            {
+                DugUpRocks.Add(GameObject.Find(name));
+            }
+            _rocksFound = true;
+        }
+        //afhankelijk van welke hopen al gegraven zijn
+        //spawn op elke hoop de juiste fossiel/steen prefab 
+        //haal daarna de hopen weg
+        for(int i = 0; i < DugUpRocks.Count; i++)
+        {
+            Instantiate(FossilPrefabs[i], DugUpRocks[i].transform.position, DugUpRocks[i].transform.rotation);
+            Destroy(DugUpRocks[i]);
+        }
+        DugUpRocks.Clear();
+    }
+    else
+    {
+        //maak de lijst schoon zodat het geen probelemen veroorzaakt in lvl1
+        RockChosen = false;
+        DugUpRocks.Clear();
+        _rocksFound= false;
+    }
+}
+            </code></pre>
+
+
+        </div>
             
-            <div class="project-contribution-images">
+        <div class="project-contribution-images">
             <img src="images/njg2.jpg" alt="img 1">
             <img src="images/njg6.jpg" alt="img 2">
-            <img src="images/njg4.jpg" alt="img 3">
-            <img src="images/njg5.jpg" alt="img4 4">
-        </div>
+            <img src="images/njg5.jpg" alt="img 3">
+            <div class="video-wrapper">
+                <iframe 
+                    src="https://www.youtube.com/embed/fl2-pdxtwgw" 
+                    title="YouTube video" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </div> 
     </div>
 
     </main>
