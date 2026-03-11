@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-okaidia.css" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-csharp.min.js"></script>
+    <link rel="stylesheet" href="mystyle.css" >
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Funnel+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Doto:wght@100..900&family=Funnel+Sans:ital,wght@0,300..800;1,300..800&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=VT323&display=swap'); 
+   
+        pre[class*="language-"],
+        code[class*="language-"] {
+        background: rgb(29,29,29)!important; /* removes the dark box */
+        padding: 10 !important;       /* optional: remove theme padding */
+        margin-top: 20px;   
+        margin-bottom: 20px;     /* optional */
+        border: none !important;
+        border-radius: 20px;
+        box-shadow: none !important;
+        font-family: 'Fira Code', monospace;
+        font-size: inherit;
+
+        
+    }
+   </style>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ella's Portfolio</title>
+</head>
+<body>
+    <header>
+        
+         <nav>
+            <div class = "nav-stuff"><a href="index.html">Portfolio</a></div>
+            <div class = "nav-stuff"><a href="index.html#projects">Projects</a></div>
+            <div class = "nav-stuff"><a href="AboutMe.html">About Me</a></div>
+            <div class = "nav-stuff"><a href="ContactMe.html">Contact Me</a></div>
+            
+         </nav>
+    </header>
+    <main>
+        
+        <div class="project-hero">
+            <div class="hero-content">
+                <h1 class="lilac-text text-center game-title">Ghost Shooter</h1>
+                <p class="white-text text-center">-Red de wereld van geesten-</p>
+            </div>
+        </div>
+
+        <div class = "project-info">
+            <img class = "project-page-img"src="images/GhostShooter.jpg" alt="'not just gold diggers' GAME">
+            <div class="text-center white-text project-text">
+    Dit project is een vervolg op het café-spel, waarin je een geest-invasie moest veroorzaken en twee NPC’s moest beschermen. Voor het eerst werkte ik met statemachines, coroutines en NavMeshAgents, wat veel leermomenten gaf over tijdsbeheer en AI-bewegingen.  
+<br><br>
+Mijn focus lag op het programmeren van gameplay-mechanics in Unity. Ik gebruikte coroutines voor het spawnen van geesten en waves, Random.Range voor willekeurige spawnlocaties, en hield de game state bij zodat de speler pas faalt als beide NPC’s dood zijn.
+</div>
+            <div class="white-text text-center project-details">
+                <div><b>Details</b></div>
+                <p>Uitgekomen: Juni 2025</p>
+                <p>Engine: Unity (VR)</p>
+                <p>Taal: C#</p>
+                <p>Teamgrootte: 1</p>
+                <p>Rol: Gameplay Developer</p>
+                <p>Tijd: 4 weken</p>
+                <p><a href="https://github.com/GLU-CSD/vr-store-ellamvdh.git" class = "project-link">Github</a></p>
+            </div>
+        </div>
+         
+        <div class="contribution-section">
+            <div class="project-contribution white-text">
+                <h2>Mijn bijdrage</h2>
+
+                <p>Gameplay & Mechanics</p>
+                <ul>
+                    <li>Speler kan pistool, gitaar, granaat en eten gebruiken om vijanden te bestrijden en NPC’s te beschermen.</li>
+                    <li>Healthpacks en cooldowns werken per gamemode (protect customers vs ghost invasion).</li>
+                </ul>
+
+                <p>Enemy AI & Waves</p>
+                <ul>
+                    <li>Vijanden volgen speler en NPC’s via NavMeshAgents en coroutines, waves worden steeds moeilijker met extra health en spawn.</li>
+                </ul>
+
+                <p>Health & UI</p>
+                <ul>
+                    <li>Player en enemy healthbars met visuele feedback, plus UI voor klantenstatus, health en pistool reload tijd.</li>
+                </ul>
+
+                <p>Systems & Effects</p>
+                <ul>
+                    <li>Startmenu, win/game-over schermen, post-processing, geluiden en particle effects voor chaotische sfeer.</li>
+                </ul>
+            </div>
+
+            <!-- Code block with Prism highlighting -->
+            <pre class="code language-csharp"><code class="language-csharp">
+//Dit script regelt het inspawnen van de vijanden
+IEnumerator SpawnWaves()
+{
+    for (int wave = 1; wave <= totalWaves; wave++, waveCount++) // Go through each wave
+    {
+        // Spawn the enemies for this wave
+        for (int i = 0; i < enemiesPerWave; i++)
+        {
+            SpawnEnemy(); // This spawns one enemy
+            yield return new WaitForSeconds(timeBetweenEnemies); // Wait for 1 second before spawning the next one
+        }
+        //all enemies spawned
+
+        yield return new WaitForSeconds(timeBetweenWaves); // Wait for 5 seconds before starting the next wave
+        //all waves finished
+
+    }
+
+    //all waves complete
+}
+
+// This function actually spawns the enemy at the spawn point
+void SpawnEnemy()
+{
+    int ghost = Random.Range(1, 5);
+    //choose which ghost to spawn
+    switch (ghost)
+    {
+        case 1:
+            ChosenGhost = enemyPrefab1;
+            break;
+        case 2:
+            ChosenGhost = enemyPrefab2;
+            break;
+        case 3:
+            ChosenGhost = enemyPrefab3;
+            break;
+        case 4:
+            ChosenGhost = enemyPrefab4;
+            break;
+    }
+
+    int randomLoc = Random.Range(1, 6);
+    Debug.Log(randomLoc);
+    //choose which location to spawn at
+    switch (randomLoc)
+    {
+        case 1:
+            newLoc = loc1;
+            break;
+        case 2:
+            newLoc = loc2;
+            break;
+        case 3:
+            newLoc = loc3;
+            break;
+        case 4:
+            newLoc = loc4;
+            break;
+        case 5:
+            newLoc = loc5;
+            break;
+    }
+
+    if (ChosenGhost != null)
+    {
+        //spawn chosen ghost at the randomly chosen location
+        spawnedGhost = Instantiate(ChosenGhost, newLoc.position, Quaternion.identity);
+    }
+
+    //depending on which wave is the current one, increase the spawned ghost health
+    health increasedHP = spawnedGhost.GetComponentInChildren<health>();
+    increasedHP.maxHealth = 40f + (waveCount - 1) * 20;
+}
+            </code></pre>
+
+
+        </div>
+            
+        <div class="project-contribution-images2">
+            <img src="images/ghost 2.jpg" alt="img 1">
+            <div class="video-wrapper">
+                <iframe 
+                    src="https://www.youtube.com/embed/yNWPdE_39Mo" 
+                    title="YouTube video" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </div> 
+    </div>
+
+    </main>
+    <footer class = "lilac-text text-center">
+        © 2026 Ella Marije van den Hoogenband. All rights reserved.
+    </footer>
+    
+</body>
+</html>

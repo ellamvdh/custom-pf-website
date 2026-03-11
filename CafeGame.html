@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-okaidia.css" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-csharp.min.js"></script>
+    <link rel="stylesheet" href="mystyle.css" >
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Funnel+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Doto:wght@100..900&family=Funnel+Sans:ital,wght@0,300..800;1,300..800&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=VT323&display=swap'); 
+   
+        pre[class*="language-"],
+        code[class*="language-"] {
+        background: rgb(29,29,29)!important; /* removes the dark box */
+        padding: 10 !important;       /* optional: remove theme padding */
+        margin-top: 20px;   
+        margin-bottom: 20px;     /* optional */
+        border: none !important;
+        border-radius: 20px;
+        box-shadow: none !important;
+        font-family: 'Fira Code', monospace;
+        font-size: inherit;
+
+        
+    }
+   </style>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ella's Portfolio</title>
+</head>
+<body>
+    <header>
+        
+         <nav>
+            <div class = "nav-stuff"><a href="index.html">Portfolio</a></div>
+            <div class = "nav-stuff"><a href="index.html#projects">Projects</a></div>
+            <div class = "nav-stuff"><a href="AboutMe.html">About Me</a></div>
+            <div class = "nav-stuff"><a href="ContactMe.html">Contact Me</a></div>
+            
+         </nav>
+    </header>
+    <main>
+        
+        <div class="project-hero">
+            <div class="hero-content">
+                <h1 class="lilac-text text-center game-title">Cafe Game</h1>
+                <p class="white-text text-center">-VR-café met mini-game en interactie-</p>
+            </div>
+        </div>
+
+        <div class = "project-info">
+            <img class = "project-page-img"src="images/Cafe Game.jpg" alt="'not just gold diggers' GAME">
+            <div class="text-center white-text project-text">
+    Voor dit project bouwden we een VR-supermarkt in ProBuilder, maar ik koos voor een café met dezelfde functionaliteit. Ik voegde interactieve elementen toe zoals betaalbaar eten, een alarmsysteem, speelbare instrumenten en een café-mini-game, waar ik het meest trots op ben.  
+</div>
+            <div class="white-text text-center project-details">
+                <div><b>Details</b></div>
+                <p>Uitgekomen: Maart 2025</p>
+                <p>Engine: Unity (VR)</p>
+                <p>Taal: C#</p>
+                <p>Teamgrootte: 1</p>
+                <p>Rol: Gameplay Developer</p>
+                <p>Tijd: 4 weken</p>
+                <p><a href="https://github.com/GLU-CSD/vr-store-ellamvdh.git" class = "project-link">Github</a></p>
+            </div>
+        </div>
+         
+        <div class="contribution-section">
+            <div class="project-contribution white-text">
+                <h2>Mijn bijdrage</h2>
+                <p>VR Tutorial & Intro</p>
+                <ul>
+                    <li>Een tutorial scene waarin spelers leren hoe VR werkt.</li>
+                </ul>
+
+                <p>Interactieve Café-elementen</p>
+                <ul>
+                    <li>Betaalbaar eten toegevoegd dat spelers kunnen oppakken.</li>
+                    <li>Alarmsysteem geprogrammeerd: gaat af als spelers proberen de deur uit te gaan zonder te betalen.</li>
+                    <li>Speelbare instrumenten geïmplementeerd voor extra interactie en sfeer.</li>
+                </ul>
+
+                <p>Mini-game & Gameplay</p>
+                <ul>
+                    <li>Mini-game ontworpen waarbij spelers zelf eten kunnen bereiden door ingrediënten te combineren.</li>
+                    <li>Spawning van gerechten afhankelijk gemaakt van de juiste ingrediëntencombinaties.</li>
+                    <li>Klanten laten verschijnen met verschillende bestellingen die de speler in de mini-game moet bereiden.</li>
+                </ul>
+
+            </div>
+
+            <!-- Code block with Prism highlighting -->
+            <pre class="code language-csharp"><code class="language-csharp">
+//mini game script
+void Update()
+{
+    timer += Time.deltaTime;
+
+    float TimeRemaining = timeForCustomers - timer;
+    timerText.text = Mathf.Round(TimeRemaining).ToString();
+
+    //turn the hurry up text on if there is only 1/3 time left of the timer
+
+    float HurryUpTime = timeForCustomers / 3;
+
+    if (TimeRemaining < HurryUpTime)
+    {
+        hurryUpText.text = "Hurry Up!";
+    }
+    else
+    {
+        hurryUpText.text = "";
+    }
+
+    // If the timer reaches 60 seconds, change the customer and meal or if the right item is placed in the snappoint
+    if (timer >= timeForCustomers || givefoodtocustomers.GoToNextCustomer == true)
+    {
+        if (timer >= timeForCustomers && givefoodtocustomers.GoToNextCustomer == false)
+        {
+            //update score - 2;
+        }
+        else
+        {
+            //update score +1;
+        }
+
+        givefoodtocustomers.GoToNextCustomer = false;
+        timer = 0f;
+
+        CHOSENcustomer.SetActive(false);
+
+        randomMeel = Random.Range(1, 7);
+        randomCustomer = Random.Range(1, 8);
+
+        switch (randomCustomer)
+        {
+            case 1: CHOSENcustomer = Customer1; break;
+            case 2: CHOSENcustomer = Customer2; break;
+            case 3: CHOSENcustomer = Customer3; break;
+            case 4: CHOSENcustomer = Customer4; break;
+            case 5: CHOSENcustomer = Customer5; break;
+            case 6: CHOSENcustomer = Customer6; break;
+            case 7: CHOSENcustomer = Customer7; break;
+            default: Debug.Log("Random customer was out of bounds"); break;
+        }
+
+        switch (randomMeel)
+        {
+            case 1: CHOSenMeal = 1; mealText.text = "Ik wil een taart!"; break;
+            case 2: CHOSenMeal = 2; mealText.text = "Ik wil een broodje..."; break;
+            case 3: CHOSenMeal = 3; mealText.text = "Mag ik een bagel?"; break;
+            case 4: CHOSenMeal = 4; mealText.text = "Drankje 1 alsjeblieft!"; break;
+            case 5: CHOSenMeal = 5; mealText.text = "HMMM, drankje 2 ziet er wel goed uit."; break;
+            case 6: CHOSenMeal = 6; mealText.text = "Zou ik drankje 3 mogen proberen?"; break;
+            default: Debug.Log("Random meal was out of bounds"); break;
+        }
+
+        CHOSENcustomer.SetActive(true);
+    }
+}
+            </code></pre>
+
+
+        </div>
+            
+        <div class="project-contribution-images">
+            <img src="images/cafe 3.jpg" alt="img 1">
+            <img src="images/cafe-game5.png" alt="img 2">
+            <img src="images/cafe 1.jpg" alt="img 3">
+            
+            <div class="video-wrapper">
+                <iframe 
+                    src="https://www.youtube.com/embed/acJ22977enA" 
+                    title="YouTube video" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </div> 
+    </div>
+
+    </main>
+    <footer class = "lilac-text text-center">
+        © 2026 Ella Marije van den Hoogenband. All rights reserved.
+    </footer>
+    
+</body>
+</html>

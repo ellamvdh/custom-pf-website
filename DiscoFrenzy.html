@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-okaidia.css" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-csharp.min.js"></script>
+    <link rel="stylesheet" href="mystyle.css" >
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Funnel+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Doto:wght@100..900&family=Funnel+Sans:ital,wght@0,300..800;1,300..800&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=VT323&display=swap'); 
+   
+        pre[class*="language-"],
+        code[class*="language-"] {
+        background: rgb(29,29,29)!important; /* removes the dark box */
+        padding: 10 !important;       /* optional: remove theme padding */
+        margin-top: 20px;   
+        margin-bottom: 20px;     /* optional */
+        border: none !important;
+        border-radius: 20px;
+        box-shadow: none !important;
+        font-family: 'Fira Code', monospace;
+        font-size: inherit;
+
+        
+    }
+   </style>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ella's Portfolio</title>
+</head>
+<body>
+    <header>
+        
+         <nav>
+            <div class = "nav-stuff"><a href="index.html">Portfolio</a></div>
+            <div class = "nav-stuff"><a href="index.html#projects">Projects</a></div>
+            <div class = "nav-stuff"><a href="AboutMe.html">About Me</a></div>
+            <div class = "nav-stuff"><a href="ContactMe.html">Contact Me</a></div>
+            
+         </nav>
+    </header>
+    <main>
+        
+        <div class="project-hero">
+            <div class="hero-content">
+                <h1 class="lilac-text text-center game-title">Disco frenzy</h1>
+                <p class="white-text text-center">-Een disco-shooter met robots en een eindbaas-</p>
+            </div>
+        </div>
+
+        <div class = "project-info">
+            <img class = "project-page-img"src="images/Disco frenzy.jpg" alt="'not just gold diggers' GAME">
+            <div class="text-center white-text project-text">
+    In dit project werkte ik samen met andere developers en artists aan een disco shooter met robots. Het spel heeft verschillende kamers met vijanden die pickups kunnen droppen en eindigt met een baas die drie frisbees tegelijk gooit. Dit was mijn eerste echte groepsproject, waardoor ik veel leerde over communicatie en samenwerking.  
+<br><br>
+Mijn focus lag op de Unity Editor en gameplay-mechanics. Ik implementeerde haptic feedback voor lopen, zwaardaanvallen, pistolen, het oppakken van objecten en schade van vijanden. Het simuleren van lopen was uitdagend, omdat het niet vanzelf stopte, maar uiteindelijk zorgde dit voor een vloeiende en interactieve spelervaring.
+</div>
+            <div class="white-text text-center project-details">
+                <div><b>Details</b></div>
+                <p>Uitgekomen: December 2025</p>
+                <p>Engine: Unity (VR)</p>
+                <p>Taal: C#</p>
+                <p>Teamgrootte: 5</p>
+                <p>Rol: Gameplay Developer</p>
+                <p>Tijd: 4 weken</p>
+                <p><a href="https://nthans.itch.io/disco-frenzy" class = "project-link">Itch</a></p>
+            </div>
+        </div>
+         
+        <div class="contribution-section">
+            <div class="project-contribution white-text">
+                <h2>Mijn bijdrage</h2>
+
+                <p>Enemy AI & Attacks</p>
+                <ul>
+                    <li>Geprogrammeerd dat de butler en andere vijanden bewegen en aanvallen uitvoeren, inclusief borden en een boss die frisbees afvuurt.</li>
+                    <li>Automated gun die meerdere kogels achter elkaar afvuurt.</li>
+                </ul>
+
+                <p>Lock & Key & Doors</p>
+                <ul>
+                    <li>Lock en key mechanic via snappoints voor deuren.</li>
+                    <li>Quaternion-rotaties en serializable fields gebruikt voor correcte deurbewegingen.</li>
+                </ul>
+
+                <p>Health & UI</p>
+                <ul>
+                    <li>Player en enemy healthbars en numerieke health display.</li>
+                    <li>Visuele feedback voor pistoolraycast en ammo.</li>
+                </ul>
+
+                <p>Systems, Assets & Effects</p>
+                <ul>
+                    <li>Integratie van modellen, enemy drops en navmesh obstakels.</li>
+                    <li>Menu, win/dood schermen, post-processing en particle effects.</li>
+                    <li>Haptic feedback voor lopen, wapens en interacties.</li>
+                </ul>
+            </div>
+
+            <!-- Code block with Prism highlighting -->
+            <pre class="code language-csharp"><code class="language-csharp">
+//Script voor het toevoegen van haptic feedback
+private void Update()
+{
+    timer += Time.deltaTime;
+    if (WalkEnabled == true)
+    {
+        //keep playing the walking feeling when player is walking
+        if (isWalkingHaptic == false)
+        {
+            //play walking feeling when walking
+            BhapticsLibrary.Play(BhapticsEvent.SHORTWALK);
+            isWalkingHaptic = true;
+            timer = 0f;
+        }
+
+        if (isWalkingHaptic == true && timer > 0.6f)
+        {
+            //if the walking feeling has stopped but the player is still moving in game
+            //stop the walking haptic bool so that the walking feeling can be played again
+            isWalkingHaptic = false;
+        }
+    }
+    if (WalkEnabled == false)
+    {
+        //stop the walking feeling if the player suddenly stops moving
+        BhapticsLibrary.StopByEventId("WALKING");
+    }
+}
+
+private void actionPerformed(InputAction.CallbackContext context)
+{
+    Vector2 input = context.ReadValue<Vector2>();
+    
+    //check the stick movement
+    //depending on that decide if player is walking or not
+    if (input.magnitude < 0.9f)
+    {
+        //not walking
+        WalkEnabled = false;
+    }
+    else if (input.magnitude > 0.9f)
+    {
+        //player is walking
+        WalkEnabled = true;
+    }
+}
+            </code></pre>
+
+
+        </div>
+            
+        <div class="project-contribution-images2">
+            <img src="images/disco shooter.jpg" alt="img 1">
+            <div class="video-wrapper">
+                <iframe 
+                    src="https://www.youtube.com/embed/EoD_UPaeEVg" 
+                    title="YouTube video" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </div> 
+    </div>
+
+    </main>
+    <footer class = "lilac-text text-center">
+        © 2026 Ella Marije van den Hoogenband. All rights reserved.
+    </footer>
+    
+</body>
+</html>
