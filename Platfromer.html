@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-okaidia.css" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-csharp.min.js"></script>
+    <link rel="stylesheet" href="mystyle.css" >
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Funnel+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Doto:wght@100..900&family=Funnel+Sans:ital,wght@0,300..800;1,300..800&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=VT323&display=swap'); 
+   
+        pre[class*="language-"],
+        code[class*="language-"] {
+        background: rgb(29,29,29)!important; /* removes the dark box */
+        padding: 10 !important;       /* optional: remove theme padding */
+        margin-top: 20px;   
+        margin-bottom: 20px;     /* optional */
+        border: none !important;
+        border-radius: 20px;
+        box-shadow: none !important;
+        font-family: 'Fira Code', monospace;
+        font-size: inherit;
+
+        
+    }
+   </style>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ella's Portfolio</title>
+</head>
+<body>
+    <header>
+        
+         <nav>
+            <div class = "nav-stuff"><a href="index.html">Portfolio</a></div>
+            <div class = "nav-stuff"><a href="index.html#projects">Projects</a></div>
+            <div class = "nav-stuff"><a href="AboutMe.html">About Me</a></div>
+            <div class = "nav-stuff"><a href="ContactMe.html">Contact Me</a></div>
+            
+         </nav>
+    </header>
+    <main>
+        
+        <div class="project-hero">
+            <div class="hero-content">
+                <h1 class="lilac-text text-center game-title">Replay Platformer</h1>
+                <p class="white-text text-center">-Een geporte platformer met eindbaas-</p>
+            </div>
+        </div>
+
+        <div class = "project-info">
+            <img class = "project-page-img"src="images/Replay Platformer2.jpg" alt="Replay Platformer">
+            <div class="text-center white-text project-text">
+                Door dit spel naar meerdere platformen te porten heb ik veel geleerd over hoe belangrijk het is om systemen flexibel op te zetten. Ik heb de besturing opnieuw gebouwd met het input-systeem van Unity, waardoor de controls eenvoudiger werken op verschillende apparaten.
+<br><br>
+Ik heb ook een eindbaas met drie fases gemaakt: eerst gooit hij stenen, daarna krijgt hij een schild dat je moet breken met wortels die hij laat spawnen, en in de laatste fase roept hij minions op.
+<br><br>
+Daarnaast heb ik een grappling-mechaniek gebouwd waarmee spelers grotere sprongen kunnen maken.
+            </div>
+            <div class="white-text text-center project-details">
+                <div><b>Details</b></div>
+                <p>Uitgekomen: Oktober 2025</p>
+                <p>Engine: Unity</p>
+                <p>Taal: C#</p>
+                <p>Teamgrootte: 1</p>
+                <p>Rol: Gameplay Developer</p>
+                <p>Tijd: 6 weken</p>
+                <p><a href="https://github.com/GLU-CSD/replay-platformer-ellamvdh" class = "project-link">Github</a></p>
+            </div>
+        </div>
+         
+        <div class="contribution-section">
+            <div class="project-contribution white-text">
+                <h2>Mijn bijdrage</h2>
+
+                <p>Level Inrichting & Gameplay</p>
+                <ul>
+                    <li>Inrichting van het platformer-level en plaatsing van gameplay-elementen.</li>
+                </ul>
+
+                <p>Grappling Mechanic</p>
+                <ul>
+                    <li>Mechaniek waarmee spelers zich kunnen vastgrijpen en grote sprongen kunnen maken.</li>
+                </ul>
+
+                <p>Enemy AI & Combat</p>
+                <ul>
+                    <li>Vijanden met AI die naar de speler toe lopen en aanvallen wanneer je in de buurt komt.</li>
+                    <li>Spelers kunnen vijanden verslaan door op ze te springen, waarna ze exploderen.</li>
+                </ul>
+
+                <p>Boss Fight</p>
+                <ul>
+                    <li>Ontwerp en implementatie van de eindbaas van het spel.</li>
+                </ul>
+
+                <p>Pause System</p>
+                <ul>
+                    <li>Pauzescherm dat het spel volledig stilzet wanneer de speler pauzeert.</li>
+                </ul>
+            </div>
+
+            <!-- Code block with Prism highlighting -->
+            <pre class="code language-csharp"><code class="language-csharp">
+private void StartGrapple()
+{
+    //check if you can grapple
+    if (_grappleCooldownTimer > 0f) return;
+
+    _isGrappling = true;
+    //freeze the player so it doesn't cause any problems while grappling
+    _characterMovement.currentState = CharacterMovement.PlayerState.Freeze;
+
+    //draw a raycast to where you want to grapple
+    RaycastHit hit;
+    if (Physics.Raycast(_camera.position, _camera.forward, out hit, _maxGrappleDistance, _whatIsGrabbable))
+    {
+        _grapplePoint = hit.point;
+        //dont allow to grapple the rock or boss
+        if (hit.collider.CompareTag("rock"))
+        {
+            Invoke(nameof(StopGrapple), _grappleDelay);
+        }
+        else if (hit.collider.name == "Boss")
+        {
+            if (!_didBossDamage)
+            {
+                float damage = BossScript.CurrentHealth > 30f ? 5f : 1f;
+                BossScript.CurrentHealth -= damage;
+                _didBossDamage = true;
+                BossExplode.Play();
+            }
+            Invoke(nameof(StopGrapple), _grappleDelay);
+        }
+        //destroy the boss carrot if you hit it
+        else if (hit.collider.CompareTag("carrot"))
+        {
+            HandleCarrot(hit);
+            Invoke(nameof(StopGrapple), _grappleDelay);
+        }
+        //if you hit an object you can actually grapple, then grapple movement = true
+        else
+        {
+            _grappleMovement = true;
+            _grappleCooldownTimer = 1f;
+        }
+    }
+    else
+    {
+        //if you didn't hit anything / the raycast was too short to hit anything
+        //draw a line
+        _grapplePoint = _camera.position + _camera.forward * _maxGrappleDistance;
+        //stop grappling
+        Invoke(nameof(StopGrapple), _grappleDelay);
+    }
+
+    _lineRenderer.enabled = true;
+    _lineRenderer.SetPosition(1, _grapplePoint);
+}
+
+private void ExecuteGrapple()
+{
+    //stop the body from moving
+    _characterMovement.Rigidbody.isKinematic = true;
+    //move the character to the grapple point
+    _characterMovement.transform.position = Vector3.Lerp(
+        _characterMovement.transform.position,
+        _grapplePoint,
+        Time.deltaTime * 2f
+    );
+    //if you are close enough to the grapple point stop grappling
+    //cause the closer you get, the slower the grapple
+    if (Vector3.Distance(_characterMovement.transform.position, _grapplePoint) < 0.7f)
+    {
+        StopGrapple();
+    }
+}
+            </code></pre>
+
+
+        </div>
+            
+        <div class="project-contribution-images">
+            <img src="images/Replay Platformer.jpg" alt="img 1">
+            <img src="images/bunny.jpg" alt="img 2">
+            <img src="images/Grappeling.jpg" alt="img 3">
+            <div class="video-wrapper">
+                <iframe 
+                    src="https://www.youtube.com/embed/fl2-pdxtwgw" 
+                    title="YouTube video" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </div> 
+    </div>
+
+    </main>
+    <footer class = "lilac-text text-center">
+        © 2026 Ella Marije van den Hoogenband. All rights reserved.
+    </footer>
+    
+</body>
+</html>

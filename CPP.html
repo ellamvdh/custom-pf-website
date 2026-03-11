@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-okaidia.css" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-csharp.min.js"></script>
+    <link rel="stylesheet" href="mystyle.css" >
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Funnel+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Doto:wght@100..900&family=Funnel+Sans:ital,wght@0,300..800;1,300..800&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=VT323&display=swap'); 
+   
+        pre[class*="language-"],
+        code[class*="language-"] {
+        background: rgb(29,29,29)!important; /* removes the dark box */
+        padding: 10 !important;       /* optional: remove theme padding */
+        margin-top: 20px;   
+        margin-bottom: 20px;     /* optional */
+        border: none !important;
+        border-radius: 20px;
+        box-shadow: none !important;
+        font-family: 'Fira Code', monospace;
+        font-size: inherit;
+
+        
+    }
+   </style>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ella's Portfolio</title>
+</head>
+<body>
+    <header>
+        
+         <nav>
+            <div class = "nav-stuff"><a href="index.html">Portfolio</a></div>
+            <div class = "nav-stuff"><a href="index.html#projects">Projects</a></div>
+            <div class = "nav-stuff"><a href="AboutMe.html">About Me</a></div>
+            <div class = "nav-stuff"><a href="ContactMe.html">Contact Me</a></div>
+            
+         </nav>
+    </header>
+    <main>
+        
+        <div class="project-hero">
+            <div class="hero-content">
+                <h1 class="lilac-text text-center game-title">C++ turn based stategy</h1>
+                <p class="white-text text-center">-Een klein console-gebaseerd vechtspel-</p>
+            </div>
+        </div>
+
+        <div class = "project-info">
+            <img class = "project-page-img"src="images/cpp.jpg" alt="'not just gold diggers' GAME">
+            <div class="text-center white-text project-text">
+    Voor dit project heb ik zelfstandig een kleine turn-based strategy game ontwikkeld in C++ en getest op mobiel met CxxDroid. In het spel heeft elke speler een normale en een speciale aanval, waarbij de speciale aanval slechts één keer gebruikt kan worden. Spelers hebben daarnaast verschillende stats zoals health, attack, defense en special, wat zorgt voor strategische keuzes tijdens de beurt.  
+</div>
+            <div class="white-text text-center project-details">
+                <div><b>Details</b></div>
+                <p>Uitgekomen: Augustus 2025</p>
+                <p>Engine: cxxdroid</p>
+                <p>Taal: C++</p>
+                <p>Teamgrootte: 1</p>
+                <p>Rol: Gameplay Developer</p>
+                <p>Tijd: zomervakantie</p>
+            </div>
+        </div>
+         
+        <div class="contribution-section">
+            <div class="project-contribution white-text">
+                <h2>Mijn bijdrage</h2>
+                <p>Turn-Based Combat</p>
+                <ul>
+                    <li>Beurtensysteem waarin spelers kiezen tussen normale en speciale aanvallen.</li>
+                    <li>Invoercontrole zodat alleen geldige keuzes (‘a’ of ‘s’) worden geaccepteerd.</li>
+                </ul>
+
+                <p>Speciale Aanvallen</p>
+                <ul>
+                    <li>Unieke speciale aanvallen per karakter met éénmalig gebruik per gevecht.</li>
+                    <li>Voorbeelden: HP herstellen, dubbele schade, verdediging vijand verlagen, of hoge aanval tegen eigen verdediging.</li>
+                </ul>
+
+                <p>Enemy Logic</p>
+                <ul>
+                    <li>Vijand reageert op speleracties.</li>
+                    <li>Health en stats worden dynamisch aangepast na elke actie.</li>
+                </ul>
+
+                <p>Stat Management & Feedback</p>
+                <ul>
+                    <li>Bijhouden van speler- en vijandstats: health, attack, defense en special.</li>
+                    <li>Console-uitvoer toont schade en acties van speler en vijand, inclusief meldingen bij speciale aanval.</li>
+                </ul>
+            </div>
+
+            <!-- Code block with Prism highlighting -->
+            <pre class="code language-csharp"><code class="language-csharp">
+            // Laat de speler aanvallen of speciale aanval gebruiken
+            do {
+                cout << "Type 'a' to attack and 's' to special attack\n\n";
+                cin >> userInput;
+            } while (userInput != "s" && userInput != "S" && userInput != "a" && userInput != "A");
+
+            // Clear the screen
+            system("cls");
+
+            if (userInput == "a" || userInput == "A") {
+                cout << "You chose to attack! \n";
+                int EnemyHealth = stoi(boss[1]);
+                EnemyHealth -= stoi(charcaters[ChosenCharachter][2]); // minus player attack
+                EnemyHealth += stoi(boss[3]); // plus enemy defense
+                boss[1] = to_string(EnemyHealth);
+
+                cout << "You did " << stoi(charcaters[ChosenCharachter][2]) - stoi(boss[3]);
+                cout << " damage! \n\n";
+
+                // Enemy attacks
+                int NewPlayerHealth = stoi(charcaters[ChosenCharachter][1]);
+                NewPlayerHealth -= stoi(boss[2]);
+                NewPlayerHealth += stoi(charcaters[ChosenCharachter][3]);
+                charcaters[ChosenCharachter][1] = to_string(NewPlayerHealth);
+
+                cout << "Enemy did " << (stoi(boss[2]) - stoi(charcaters[ChosenCharachter][3]));
+                cout << " damage to you!\n\n";
+
+            } else if (SpecialRemaing == 1) {
+                cout << "You chose to use your special! \n";
+
+                switch (ChosenCharachter) {
+                    case 0:
+                        // Heal self
+                        charcaters[ChosenCharachter][1] = to_string(stoi(charcaters[ChosenCharachter][1]) + 30);
+                        cout << "You used " << charcaters[ChosenCharachter][4] << " and restored 30 hp to yourself!\n\n";
+                        break;
+                    case 1: {
+                        // Double attack
+                        int EnemyHealth = stoi(boss[1]);
+                        EnemyHealth -= stoi(charcaters[ChosenCharachter][2]) * 2;
+                        EnemyHealth += stoi(boss[3]);
+                        boss[1] = to_string(EnemyHealth);
+
+                        cout << "You used " << charcaters[ChosenCharachter][4] << " and did ";
+                        cout << stoi(charcaters[ChosenCharachter][2]) - stoi(boss[3]);
+                        cout << " double damage! \n\n";
+                        break;
+                    }
+                    case 2: {
+                        // Lower boss defense
+                        int bossdef = stoi(boss[3]);
+                        bossdef -= 15;
+                        boss[3] = to_string(bossdef);
+                        cout << "You used " << charcaters[ChosenCharachter][4] << " and lowered enemy defence!\n\n";
+                        break;
+                    }
+                    case 3:
+                        // High attack, lose own defense
+                        int EnemyHealth = stoi(boss[1]);
+                        EnemyHealth -= 70;
+                        EnemyHealth += stoi(boss[3]);
+                        boss[1] = to_string(EnemyHealth);
+                        charcaters[ChosenCharachter][3] = to_string(0);
+                        cout << "You used " << charcaters[ChosenCharachter][4] << " and did 70 atk but lost all your def...\n\n";
+                        break;
+                }
+
+                SpecialRemaing = 0;
+
+                // Enemy attacks after special
+                int NewPlayerHealth = stoi(charcaters[ChosenCharachter][1]);
+                NewPlayerHealth -= stoi(boss[2]);
+                NewPlayerHealth += stoi(charcaters[ChosenCharachter][3]);
+                charcaters[ChosenCharachter][1] = to_string(NewPlayerHealth);
+
+                cout << "Enemy did " << (stoi(boss[2]) - stoi(charcaters[ChosenCharachter][3]));
+                cout << " damage to you!\n\n";
+
+            } else {
+                cout << "You already used your special! \n\n";
+            }
+            </code></pre>
+
+
+        </div>
+            
+        <div class="project-contribution-images2">
+            <img src="images/bosscpp.jpg" alt="img 1">
+            <div class="video-wrapper">
+                <iframe 
+                    src="https://www.youtube.com/embed/Z0svgpmLxl4" 
+                    title="YouTube video" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </div> 
+    </div>
+
+    </main>
+    <footer class = "lilac-text text-center">
+        © 2026 Ella Marije van den Hoogenband. All rights reserved.
+    </footer>
+    
+</body>
+</html>
