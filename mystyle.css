@@ -332,6 +332,7 @@ a:active {
     grid-template-columns: repeat(3, 1fr);
     gap: 8px;
     margin:50px;
+    margin-bottom: 0px;
     border-radius: 20px;
     
 }
@@ -547,7 +548,10 @@ a:active {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 20px 50px;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-bottom: 20px;
+    margin-top: -20px;
     background-color: rgb(29, 29, 29);
     border-radius: 20px;
     padding: 30px;
@@ -567,6 +571,8 @@ a:active {
     .github-container {
         margin: 0px;
         padding: 15px;
+        margin-top: -20px;
+        margin-bottom: 20px;
     }
    
 }
