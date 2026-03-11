@@ -1,10 +1,99 @@
 
 
 body{
-    background-color: black;
+    background: radial-gradient(circle at 15% 50%, rgba(255, 51, 153, 0.4), transparent 50%),
+                radial-gradient(circle at 85% 30%, rgba(153, 51, 255, 0.4), transparent 50%),
+                radial-gradient(circle at 50% 80%, rgba(255, 0, 255, 0.4), transparent 50%),
+                linear-gradient(135deg, #1a0033 0%, #000033 50%, #330033 100%);
+    background-color: #0d001a;
+    background-size: 200% 200%;
+    animation: galaxyPulse 8s ease-in-out infinite alternate;
     /* font-family: "Funnel Sans", sans-serif; */
     font-family: "Doto", sans-serif;
     font-style: normal;
+}
+
+@keyframes galaxyPulse { 
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+}
+
+* {
+    text-shadow: 2px 2px 4px #ff007f;
+    cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>👑</text></svg>") 16 0, auto; /* Princess Crown Cursor Default */
+}
+
+a, button, .project-img {
+    cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>🪄</text></svg>") 16 0, pointer; /* Magic Wand Cursor on hover */
+}
+
+/* Mouse Sparkle Particles */
+.princess-sparkle {
+    position: fixed;
+    pointer-events: none;
+    z-index: 10000;
+    font-size: 20px;
+    animation: fadeAndFall 1s linear forwards;
+}
+
+@keyframes fadeAndFall {
+    0% { transform: translateY(0) scale(1) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(50px) scale(0) rotate(180deg); opacity: 0; }
+}
+
+div, header, footer, article, nav, .div1, .about-img, .about-text, .skills-list, .button-cv, .contact-boxes-seperated, .contact-links, .email-button, .project-text, .project-details, .project-contribution, .project-contribution-text, .project-contribution-images {
+    background-color: rgba(255, 182, 193, 0.2) !important;
+    border: 3px solid #ff33cc !important;
+    box-shadow: 0 0 20px rgba(153, 51, 255, 0.6), inset 0 0 10px rgba(255, 192, 203, 0.5);
+    backdrop-filter: blur(5px);
+    color: #fff0f5 !important;
+    border-radius: 30px !important;
+}
+
+body::before, body::after, html::before, html::after {
+    position: fixed;
+    z-index: -1;
+    pointer-events: none;
+    animation: floatUnicorn 4s infinite ease-in-out alternate;
+}
+body::before {
+    content: "🦄 🪐";
+    font-size: 140px;
+    left: 2%;
+    top: 15%;
+}
+body::after {
+    content: "🌌 🍭";
+    right: 5%;
+    bottom: 25%;
+    animation-delay: -1.5s;
+    font-size: 160px;
+}
+html::before {
+    content: "💖 🌟";
+    font-size: 100px;
+    left: 80%;
+    top: 10%;
+    animation-delay: -0.5s;
+}
+html::after {
+    content: "🚀 ✨";
+    font-size: 120px;
+    left: 10%;
+    bottom: 15%;
+    animation-delay: -2.5s;
+}
+
+@keyframes floatUnicorn {
+    0% { transform: translateY(0) rotate(-15deg) scale(1); }
+    100% { transform: translateY(-70px) rotate(25deg) scale(1.2); }
+}
+
+h1::before, h1::after {
+    content: " 🪐✨🍭 ";
+}
+h3::before, h3::after {
+    content: " 🌌🦄 ";
 }
 header{
     position: fixed;      /* FIXED, not sticky */
