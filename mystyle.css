@@ -265,11 +265,7 @@ a:active {
     
 }
 
-@media(max-width: 1000){
-    .contact-boxes{
-        font-size: 0.7em;
-    }
-}
+
 .contact-boxes-seperated{
     display: flex;
     justify-content: center; /* horizontal center */
@@ -293,6 +289,12 @@ a:active {
     width: auto;
     flex-direction: column;   /* dit is de sleutel */
     
+}
+@media(max-width: 1000px){
+    .contact-boxes{
+        font-size: 0.5em;
+        gap:10px;
+    }
 }
 .contact-links{
     background-color: rgb(29, 29, 29);
