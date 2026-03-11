@@ -21,6 +21,11 @@ main {
     padding-top: 30px; /* match your header height */
     
 }
+@media (max-width: 1000px) {
+    main{
+        padding-top: 60px;
+    }
+}
 footer{
     border-width: 0px;
     padding-top: 5px;
