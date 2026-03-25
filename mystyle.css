@@ -94,12 +94,6 @@ nav{
     margin: auto;
     font-size: 1.3em;
 }
-.nav-stuff img{
-    width: auto;
-    height: 30px;
-    display: flex;
-    justify-content: right;
-}
 
 @media (max-width: 1000px) {
     .nav-stuff{
@@ -197,7 +191,6 @@ a:active {
     border-radius: 20px;
     padding: 2.5%;
     background-color: rgb(29, 29, 29);
-    white-space: pre-line;
     
     
 }
@@ -641,18 +634,4 @@ a:active {
    
 }
 
-#language-button {
-    background: none;      /* no background */
-    border: none;          /* no border */
-    padding: 0;            /* remove default padding */
-    margin: 0;             /* remove default margin */
-    font-size: 1em;        /* same as your nav text */
-    font-family: inherit;  /* match your nav font */
-    
-    color: inherit;        /* match nav text color */
-    cursor:pointer;
-}
 
-#about-text{
-    white-space: pre-line;
-}

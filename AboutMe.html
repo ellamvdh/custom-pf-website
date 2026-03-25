@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
     <link rel="stylesheet" href="mystyle.css" >
-    <script src="language.js" defer></script>
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Funnel+Sans:ital,wght@0,300..800;1,300..800&display=swap');
     @import url('https://fonts.googleapis.com/css2?family=Doto:wght@100..900&family=Funnel+Sans:ital,wght@0,300..800;1,300..800&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=VT323&display=swap'); 
@@ -20,7 +19,6 @@
             <div class = "nav-stuff"><a href="index.html#projects">Projects</a></div>
             <div class = "nav-stuff"><a href="AboutMe.html">About Me</a></div>
             <div class = "nav-stuff"><a href="ContactMe.html">Contact Me</a></div>
-            <div class  = "nav-stuff" ><button id = "language-button"><img id = "englishButtonPNG"src = "images/eng.png"></button></div>
             
          </nav>
     </header>
@@ -38,10 +36,15 @@
                 </a>
         </div>
         <div class = "white-text about-boxes-info" >
-            <div class = "about-text" data-description="about-text"></div>
+            <div class = "about-text">Ik ben Ella van den Hoogenband en ik ben een gepassioneerde developer. Momenteel studeer ik XR-development, waarbij ik games leer bouwen voor verschillende hardware, zoals VR-brillen, Steam Deck, mobiele apparaten, web en Windows.
+
+                                        <br><br>Tijdens mijn studie heb ik verschillende vaardigheden ontwikkeld, zoals het werken in een teamverband, de basis van een game-engine en hoe ik snel nieuwe programmeertalen kan leren begrijpen.
+
+                                        <br><br>Ik ben leergierig, oplossingsgericht en ambitieus.
+            </div>
             <div class = "about-text-2 skills-text">
                 <div class = "skills-list">
-                    <div class = "text-center" ><b>Soft Skills</b></div>
+                    <div class = "text-center"><b>Soft Skills</b></div>
                     <ul>
                         <li>Samenwerken met artists</li><br>
                         <li>Feedback geven & ontvangen</li><br>
@@ -72,50 +75,6 @@
     <footer class = "lilac-text text-center">
         © 2026 Ella Marije van den Hoogenband. All rights reserved.
     </footer>
-    <script  type="module">
-        
-        
-        let language ="Dutch";
-        let AboutText = document.querySelector('[data-description="about-text"]');
-        let languageIMG= document.getElementById("englishButtonPNG");
-        const languageButton = document.getElementById("language-button");
-        let info; //the found json data
-
-        function loadDutch(){
-            AboutText.textContent=info["Dutch"]["aboutText"];
-        }
-        function loadEnglish(){
-            AboutText.textContent=info["English"]["aboutText"];
-        }
-        //fetch json and set initial data
-        fetch('./aboutMe.json')
-        .then(res => res.json())
-        .then(data=>{
-            //about text
-            info = data;
-            if(language == "Dutch"){
-                loadDutch();
-            }else {
-                loadEnglish();
-            }
-        })
-
-        
-        //if button is clickedchnage the language
-        languageButton.onclick = function(){
-        if(language == "Dutch"){
-            language = "English";
-            languageIMG.src = "images/nl.png"
-            loadEnglish();
-        }else if(language == "English"){
-            language = "Dutch";
-            languageIMG.src = "images/eng.png"
-            loadDutch();
-        }
-
-        
-    }
-    </script>
     
     
 </body>
