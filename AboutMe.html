@@ -46,7 +46,7 @@
                 </div>
                 <div class = "skills-list">
                     <div class = "text-center"><b>Hard Skills</b></div>
-                    <ul>
+                    <ul data-description="hard-skills">
                         <li>Unity, Godot</li><br>
                         <li>C#, C++, HTML, CSS, Javascript, Java, GDscript</li><br>
                         <li>VR development, hardware-integratie</li><br>
@@ -66,7 +66,7 @@
     <footer class = "lilac-text text-center">
         © 2026 Ella Marije van den Hoogenband. All rights reserved.
     </footer>
-    <script  >
+    <script>
         
         let language = localStorage.getItem("language") || "Dutch";
         
@@ -76,10 +76,12 @@
 
         let AboutText = document.querySelector('[data-description="about-text"]');
         let SoftSkills = document.querySelector('[data-description="soft-skills"]');
+
+        let HardSkills = document.querySelector('[data-description="hard-skills"]')
         
         function loadList(selector, taal, skills){
             selector.innerHTML = "";
-            info[taal][skills].forEach(function(e){
+            info[taal]["AboutPage"][skills].forEach(function(e){
                 let li = document.createElement('li');
                 let p = document.createElement("p");
                 p.innerText = e;
@@ -90,13 +92,15 @@
         }
         
         function loadDutch(){
-            AboutText.textContent=info["Dutch"]["aboutText"];
-            loadList(SoftSkills, "Dutch", "softskills")
+            AboutText.textContent=info["Dutch"]["AboutPage"]["aboutText"];
+            loadList(SoftSkills, "Dutch", "softskills");
+            loadList(HardSkills,"Dutch", "hardskills");
             
         }
         function loadEnglish(){
-            AboutText.textContent=info["English"]["aboutText"];
-            loadList(SoftSkills, "English", "softskills")
+            AboutText.textContent=info["English"]["AboutPage"]["aboutText"];
+            loadList(SoftSkills, "English", "softskills");
+            loadList(HardSkills, "English", "hardskills");
             
         }
         //fetch json and set initial data
@@ -127,7 +131,6 @@
         }
         //save in local storgage for other pages too
          localStorage.setItem("language", language);
-        
         
     }
     </script>
