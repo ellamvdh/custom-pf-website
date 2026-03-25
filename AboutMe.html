@@ -16,16 +16,17 @@
     <header>
         
          <nav>
-            <div class = "nav-stuff"><a href="index.html">Portfolio</a></div>
-            <div class = "nav-stuff"><a href="index.html#projects">Projects</a></div>
-            <div class = "nav-stuff"><a href="AboutMe.html">About Me</a></div>
-            <div class = "nav-stuff"><a href="ContactMe.html">Contact Me</a></div>
+            <div class = "nav-stuff"><a href="index.html" data-name="portfolioNAV" >Portfolio</a></div>
+            <div class = "nav-stuff"><a href="index.html#projects" data-name="projectsNav">Projects</a></div>
+            <div class = "nav-stuff"><a href="AboutMe.html"data-name="AboutMeNAV">About Me</a></div>
+            <div class = "nav-stuff"><a href="ContactMe.html" data-name="ContactMeNAV">Contact Me</a></div>
+
             <div class  = "nav-stuff" ><button id = "language-button"><img id = "englishButtonPNG"src = "images/eng.png"></button></div>
             
          </nav>
     </header>
     <main>
-    <h1 class = "lilac-text text-center">About me</h1>
+    <h1 class = "lilac-text text-center" data-name="AboutMeH1">About Me</h1>
     <div class = "about-boxes ">
         <div class = "lilac-text about-img">
             <div>
@@ -63,7 +64,7 @@
         </div>
     </div>
     </main>
-    <footer class = "lilac-text text-center">
+    <footer class = "lilac-text text-center" data-description="rechten">
         © 2026 Ella Marije van den Hoogenband. All rights reserved.
     </footer>
     <script>
@@ -76,8 +77,17 @@
 
         let AboutText = document.querySelector('[data-description="about-text"]');
         let SoftSkills = document.querySelector('[data-description="soft-skills"]');
-
         let HardSkills = document.querySelector('[data-description="hard-skills"]')
+
+        //general
+        let rechten = document.querySelector('[data-description="rechten"]');
+        let portfolioNAV = document.querySelector('[data-name="portfolioNAV"]');
+        let projectsNAV = document.querySelector('[data-name="projectsNav"]');
+        let aboutMeNAV = document.querySelector('[data-name="AboutMeNAV"]');
+        let contectMeNAV = document.querySelector('[data-name="ContactMeNAV"]');
+        let AboutMeH1 = document.querySelector('[data-name="AboutMeH1"]');
+
+
         
         function loadList(selector, taal, skills){
             selector.innerHTML = "";
@@ -96,11 +106,27 @@
             loadList(SoftSkills, "Dutch", "softskills");
             loadList(HardSkills,"Dutch", "hardskills");
             
+            //general
+            rechten.textContent = info["Dutch"]["General"]["rechtenVoorbehouden"];
+            portfolioNAV.textContent = info["Dutch"]["General"]["nav"]["portfolio"];
+            projectsNAV.textContent = info["Dutch"]["General"]["nav"]["projects"];
+            aboutMeNAV.textContent = info["Dutch"]["General"]["nav"]["about me"];
+            AboutMeH1.textContent = info["Dutch"]["General"]["nav"]["about me"];
+            contectMeNAV.textContent = info["Dutch"]["General"]["nav"]["contact me"];
         }
         function loadEnglish(){
             AboutText.textContent=info["English"]["AboutPage"]["aboutText"];
             loadList(SoftSkills, "English", "softskills");
             loadList(HardSkills, "English", "hardskills");
+
+            //general
+            rechten.textContent = info["English"]["General"]["rechtenVoorbehouden"];
+            portfolioNAV.textContent = info["English"]["General"]["nav"]["portfolio"];
+            projectsNAV.textContent = info["English"]["General"]["nav"]["projects"];
+            aboutMeNAV.textContent = info["English"]["General"]["nav"]["about me"];
+            AboutMeH1.textContent = info["English"]["General"]["nav"]["about me"];
+
+            contectMeNAV.textContent = info["English"]["General"]["nav"]["contact me"];
             
         }
         //fetch json and set initial data

@@ -20,10 +20,10 @@
     <header>
         
         <nav>
-            <div class = "nav-stuff"><a href="index.html">Portfolio</a></div>
-            <div class = "nav-stuff"><a href="index.html#projects">Projects</a></div>
-            <div class = "nav-stuff"><a href="AboutMe.html">About Me</a></div>
-            <div class = "nav-stuff"><a href="ContactMe.html">Contact Me</a></div>
+            <div class = "nav-stuff"><a href="index.html" data-name="portfolioNAV" >Portfolio</a></div>
+            <div class = "nav-stuff"><a href="index.html#projects" data-name="projectsNav">Projects</a></div>
+            <div class = "nav-stuff"><a href="AboutMe.html"data-name="AboutMeNAV">About Me</a></div>
+            <div class = "nav-stuff"><a href="ContactMe.html" data-name="ContactMeNAV">Contact Me</a></div>
             <div class  = "nav-stuff" ><button id = "language-button"><img id = "englishButtonPNG"src = "images/eng.png"></button></div>
          </nav>
     </header>
@@ -199,7 +199,13 @@
         let CafeGame = document.querySelector('[data-description="cafeMiniGame"]');
         //general
         let github = document.querySelector('[data-description="githubActivity"]');
-        let rechten = document.querySelector('[data-description="rechten"]')
+        let rechten = document.querySelector('[data-description="rechten"]');
+        let portfolioNAV = document.querySelector('[data-name="portfolioNAV"]');
+        let projectsNAV = document.querySelector('[data-name="projectsNav"]');
+        let aboutMeNAV = document.querySelector('[data-name="AboutMeNAV"]');
+        let contectMeNAV = document.querySelector('[data-name="ContactMeNAV"]');
+
+
         
         
         
@@ -218,9 +224,15 @@
             discoShooter.textContent = info["Dutch"]["Index"]["discoShooter"];
             GhostShooter.textContent = info["Dutch"]["Index"]["ghostShooter"];
             CafeGame.textContent = info["Dutch"]["Index"]["cafeMiniGame"];
+            github.textContent = info["Dutch"]["Index"]["githubActivty"];
+
             //general
-            github.textContent = info["Dutch"]["General"]["githubActivty"];
             rechten.textContent = info["Dutch"]["General"]["rechtenVoorbehouden"];
+            portfolioNAV.textContent = info["Dutch"]["General"]["nav"]["portfolio"];
+            projectsNAV.textContent = info["Dutch"]["General"]["nav"]["projects"];
+            aboutMeNAV.textContent = info["Dutch"]["General"]["nav"]["about me"];
+            contectMeNAV.textContent = info["Dutch"]["General"]["nav"]["contact me"];
+            
 
 
         }
@@ -238,9 +250,15 @@
             discoShooter.textContent = info["English"]["Index"]["discoShooter"];
             GhostShooter.textContent = info["English"]["Index"]["ghostShooter"];
             CafeGame.textContent = info["English"]["Index"]["cafeMiniGame"];
+            github.textContent = info["English"]["Index"]["githubActivty"];
+
             //general
-            github.textContent = info["English"]["General"]["githubActivty"];
             rechten.textContent = info["English"]["General"]["rechtenVoorbehouden"];
+            portfolioNAV.textContent = info["English"]["General"]["nav"]["portfolio"];
+            projectsNAV.textContent = info["English"]["General"]["nav"]["projects"];
+            aboutMeNAV.textContent = info["English"]["General"]["nav"]["about me"];
+            contectMeNAV.textContent = info["English"]["General"]["nav"]["contact me"];
+
             
         }
         //fetch json and set initial data
