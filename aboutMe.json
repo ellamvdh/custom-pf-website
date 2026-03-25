@@ -1,5 +1,9 @@
 {
     "Dutch":{
+        "General":{
+            "githubActivty":"My GitHub Activiteit",
+            "rechtenVoorbehouden" : "© 2026 Ella Marije van den Hoogenband. Alle rechten voorbehouden."
+        },
         "AboutPage":{
             "aboutText" : "Ik ben Ella van den Hoogenband en ik ben een gepassioneerde developer. Momenteel studeer ik XR-development, waarbij ik games leer bouwen voor verschillende hardware, zoals VR-brillen, Steam Deck, mobiele apparaten, web en Windows. \n\n Tijdens mijn studie heb ik verschillende vaardigheden ontwikkeld, zoals het werken in een teamverband, de basis van een game-engine en hoe ik snel nieuwe programmeertalen kan leren begrijpen.\n\nIk ben leergierig, oplossingsgericht en ambitieus.",
             "softskills": ["Samenwerken met artists",
@@ -26,10 +30,15 @@
             "portingTag": "Porten",
             "cppGame" :"Een klein console-gebaseerd vechtspel",
             "discoShooter": "Een disco-shooter met robots en een eindbaas",
-            "ghostShooter": "Red de wereld van geesten"
+            "ghostShooter": "Red de wereld van geesten",
+            "cafeMiniGame": "VR-café met mini-game en interactie"
         }
     },
     "English":{
+        "General":{
+            "githubActivty":"My GitHub Activity",
+            "rechtenVoorbehouden" : "© 2026 Ella Marije van den Hoogenband. All rights reserved."
+        },
         "AboutPage":{
             "aboutText" :"My name is Ella van den Hoogenband, and I'm a passionate developer. I'm currently studying XR development, where I'm learning to build games for various hardware platforms, such as VR headsets, Steam Deck, mobile devices, the web, and Windows. \n\n During my studies, I've developed various skills, including teamwork, the fundamentals of game engines, and the ability to quickly grasp new programming languages. \n\nI am eager to learn, solution-oriented, and ambitious.",
             "softskills": ["Collaborating with artists",
@@ -56,8 +65,10 @@
             "portingTag": "Porting",
             "cppGame" :"A small console-based fighting game",
             "discoShooter": "A disco shooter featuring robots and a final boss",
-            "ghostShooter": "Save the world from ghosts"
+            "ghostShooter": "Save the world from ghosts",
+            "cafeMiniGame": "VR-café with mini-game and interaction"
 
         }
+
     }
 }

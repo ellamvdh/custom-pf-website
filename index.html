@@ -133,7 +133,7 @@
                 <img class= "project-img" src="images/GhostShooter.jpg" alt="GhostShooter" data-name="Unity">
             </a>
             <div><b>Ghost Shooter</b></div>
-            <div data-description="GhostShooter">Red de wereld van geesten</div>
+            <div data-description="GhostShooter"></div>
             <br>
             <div class ="project-tags">
                 <div class="project-tag">Unity</div>
@@ -147,7 +147,7 @@
                 <img class= "project-img" src="images/Cafe Game.jpg" alt="Cafe Game" data-name="Unity">
             </a>
             <div><b>Cafe Game</b></div>
-            <div>VR-café met mini-game en interactie</div>
+            <div data-description="cafeMiniGame"></div>
             <br>
             <div class ="project-tags">
                 <div class="project-tag">Unity</div>
@@ -166,14 +166,14 @@
     </div>
     <!-- GitHub Contributions Section -->
     <br><br>
-    <p class="lilac-text text-center text-mid ">My GitHub Activity</p>
+    <p class="lilac-text text-center text-mid" data-description="githubActivity">My GitHub Activity</p>
     <div class="github-container ">
         <a href="https://github.com/ellamvdh" target="_blank">
             <img class="github-chart" src="https://ghchart.rshah.org/dcd0ff/ellamvdh" alt="Ella's GitHub Contribution Graph" />
         </a>
     </div>
     </main>
-    <footer class = "lilac-text text-center">
+    <footer class = "lilac-text text-center" data-description="rechten">
         © 2026 Ella Marije van den Hoogenband. All rights reserved.
     </footer>
     <script>
@@ -194,8 +194,12 @@
         let replayPlatformer = document.querySelector('[data-description="replayPlatformer"]')
         let portingTag = document.querySelector('[data-description="porting"]')
         let cppGame = document.querySelector('[data-description="cppGame"]');
-        let discoShooter = document.querySelector('[data-description="discoShooter"]')
-        let GhostShooter = document.querySelector('[data-description="GhostShooter"]')
+        let discoShooter = document.querySelector('[data-description="discoShooter"]');
+        let GhostShooter = document.querySelector('[data-description="GhostShooter"]');
+        let CafeGame = document.querySelector('[data-description="cafeMiniGame"]');
+        //general
+        let github = document.querySelector('[data-description="githubActivity"]');
+        let rechten = document.querySelector('[data-description="rechten"]')
         
         
         
@@ -212,7 +216,11 @@
             portingTag.textContent = info["Dutch"]["Index"]["portingTag"];
             cppGame.textContent = info["Dutch"]["Index"]["cppGame"];
             discoShooter.textContent = info["Dutch"]["Index"]["discoShooter"];
-            GhostShooter.textContent = info["Dutch"]["Index"]["ghostShooter"]
+            GhostShooter.textContent = info["Dutch"]["Index"]["ghostShooter"];
+            CafeGame.textContent = info["Dutch"]["Index"]["cafeMiniGame"];
+            //general
+            github.textContent = info["Dutch"]["General"]["githubActivty"];
+            rechten.textContent = info["Dutch"]["General"]["rechtenVoorbehouden"];
 
 
         }
@@ -228,7 +236,11 @@
             portingTag.textContent = info["English"]["Index"]["portingTag"];
             cppGame.textContent = info["English"]["Index"]["cppGame"];
             discoShooter.textContent = info["English"]["Index"]["discoShooter"];
-            GhostShooter.textContent = info["English"]["Index"]["ghostShooter"]
+            GhostShooter.textContent = info["English"]["Index"]["ghostShooter"];
+            CafeGame.textContent = info["English"]["Index"]["cafeMiniGame"];
+            //general
+            github.textContent = info["English"]["General"]["githubActivty"];
+            rechten.textContent = info["English"]["General"]["rechtenVoorbehouden"];
             
         }
         //fetch json and set initial data
