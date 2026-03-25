@@ -42,7 +42,13 @@
             <div class = "about-text-2 skills-text">
                 <div class = "skills-list">
                     <div class = "text-center" ><b>Soft Skills</b></div>
-                    <ul data-description="soft-skills" class = "soft-skills"></ul>
+                    <ul>
+                        <li>Samenwerken met artists</li><br>
+                        <li>Feedback geven & ontvangen</li><br>
+                        <li>Creatief en probleemoplossend</li><br>
+                        <li>Communicatief sterk</li><br>
+                        <li>Hoog doorzettingsvermogen</li><br>
+                    </ul>
                 </div>
                 <div class = "skills-list">
                     <div class = "text-center"><b>Hard Skills</b></div>
@@ -66,38 +72,20 @@
     <footer class = "lilac-text text-center">
         © 2026 Ella Marije van den Hoogenband. All rights reserved.
     </footer>
-    <script  >
+    <script  type="module">
         
-        let language = localStorage.getItem("language") || "Dutch";
         
+        let language ="Dutch";
+        let AboutText = document.querySelector('[data-description="about-text"]');
         let languageIMG= document.getElementById("englishButtonPNG");
         const languageButton = document.getElementById("language-button");
         let info; //the found json data
 
-        let AboutText = document.querySelector('[data-description="about-text"]');
-        let SoftSkills = document.querySelector('[data-description="soft-skills"]');
-        
-        function loadList(selector, taal, skills){
-            selector.innerHTML = "";
-            info[taal][skills].forEach(function(e){
-                let li = document.createElement('li');
-                let p = document.createElement("p");
-                p.innerText = e;
-                console.log(li);
-                li.appendChild(p);
-                selector.appendChild(li);
-            })
-        }
-        
         function loadDutch(){
             AboutText.textContent=info["Dutch"]["aboutText"];
-            loadList(SoftSkills, "Dutch", "softskills")
-            
         }
         function loadEnglish(){
             AboutText.textContent=info["English"]["aboutText"];
-            loadList(SoftSkills, "English", "softskills")
-            
         }
         //fetch json and set initial data
         fetch('./aboutMe.json')
@@ -107,14 +95,13 @@
             info = data;
             if(language == "Dutch"){
                 loadDutch();
-                languageIMG.src = "images/eng.png"
             }else {
                 loadEnglish();
-                languageIMG.src = "images/nl.png"
             }
         })
 
-        //if button is clicked chnage the language
+        
+        //if button is clickedchnage the language
         languageButton.onclick = function(){
         if(language == "Dutch"){
             language = "English";
@@ -125,9 +112,7 @@
             languageIMG.src = "images/eng.png"
             loadDutch();
         }
-        //save in local storgage for other pages too
-         localStorage.setItem("language", language);
-        
+
         
     }
     </script>

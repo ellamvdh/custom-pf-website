@@ -653,5 +653,6 @@ a:active {
     cursor:pointer;
 }
 
-
-
+#about-text{
+    white-space: pre-line;
+}
