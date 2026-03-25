@@ -299,7 +299,7 @@ a:active {
 }
 @media(max-width: 1000px){
     .contact-boxes{
-        font-size: 0.9em;
+        font-size: 0.8em;
         gap:10px;
     }
 }
