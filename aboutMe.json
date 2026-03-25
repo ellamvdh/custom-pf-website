@@ -1,63 +1,30 @@
 {
     "Dutch":{
-        "AboutPage":{
-            "aboutText" : "Ik ben Ella van den Hoogenband en ik ben een gepassioneerde developer. Momenteel studeer ik XR-development, waarbij ik games leer bouwen voor verschillende hardware, zoals VR-brillen, Steam Deck, mobiele apparaten, web en Windows. \n\n Tijdens mijn studie heb ik verschillende vaardigheden ontwikkeld, zoals het werken in een teamverband, de basis van een game-engine en hoe ik snel nieuwe programmeertalen kan leren begrijpen.\n\nIk ben leergierig, oplossingsgericht en ambitieus.",
-            "softskills": ["Samenwerken met artists",
-                            "Feedback geven & ontvangen",
-                            "Creatief en probleemoplossend",
-                            "Communicatief sterk",
-                            "Hoog doorzettingsvermogen"],
-            "hardskills": ["Unity, Godot",
-                            "C#, C++, HTML, CSS, Javascript, Java, GDscript",
-                            "VR development, hardware-integratie",
-                            "Cross-platform development",
-                            "Prototyping, debugging, testen",
-                            "Git & Version Control"]
-        },
-        "Index":{
-            "aboutMe" :"Ik bouw interactieve games voor verschillende hardware",
-            "projectText": "Mijn Projecten",
-            "showAll":"Alles",
-            "masksEye": "Puzzelgame waar je maskers gebruikt",
-            "njg":"Geologisch educatief spel voor kinderen",
-            "TouchTable": "TouchTafel",
-            "saveChristmas": "Red kerst door sterren te verzamelen",
-            "replayPlatformer": "Een geporte platformer met eindbaas",
-            "portingTag": "Porten",
-            "cppGame" :"Een klein console-gebaseerd vechtspel",
-            "discoShooter": "Een disco-shooter met robots en een eindbaas",
-            "ghostShooter": "Red de wereld van geesten"
-        }
+        "aboutText" : "Ik ben Ella van den Hoogenband en ik ben een gepassioneerde developer. Momenteel studeer ik XR-development, waarbij ik games leer bouwen voor verschillende hardware, zoals VR-brillen, Steam Deck, mobiele apparaten, web en Windows. \n\n Tijdens mijn studie heb ik verschillende vaardigheden ontwikkeld, zoals het werken in een teamverband, de basis van een game-engine en hoe ik snel nieuwe programmeertalen kan leren begrijpen.\n\nIk ben leergierig, oplossingsgericht en ambitieus.",
+        "softskills": ["Samenwerken met artists",
+                        "Feedback geven & ontvangen",
+                        "Creatief en probleemoplossend",
+                        "Communicatief sterk",
+                        "Hoog doorzettingsvermogen"],
+         "hardskills": ["Unity, Godot",
+                        "C#, C++, HTML, CSS, Javascript, Java, GDscript",
+                        "VR development, hardware-integratie",
+                        "Cross-platform development",
+                        "Prototyping, debugging, testen",
+                        "Git & Version Control"]
     },
     "English":{
-        "AboutPage":{
-            "aboutText" :"My name is Ella van den Hoogenband, and I'm a passionate developer. I'm currently studying XR development, where I'm learning to build games for various hardware platforms, such as VR headsets, Steam Deck, mobile devices, the web, and Windows. \n\n During my studies, I've developed various skills, including teamwork, the fundamentals of game engines, and the ability to quickly grasp new programming languages. \n\nI am eager to learn, solution-oriented, and ambitious.",
-            "softskills": ["Collaborating with artists",
-                            "Giving and receiving feedback",
-                            "Creative and a problem-solver",
-                            "Strong communication skills",
-                            "High level of perseverance"],
-            "hardskills": ["Unity, Godot",
-                            "C#, C++, HTML, CSS, JavaScript, Java, GDScript",
-                            "VR development, hardware integration",
-                            "Cross-platform development",
-                            "Prototyping, debugging, testing",
-                            "Git & Version Control"]
-        },
-        "Index":{
-            "aboutMe" :"I develop interactive games for various hardware",
-            "projectText": "My Projects",
-            "showAll":"Show All",
-            "masksEye":"A puzzle game where you use masks",
-            "njg":"Geology educational game for children",
-            "TouchTable": "TouchTable",
-            "saveChristmas":"Save Christmas by collecting stars",
-            "replayPlatformer": "A ported platformer with a final boss",
-            "portingTag": "Porting",
-            "cppGame" :"A small console-based fighting game",
-            "discoShooter": "A disco shooter featuring robots and a final boss",
-            "ghostShooter": "Save the world from ghosts"
-
-        }
+        "aboutText" :"My name is Ella van den Hoogenband, and I'm a passionate developer. I'm currently studying XR development, where I'm learning to build games for various hardware platforms, such as VR headsets, Steam Deck, mobile devices, the web, and Windows. \n\n During my studies, I've developed various skills, including teamwork, the fundamentals of game engines, and the ability to quickly grasp new programming languages. \n\nI am eager to learn, solution-oriented, and ambitious.",
+        "softskills": ["Collaborating with artists",
+                        "Giving and receiving feedback",
+                        "Creative and a problem-solver",
+                        "Strong communication skills",
+                        "High level of perseverance"],
+        "hardskills": ["Unity, Godot",
+                        "C#, C++, HTML, CSS, JavaScript, Java, GDScript",
+                        "VR development, hardware integration",
+                        "Cross-platform development",
+                        "Prototyping, debugging, testing",
+                        "Git & Version Control"]
     }
 }

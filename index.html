@@ -33,14 +33,14 @@
     </div>
     <h1 class = "white-text text-center text-big ">Ella Marije van den Hoogenband</h1>
     <h3 class= "lilac-text text-center ">XR DEV</h3>
-    <p class="white-text text-center" data-description="about-me">Ik bouw interactieve games voor verschillende hardware</p>
+    <p class="white-text text-center">Ik bouw interactieve games voor verschillende hardware</p>
 
 
     <br><br><br>
-    <p id = "projects" class = "lilac-text text-center text-mid" data-description="projectText"> Mijn Projecten</p>
+    <p id = "projects" class = "lilac-text text-center text-mid"> Mijn Projecten</p>
 
     <div class = "project-buttons">
-        <a class= "active buttons-project white-text"data-name="all" data-description="showAll">Show All</a>
+        <a class= "active buttons-project white-text"data-name="all">Show All</a>
         <a class= "buttons-project white-text"data-name="Unity">Unity</a>
         <!-- <a class= "buttons-project white-text"data-name="Unreal Engine">Unreal Engine</a> -->
         <a class= "buttons-project white-text"data-name="Godot">Godot</a>
@@ -56,7 +56,7 @@
                 <img class= "project-img" src="images/Masks_eye.jpg" alt="Masks eye" data-name="Game Jam" >
             </a>
             <div><b>Masks eye</b></div>
-            <div data-description="puzzelgame">Puzzelgame waar je maskers gebruikt</div>
+            <div>Puzzelgame waar je maskers gebruikt</div>
             <br>
             <div class ="project-tags">
                 <div class="project-tag">Unity</div>
@@ -68,12 +68,12 @@
                 <img class= "project-img" src="images/njg.jpg" alt="'not just gold diggers' GAME" data-name="Unity" >
             </a>
             <div><b>Not Just Gold Diggers</b></div>
-            <div data-description="njg">Geologisch educatief spel voor kinderen</div>
+            <div>Geologisch educatief spel voor kinderen</div>
             <br>
             <div class ="project-tags">
                 <div class="project-tag">Unity</div>
-                <div class="project-tag" data-description="touchTable"></div>
-                <div class="project-tag">TeamProject</div>
+                <div class="project-tag">TouchTafel</div>
+                <div class="project-tag">Teamproject</div>
             </div>
         </div>
         <div class="div1 lilac-text">
@@ -81,7 +81,7 @@
                 <img class= "project-img" src="images/save christmas.jpg" alt="'save christmas' GAME" data-name="Godot">
             </a>
             <div><b>Save Christmas</b></div>
-            <div data-description="saveChristmas"></div>
+            <div>Red kerst door sterren te verzamelen</div>
             <br>
             <div class ="project-tags">
                 <div class="project-tag">Godot</div>
@@ -94,11 +94,11 @@
                 <img class= "project-img" src="images/Replay Platformer2.jpg" alt="Replay Platformer img" data-name="Unity">
             </a>
             <div><b>Replay Platformer</b></div>
-            <div data-description="replayPlatformer">-</div>
+            <div>Een geporte platformer met eindbaas</div>
             <br>
             <div class ="project-tags">
                 <div class="project-tag">Unity</div>
-                <div class="project-tag" data-description="porting">-</div>
+                <div class="project-tag">Porten</div>
                 <div class="project-tag">Unity Input System</div>
             </div>
         </div>
@@ -107,7 +107,7 @@
                 <img class= "project-img" src="images/cpp.jpg" alt="C++ console game" data-name="C++">
             </a>
             <div><b>C++ turn based stategy</b></div>
-            <div data-description="cppGame"></div>
+            <div>Een klein console-gebaseerd vechtspel</div>
             <br>
             <div class ="project-tags">
                 <div class="project-tag">C++</div>
@@ -120,12 +120,12 @@
                 <img class= "project-img" src="images/Disco frenzy.jpg" alt="Disco frenzy" data-name="Unity">
             </a>
             <div><b>Disco frenzy</b></div>
-            <div data-description="discoShooter">Een disco-shooter met robots en een eindbaas</div>
+            <div>Een disco-shooter met robots en een eindbaas</div>
             <br>
             <div class ="project-tags">
                 <div class="project-tag">Unity</div>
                 <div class="project-tag">Vr</div>
-                <div class="project-tag">TeamProject</div>
+                <div class="project-tag">Teamproject</div>
             </div>
         </div>
         <div class="div1 lilac-text">
@@ -133,7 +133,7 @@
                 <img class= "project-img" src="images/GhostShooter.jpg" alt="GhostShooter" data-name="Unity">
             </a>
             <div><b>Ghost Shooter</b></div>
-            <div data-description="GhostShooter">Red de wereld van geesten</div>
+            <div>Red de wereld van geesten</div>
             <br>
             <div class ="project-tags">
                 <div class="project-tag">Unity</div>
@@ -176,91 +176,5 @@
     <footer class = "lilac-text text-center">
         © 2026 Ella Marije van den Hoogenband. All rights reserved.
     </footer>
-    <script>
-        
-        let language = localStorage.getItem("language") || "Dutch";
-        
-        let languageIMG= document.getElementById("englishButtonPNG");
-        const languageButton = document.getElementById("language-button");
-        let info; //the found json data
-
-        let AboutMe = document.querySelector('[data-description="about-me"]');
-        let ProjectText = document.querySelector('[data-description="projectText"]');
-        let ShowAll = document.querySelector('[data-description="showAll"]');
-        let MasksEye = document.querySelector('[data-description="puzzelgame"]');
-        let NJG = document.querySelector('[data-description="njg"]');
-        let touchTable = document.querySelector('[data-description="touchTable"]');
-        let saveChristmas = document.querySelector('[data-description="saveChristmas"]');
-        let replayPlatformer = document.querySelector('[data-description="replayPlatformer"]')
-        let portingTag = document.querySelector('[data-description="porting"]')
-        let cppGame = document.querySelector('[data-description="cppGame"]');
-        let discoShooter = document.querySelector('[data-description="discoShooter"]')
-        let GhostShooter = document.querySelector('[data-description="GhostShooter"]')
-        
-        
-        
-        function loadDutch(){
-            // AboutText.textContent=info["Dutch"]["aboutText"];
-            AboutMe.textContent = info["Dutch"]["Index"]["aboutMe"];
-            ProjectText.textContent = info["Dutch"]["Index"]["projectText"];
-            ShowAll.textContent = info["Dutch"]["Index"]["showAll"];
-            MasksEye.textContent = info["Dutch"]["Index"]["masksEye"];
-            NJG.textContent = info["Dutch"]["Index"]["njg"];
-            touchTable.textContent = info["Dutch"]["Index"]["TouchTable"];
-            saveChristmas.textContent = info["Dutch"]["Index"]["saveChristmas"]
-            replayPlatformer.textContent = info["Dutch"]["Index"]["replayPlatformer"]
-            portingTag.textContent = info["Dutch"]["Index"]["portingTag"];
-            cppGame.textContent = info["Dutch"]["Index"]["cppGame"];
-            discoShooter.textContent = info["Dutch"]["Index"]["discoShooter"];
-            GhostShooter.textContent = info["Dutch"]["Index"]["ghostShooter"]
-
-
-        }
-        function loadEnglish(){
-            AboutMe.textContent = info["English"]["Index"]["aboutMe"];
-            ProjectText.textContent = info["English"]["Index"]["projectText"];
-            ShowAll.textContent = info["English"]["Index"]["showAll"];
-            MasksEye.textContent = info["English"]["Index"]["masksEye"];
-            NJG.textContent = info["English"]["Index"]["njg"];
-            touchTable.textContent = info["English"]["Index"]["TouchTable"];
-            saveChristmas.textContent = info["English"]["Index"]["saveChristmas"]
-            replayPlatformer.textContent = info["English"]["Index"]["replayPlatformer"]
-            portingTag.textContent = info["English"]["Index"]["portingTag"];
-            cppGame.textContent = info["English"]["Index"]["cppGame"];
-            discoShooter.textContent = info["English"]["Index"]["discoShooter"];
-            GhostShooter.textContent = info["English"]["Index"]["ghostShooter"]
-            
-        }
-        //fetch json and set initial data
-        fetch('./aboutMe.json')
-        .then(res => res.json())
-        .then(data=>{
-            //about text
-            info = data;
-            if(language == "Dutch"){
-                loadDutch();
-                languageIMG.src = "images/eng.png"
-            }else {
-                loadEnglish();
-                languageIMG.src = "images/nl.png"
-            }
-        })
-
-        //if button is clicked chnage the language
-        languageButton.onclick = function(){
-        if(language == "Dutch"){
-            language = "English";
-            languageIMG.src = "images/nl.png"
-            loadEnglish();
-        }else if(language == "English"){
-            language = "Dutch";
-            languageIMG.src = "images/eng.png"
-            loadDutch();
-        }
-        //save in local storgage for other pages too
-         localStorage.setItem("language", language);
-        
-    }
-    </script>
 </body>
 </html>
