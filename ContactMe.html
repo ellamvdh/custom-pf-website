@@ -15,17 +15,17 @@
 <body>
     <header>
         
-         <nav>
-            <div class = "nav-stuff"><a href="index.html">Portfolio</a></div>
-            <div class = "nav-stuff"><a href="index.html#projects">Projects</a></div>
-            <div class = "nav-stuff"><a href="AboutMe.html">About Me</a></div>
-            <div class = "nav-stuff"><a href="ContactMe.html">Contact Me</a></div>
+         <nav>            
+            <div class = "nav-stuff"><a href="index.html" data-name="portfolioNAV" >Portfolio</a></div>
+            <div class = "nav-stuff"><a href="index.html#projects" data-name="projectsNav">Projects</a></div>
+            <div class = "nav-stuff"><a href="AboutMe.html"data-name="AboutMeNAV">About Me</a></div>
+            <div class = "nav-stuff"><a href="ContactMe.html" data-name="ContactMeNAV">Contact Me</a></div>
             <div class  = "nav-stuff" ><button id = "language-button"><img id = "englishButtonPNG"src = "images/eng.png"></button></div>
             
          </nav>
     </header>
     <main>
-    <h1 class = "lilac-text text-center">Contact me</h1>
+    <h1 class = "lilac-text text-center" data-description="contactH1">Contact me</h1>
     
     <div class = "contact-boxes lilac-text">
         <div class = "contact-boxes-seperated">
@@ -41,9 +41,74 @@
         </div>
     </div>
 
-    <footer class = "lilac-text text-center">
+    <footer class = "lilac-text text-center"  data-description="rechten">
         © 2026 Ella Marije van den Hoogenband. All rights reserved.
     </footer>
-    
+    <script>
+        let language = localStorage.getItem("language") || "Dutch";
+        
+        let languageIMG= document.getElementById("englishButtonPNG");
+        const languageButton = document.getElementById("language-button");
+        let info; //the found json data
+
+        let rechten = document.querySelector('[data-description="rechten"]');
+        let portfolioNAV = document.querySelector('[data-name="portfolioNAV"]');
+        let projectsNAV = document.querySelector('[data-name="projectsNav"]');
+        let aboutMeNAV = document.querySelector('[data-name="AboutMeNAV"]');
+        let contectMeNAV = document.querySelector('[data-name="ContactMeNAV"]');
+        let contactH1 = document.querySelector('[data-description="contactH1"]')
+         function loadDutch(){
+            
+            //general
+            rechten.textContent = info["Dutch"]["General"]["rechtenVoorbehouden"];
+            portfolioNAV.textContent = info["Dutch"]["General"]["nav"]["portfolio"];
+            projectsNAV.textContent = info["Dutch"]["General"]["nav"]["projects"];
+            aboutMeNAV.textContent = info["Dutch"]["General"]["nav"]["about me"];
+            contectMeNAV.textContent = info["Dutch"]["General"]["nav"]["contact me"];
+            contactH1.textContent = info["Dutch"]["General"]["nav"]["contact me"];
+        }
+        function loadEnglish(){
+
+            //general
+            rechten.textContent = info["English"]["General"]["rechtenVoorbehouden"];
+            portfolioNAV.textContent = info["English"]["General"]["nav"]["portfolio"];
+            projectsNAV.textContent = info["English"]["General"]["nav"]["projects"];
+            aboutMeNAV.textContent = info["English"]["General"]["nav"]["about me"];
+            contectMeNAV.textContent = info["English"]["General"]["nav"]["contact me"];
+            contactH1.textContent = info["English"]["General"]["nav"]["contact me"];
+            
+        }
+        //fetch json and set initial data
+        fetch('./aboutMe.json')
+        .then(res => res.json())
+        .then(data=>{
+            //about text
+            info = data;
+            if(language == "Dutch"){
+                loadDutch();
+                languageIMG.src = "images/eng.png"
+            }else {
+                loadEnglish();
+                languageIMG.src = "images/nl.png"
+            }
+        })
+
+        //if button is clicked chnage the language
+        languageButton.onclick = function(){
+        if(language == "Dutch"){
+            language = "English";
+            languageIMG.src = "images/nl.png"
+            loadEnglish();
+        }else if(language == "English"){
+            language = "Dutch";
+            languageIMG.src = "images/eng.png"
+            loadDutch();
+        }
+        //save in local storgage for other pages too
+         localStorage.setItem("language", language);
+        
+    }
+
+    </script>
 </body>
 </html>
