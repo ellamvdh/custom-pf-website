@@ -47,14 +47,14 @@
         <div class="project-hero">
             <div class="hero-content">
                 <h1 class="lilac-text text-center game-title">Not Just Gold Diggers</h1>
-                <p class="white-text text-center">-Geologisch educatief spel voor kinderen-</p>
+                <p class="white-text text-center" data-description="miniDetails">-</p>
             </div>
         </div>
 
         <div class = "project-info">
             <img class = "project-page-img"src="images/njg.jpg" alt="'not just gold diggers' GAME">
-            <div class="text-center white-text project-text">
-                Tijdens dit project heb ik samengewerkt in een teamverband met zowel artists als developers. Voor een museumopdracht hebben we samen een geologisch avontuur ontwikkeld voor kinderen tussen acht en tien jaar. Door dit spel door kinderen te laten spelen, wilden we hen inzicht geven in hoe het is om een geoloog te zijn en ze tegelijkertijd iets leren over verschillende stenen en fossielen. Dit project hebben we werkend gekregen op een touchtafel waarover onze school beschikt.
+            <div class="text-center white-text project-text" data-description="maxDetails">
+                <!-- Tijdens dit project heb ik samengewerkt in een teamverband met zowel artists als developers. Voor een museumopdracht hebben we samen een geologisch avontuur ontwikkeld voor kinderen tussen acht en tien jaar. Door dit spel door kinderen te laten spelen, wilden we hen inzicht geven in hoe het is om een geoloog te zijn en ze tegelijkertijd iets leren over verschillende stenen en fossielen. Dit project hebben we werkend gekregen op een touchtafel waarover onze school beschikt. -->
             </div>
             <div class="white-text text-center project-details">
                 <div><b>Details</b></div>
@@ -67,8 +67,8 @@
         <div class="contribution-section">
             <div class="project-contribution white-text">
                 <h2>Mijn bijdrage</h2>
-
-                <p>Fossielen/Steen Display System</p>
+                <div data-description="project-contribution"></div>
+                <!-- <p>Fossielen/Steen Display System</p>
                 <ul>
                     <li>Toont gevonden fossielen en stenen in de main scene.</li>
                     <li>Zorgt dat ontdekkingen blijven als je teruggaat naar de main scene.</li>
@@ -90,7 +90,7 @@
                 <ul>
                     <li>Update stone counts bij pickups.</li>
                     <li>Houdt bij welke rocks gekozen zijn en beheert scene-transities.</li>
-                </ul>
+                </ul> -->
             </div>
 
             <!-- Code block with Prism highlighting -->
@@ -195,6 +195,9 @@ private void Update()
 
         //this page
         let projectDetails = document.querySelector('[data-description="project-details"]');
+        let MaxDetails = document.querySelector('[data-description="maxDetails"]')
+        let MiniDetails = document.querySelector('[data-description="miniDetails"]')
+        let projectContribution = document.querySelector('[data-description="project-contribution"]')
 
         //general
         let rechten = document.querySelector('[data-description="rechten"]');
@@ -226,16 +229,41 @@ private void Update()
                 
             })
         }
+
+        function loadContributions(selector, taal){
+            selector.innerHTML = "";
+
+            const contributions = info[taal]["NotJustGoldDiggers"]["contributions"];
+
+            // Loop through each section in the object
+            for (const section in contributions) {
+                // Create a title for the section
+                const pTitle = document.createElement("p");
+                pTitle.innerText = section;
+                selector.appendChild(pTitle);
+
+                // Create a list for the items
+                const ul = document.createElement("ul");
+                contributions[section].forEach(item => {
+                    const li = document.createElement("li");
+                    li.innerText = item;
+                    ul.appendChild(li);
+                });
+
+                selector.appendChild(ul);
+            }
+        }
         
     
         
         
 
         function loadDutch(){
-            // AboutText.textContent=info["Dutch"]["AboutPage"]["aboutText"];
-            // loadList(SoftSkills, "Dutch", "softskills");
-            // loadList(HardSkills,"Dutch", "hardskills");
-            loadDescription(projectDetails, "Dutch")
+            
+            MaxDetails.textContent = info["Dutch"]["NotJustGoldDiggers"]["max-description"];
+            MiniDetails.textContent = info["Dutch"]["NotJustGoldDiggers"]["mini-description"];
+            loadDescription(projectDetails, "Dutch");
+            loadContributions(projectContribution, "Dutch");
             //general
             rechten.textContent = info["Dutch"]["General"]["rechtenVoorbehouden"];
             portfolioNAV.textContent = info["Dutch"]["General"]["nav"]["portfolio"];
@@ -244,11 +272,12 @@ private void Update()
             contectMeNAV.textContent = info["Dutch"]["General"]["nav"]["contact me"];
         }
         function loadEnglish(){
-            // AboutText.textContent=info["English"]["AboutPage"]["aboutText"];
-            // loadList(SoftSkills, "English", "softskills");
-            // loadList(HardSkills, "English", "hardskills");
+            
+            MaxDetails.textContent = info["English"]["NotJustGoldDiggers"]["max-description"];
+            MiniDetails.textContent = info["English"]["NotJustGoldDiggers"]["mini-description"];
             loadDescription(projectDetails, "English")
             //general
+            loadContributions(projectContribution, "English");
             rechten.textContent = info["English"]["General"]["rechtenVoorbehouden"];
             portfolioNAV.textContent = info["English"]["General"]["nav"]["portfolio"];
             projectsNAV.textContent = info["English"]["General"]["nav"]["projects"];
