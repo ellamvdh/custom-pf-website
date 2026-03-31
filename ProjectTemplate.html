@@ -34,10 +34,10 @@
     <header>
         
          <nav>
-            <div class = "nav-stuff"><a href="index.html">Portfolio</a></div>
-            <div class = "nav-stuff"><a href="index.html#projects">Projects</a></div>
-            <div class = "nav-stuff"><a href="AboutMe.html">About Me</a></div>
-            <div class = "nav-stuff"><a href="ContactMe.html">Contact Me</a></div>
+            <div class = "nav-stuff"><a href="index.html" data-name="portfolioNAV" >Portfolio</a></div>
+            <div class = "nav-stuff"><a href="index.html#projects" data-name="projectsNav">Projects</a></div>
+            <div class = "nav-stuff"><a href="AboutMe.html"data-name="AboutMeNAV">About Me</a></div>
+            <div class = "nav-stuff"><a href="ContactMe.html" data-name="ContactMeNAV">Contact Me</a></div>
             <div class  = "nav-stuff" ><button id = "language-button"><img id = "englishButtonPNG"src = "images/eng.png"></button></div>
             
          </nav>
@@ -58,12 +58,8 @@
             </div>
             <div class="white-text text-center project-details">
                 <div><b>Details</b></div>
-                <p>Uitgekomen: December 2025</p>
-                <p>Engine: Unity</p>
-                <p>Taal: C#</p>
-                <p>Teamgrootte: 7</p>
-                <p>Rol: Gameplay Developer</p>
-                <p>Tijd: 4 weken</p>
+                <div data-description="project-details"></div>
+                
                 <p><a href="https://github.com/ellamvdh/GoldDiggers" class = "project-link">Github</a></p>
             </div>
         </div>
@@ -102,32 +98,32 @@
 private void Update()
 {
     _sceneName = SceneManager.GetActiveScene().name;
-    //als je in een van de graaf scenes zit
+    //if you are in the digging scene
     if ((_sceneName == "fossils" || _sceneName == "rocks" ) )
     {
-        //vind de fossiel/steen  die gespawned is
+        //find the fossils/stones that have been spawned in
         _gemObj = GameObject.Find("gem");
         _gemScipt = _gemObj.GetComponent<Stonerarity>();
 
-        //als fossiel nog niet toegeveogd is 
+        //if a fossil has not been added yet
         if (_fossilAdded == false && _gemObj.activeInHierarchy)
         {
-            //haal de prefab van de steen of fossiel op
+            //get the prefab of the stone/fossil
             FossilPrefabs.Add(_gemScipt.SelectedPrefab);
             _fossilAdded = true;
         }
     }
     else
     {
-        //als je uit de graafscene bent zet fossiltoegevoegd of false
-        //hierdoor kan je later weer een fossiel opgraven
-        //en laten tonen op het algemene graafscherm
+        //Once you've left the digging scene, set fossilAdded to false
+        //This allows you to dig up another fossil later
+        //and display it on the main digging screen
         _fossilAdded = false;
     }
     if(_sceneName == "SplashScreen")
     {
-        //als je terug gaat naar menu 
-        //haal alle stenen info weg
+        //When you go back to the menu 
+        //Remove all stone info
         DugUpRocks.Clear();
         NameOfRocks.Clear();
         FossilPrefabs.Clear();
@@ -136,19 +132,19 @@ private void Update()
     if(_sceneName == "level 1")
     {
         
-        //vind de opgegraven stenen doormiddel van de naam
+        //Find the excavated stones by name
         if(_rocksFound == false)
         {
-            //zoek doormiddel van de namen de locaties van de gegraven stenen op
+            //Use the names to find the locations of the excavated stones
             foreach (string name in NameOfRocks)
             {
                 DugUpRocks.Add(GameObject.Find(name));
             }
             _rocksFound = true;
         }
-        //afhankelijk van welke hopen al gegraven zijn
-        //spawn op elke hoop de juiste fossiel/steen prefab 
-        //haal daarna de hopen weg
+        //depending on which piles have already been dug up
+        //spawn the correct fossil/rock prefab on each pile
+        //then remove the piles
         for(int i = 0; i < DugUpRocks.Count; i++)
         {
             Instantiate(FossilPrefabs[i], DugUpRocks[i].transform.position, DugUpRocks[i].transform.rotation);
@@ -158,7 +154,7 @@ private void Update()
     }
     else
     {
-        //maak de lijst schoon zodat het geen probelemen veroorzaakt in lvl1
+        //clean the list so there will not be any problems in lvl1
         RockChosen = false;
         DugUpRocks.Clear();
         _rocksFound= false;
@@ -186,9 +182,111 @@ private void Update()
     </div>
 
     </main>
-    <footer class = "lilac-text text-center">
+    <footer class = "lilac-text text-center" data-description="rechten">
         © 2026 Ella Marije van den Hoogenband. All rights reserved.
     </footer>
+    <script>
+        
+        let language = localStorage.getItem("language") || "Dutch";
+        
+        let languageIMG= document.getElementById("englishButtonPNG");
+        const languageButton = document.getElementById("language-button");
+        let info; //the found json data
+
+        //this page
+        let projectDetails = document.querySelector('[data-description="project-details"]');
+
+        //general
+        let rechten = document.querySelector('[data-description="rechten"]');
+        let portfolioNAV = document.querySelector('[data-name="portfolioNAV"]');
+        let projectsNAV = document.querySelector('[data-name="projectsNav"]');
+        let aboutMeNAV = document.querySelector('[data-name="AboutMeNAV"]');
+        let contectMeNAV = document.querySelector('[data-name="ContactMeNAV"]');
+        
+
+
+        
+        function loadList(selector, taal, skills){
+            selector.innerHTML = "";
+            info[taal]["AboutPage"][skills].forEach(function(e){
+                let li = document.createElement('li');
+                let p = document.createElement("p");
+                p.innerText = e;
+                console.log(li);
+                li.appendChild(p);
+                selector.appendChild(li);
+            })
+        }
+        function loadDescription(selector, taal){
+            selector.innerHTML = "";
+            info[taal]["NotJustGoldDiggers"]["details"].forEach(function(e){
+                let p = document.createElement("p");
+                p.innerText = e;
+                selector.appendChild(p);
+                
+            })
+        }
+        
+    
+        
+        
+
+        function loadDutch(){
+            // AboutText.textContent=info["Dutch"]["AboutPage"]["aboutText"];
+            // loadList(SoftSkills, "Dutch", "softskills");
+            // loadList(HardSkills,"Dutch", "hardskills");
+            loadDescription(projectDetails, "Dutch")
+            //general
+            rechten.textContent = info["Dutch"]["General"]["rechtenVoorbehouden"];
+            portfolioNAV.textContent = info["Dutch"]["General"]["nav"]["portfolio"];
+            projectsNAV.textContent = info["Dutch"]["General"]["nav"]["projects"];
+            aboutMeNAV.textContent = info["Dutch"]["General"]["nav"]["about me"];
+            contectMeNAV.textContent = info["Dutch"]["General"]["nav"]["contact me"];
+        }
+        function loadEnglish(){
+            // AboutText.textContent=info["English"]["AboutPage"]["aboutText"];
+            // loadList(SoftSkills, "English", "softskills");
+            // loadList(HardSkills, "English", "hardskills");
+            loadDescription(projectDetails, "English")
+            //general
+            rechten.textContent = info["English"]["General"]["rechtenVoorbehouden"];
+            portfolioNAV.textContent = info["English"]["General"]["nav"]["portfolio"];
+            projectsNAV.textContent = info["English"]["General"]["nav"]["projects"];
+            aboutMeNAV.textContent = info["English"]["General"]["nav"]["about me"];
+            contectMeNAV.textContent = info["English"]["General"]["nav"]["contact me"];
+            
+        }
+        //fetch json and set initial data
+        fetch('./aboutMe.json')
+        .then(res => res.json())
+        .then(data=>{
+            //about text
+            info = data;
+            if(language == "Dutch"){
+                loadDutch();
+                languageIMG.src = "images/eng.png"
+            }else {
+                loadEnglish();
+                languageIMG.src = "images/nl.png"
+            }
+        })
+
+        //if button is clicked chnage the language
+        languageButton.onclick = function(){
+        if(language == "Dutch"){
+            language = "English";
+            languageIMG.src = "images/nl.png"
+            loadEnglish();
+        }else if(language == "English"){
+            language = "Dutch";
+            languageIMG.src = "images/eng.png"
+            loadDutch();
+        }
+        //save in local storgage for other pages too
+         localStorage.setItem("language", language);
+        
+    }
+    </script>
     
 </body>
 </html>

@@ -38,6 +38,17 @@
             "ghostShooter": "Red de wereld van geesten",
             "cafeMiniGame": "VR-café met mini-game en interactie",
             "githubActivty":"Mijn GitHub Activiteit"
+        },
+        "NotJustGoldDiggers":{
+            "mini-description":"Tijdens dit project heb ik samengewerkt in een teamverband met zowel artists als developers. Voor een museumopdracht hebben we samen een geologisch avontuur ontwikkeld voor kinderen tussen acht en tien jaar. Door dit spel door kinderen te laten spelen, wilden we hen inzicht geven in hoe het is om een geoloog te zijn en ze tegelijkertijd iets leren over verschillende stenen en fossielen. Dit project hebben we werkend gekregen op een touchtafel waarover onze school beschikt.",
+            "details":[
+                "Uitgekomen: December 2025",
+                "Engine: Unity",
+                "Taal: C#",
+                "Teamgrootte: 7",
+                "Rol: Gameplay Developer",
+                "Tijd: 4 weken"
+            ]
         }
     },
     "English":{
@@ -80,6 +91,17 @@
             "cafeMiniGame": "VR-café with mini-game and interaction",
             "githubActivty":"My GitHub Activity"
 
+        },
+        "NotJustGoldDiggers":{
+            "mini-description":"During this project, I worked as part of a team with both artists and developers. For a museum assignment, we collaborated to develop a geological adventure for children aged eight to ten. By having children play this game, we wanted to give them a sense of what it’s like to be a geologist while also teaching them about different rocks and fossils. We got this project up and running on a touch table available at our school.",
+            "details":[
+                "Released: December 2025",
+                "Engine: Unity",
+                "Language: C#",
+                "Team Size: 7",
+                "Role: Gameplay Developer",
+                "Duration: 4 weken"
+            ]
         }
 
     }
