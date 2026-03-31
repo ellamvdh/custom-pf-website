@@ -34,10 +34,10 @@
     <header>
         
          <nav>
-            <div class = "nav-stuff"><a href="index.html">Portfolio</a></div>
-            <div class = "nav-stuff"><a href="index.html#projects">Projects</a></div>
-            <div class = "nav-stuff"><a href="AboutMe.html">About Me</a></div>
-            <div class = "nav-stuff"><a href="ContactMe.html">Contact Me</a></div>
+            <div class = "nav-stuff"><a href="index.html" data-name="portfolioNAV" >Portfolio</a></div>
+            <div class = "nav-stuff"><a href="index.html#projects" data-name="projectsNav">Projects</a></div>
+            <div class = "nav-stuff"><a href="AboutMe.html"data-name="AboutMeNAV">About Me</a></div>
+            <div class = "nav-stuff"><a href="ContactMe.html" data-name="ContactMeNAV">Contact Me</a></div>
             <div class  = "nav-stuff" ><button id = "language-button"><img id = "englishButtonPNG"src = "images/eng.png"></button></div>
             
          </nav>
@@ -47,33 +47,26 @@
         <div class="project-hero">
             <div class="hero-content">
                 <h1 class="lilac-text text-center game-title">Masks Eye</h1>
-                <p class="white-text text-center">-Puzzelgame waar je maskers gebruikt-</p>
+                <p class="white-text text-center miniDetails" data-description="miniDetails">-</p>
             </div>
         </div>
 
         <div class = "project-info">
             <img class = "project-page-img"src="images/Masks_eye.jpg" alt="'not just gold diggers' GAME">
-            <div class="text-center white-text project-text">
-                Tijdens dit project werkte ik samen in een team met zowel artists als developers aan een 3-daagse game jam, waarin we een puzzelspel ontwikkelden genaamd Mask's Eye. Het spel draait om het landgoed van Robert Sceleritas, waarin spelers maskers moeten verzamelen. Elk masker geeft unieke krachten die nodig zijn om puzzels op te lossen en uiteindelijk de ware moordenaar te ontmaskeren.
-<br><br>
-Mijn focus lag vooral op het ontwerpen en implementeren van de mini-games die nodig waren om de maskers te unlocken. Eén van de meest memorabele momenten was de laatste mini-game, waarin spelers een kameleon moesten matchen met kleuren. De eerste spelers waren echter kleurenblind, waardoor ze helemaal verdwaalden wat zorgde voor een hilarisch maar leerzaam inzicht in speltoegankelijkheid en ontwerpkeuzes.
+            <div class="text-center white-text project-text" data-description="maxDetails">
             </div>
             <div class="white-text text-center project-details">
                 <div><b>Details</b></div>
-                <p>Uitgekomen: Januari 2026</p>
-                <p>Engine: Unity</p>
-                <p>Taal: C#</p>
-                <p>Teamgrootte: 7</p>
-                <p>Rol: Gameplay Developer</p>
-                <p>Tijd: 3 dagen</p>
+                <div data-description="project-details"></div>
                 <p><a href="https://github.com/TPODanzig/Jammers2026" class = "project-link">Github</a></p>
             </div>
         </div>
          
         <div class="contribution-section">
-            <div class="project-contribution white-text">
+            <div class="project-contribution white-text" >
                 <h2>Mijn bijdrage</h2>
-                <p>Mini Games</p>
+                <div data-description="project-contribution"></div>
+                <!-- <p>Mini Games</p>
                 <ul>
                     <li>Snake mini-game ontwikkeld en geïmplementeerd</li>
                     <li>Bat mini-game ontwikkeld en geïmplementeerd</li>
@@ -84,7 +77,7 @@ Mijn focus lag vooral op het ontwerpen en implementeren van de mini-games die no
                 <p>Masker</p>
                 <ul>
                 <li>Camouflage-masker mechanic geprogrammeerd waarmee spelers door lasers kunnen bewegen</li>
-                </ul>
+                </ul> -->
             </div>
 
             <!-- Code block with Prism highlighting -->
@@ -150,9 +143,131 @@ Mijn focus lag vooral op het ontwerpen en implementeren van de mini-games die no
     </div>
 
     </main>
-    <footer class = "lilac-text text-center">
+    <footer class = "lilac-text text-center" data-description="rechten">
         © 2026 Ella Marije van den Hoogenband. All rights reserved.
     </footer>
+    <script>
+        
+        let language = localStorage.getItem("language") || "Dutch";
+        
+        let languageIMG= document.getElementById("englishButtonPNG");
+        const languageButton = document.getElementById("language-button");
+        let info; //the found json data
+
+        //this page
+        let projectDetails = document.querySelector('[data-description="project-details"]');
+        let MaxDetails = document.querySelector('[data-description="maxDetails"]')
+        let MiniDetails = document.querySelector('[data-description="miniDetails"]')
+        let projectContribution = document.querySelector('[data-description="project-contribution"]')
+
+        //general
+        let rechten = document.querySelector('[data-description="rechten"]');
+        let portfolioNAV = document.querySelector('[data-name="portfolioNAV"]');
+        let projectsNAV = document.querySelector('[data-name="projectsNav"]');
+        let aboutMeNAV = document.querySelector('[data-name="AboutMeNAV"]');
+        let contectMeNAV = document.querySelector('[data-name="ContactMeNAV"]');
+        
+
+
+        
+        
+        function loadDescription(selector, taal){
+            selector.innerHTML = "";
+            info[taal]["MasksEye"]["details"].forEach(function(e){
+                let p = document.createElement("p");
+                p.innerText = e;
+                selector.appendChild(p);
+                
+            })
+        }
+
+        function loadContributions(selector, taal, project){
+            selector.innerHTML = "";
+
+            const contributions = info[taal][project]["contributions"];
+
+            // Loop through each section in the object
+            for (const section in contributions) {
+                // Create a title for the section
+                const pTitle = document.createElement("p");
+                pTitle.innerText = section;
+                selector.appendChild(pTitle);
+
+                // Create a list for the items
+                const ul = document.createElement("ul");
+                contributions[section].forEach(item => {
+                    const li = document.createElement("li");
+                    li.innerText = item;
+                    ul.appendChild(li);
+                });
+
+                selector.appendChild(ul);
+            }
+        }
+        
+    
+        
+        
+
+        function loadDutch(){
+            
+            MaxDetails.textContent = info["Dutch"]["MasksEye"]["max-description"];
+            MiniDetails.textContent = info["Dutch"]["MasksEye"]["mini-description"];
+            loadDescription(projectDetails, "Dutch");
+            loadContributions(projectContribution, "Dutch" , "MasksEye");
+            //general
+            rechten.textContent = info["Dutch"]["General"]["rechtenVoorbehouden"];
+            portfolioNAV.textContent = info["Dutch"]["General"]["nav"]["portfolio"];
+            projectsNAV.textContent = info["Dutch"]["General"]["nav"]["projects"];
+            aboutMeNAV.textContent = info["Dutch"]["General"]["nav"]["about me"];
+            contectMeNAV.textContent = info["Dutch"]["General"]["nav"]["contact me"];
+        }
+        function loadEnglish(){
+            
+            MaxDetails.textContent = info["English"]["MasksEye"]["max-description"];
+            MiniDetails.textContent = info["English"]["MasksEye"]["mini-description"];
+            loadDescription(projectDetails, "English")
+            loadContributions(projectContribution, "English", "MasksEye");
+            //general
+            
+            rechten.textContent = info["English"]["General"]["rechtenVoorbehouden"];
+            portfolioNAV.textContent = info["English"]["General"]["nav"]["portfolio"];
+            projectsNAV.textContent = info["English"]["General"]["nav"]["projects"];
+            aboutMeNAV.textContent = info["English"]["General"]["nav"]["about me"];
+            contectMeNAV.textContent = info["English"]["General"]["nav"]["contact me"];
+            
+        }
+        //fetch json and set initial data
+        fetch('./aboutMe.json')
+        .then(res => res.json())
+        .then(data=>{
+            //about text
+            info = data;
+            if(language == "Dutch"){
+                loadDutch();
+                languageIMG.src = "images/eng.png"
+            }else {
+                loadEnglish();
+                languageIMG.src = "images/nl.png"
+            }
+        })
+
+        //if button is clicked chnage the language
+        languageButton.onclick = function(){
+        if(language == "Dutch"){
+            language = "English";
+            languageIMG.src = "images/nl.png"
+            loadEnglish();
+        }else if(language == "English"){
+            language = "Dutch";
+            languageIMG.src = "images/eng.png"
+            loadDutch();
+        }
+        //save in local storgage for other pages too
+         localStorage.setItem("language", language);
+        
+    }
+    </script>
     
 </body>
 </html>

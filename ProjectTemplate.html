@@ -68,29 +68,6 @@
             <div class="project-contribution white-text">
                 <h2>Mijn bijdrage</h2>
                 <div data-description="project-contribution"></div>
-                <!-- <p>Fossielen/Steen Display System</p>
-                <ul>
-                    <li>Toont gevonden fossielen en stenen in de main scene.</li>
-                    <li>Zorgt dat ontdekkingen blijven als je teruggaat naar de main scene.</li>
-                </ul>
-
-                <p>Mining & Interactie</p>
-                <ul>
-                    <li>Systeem om stenen te breken met geluid, animatie en visuele feedback.</li>
-                    <li>Verwijdert stenen en activeert objecten zoals dirt en gems.</li>
-                </ul>
-
-                <p>Scene-specifiek gedrag & input</p>
-                <ul>
-                    <li>Objecten worden pas interactief als de omgeving dat toestaat.</li>
-                    <li>Touch input via raycast.</li>
-                </ul>
-
-                <p>Game state management</p>
-                <ul>
-                    <li>Update stone counts bij pickups.</li>
-                    <li>Houdt bij welke rocks gekozen zijn en beheert scene-transities.</li>
-                </ul> -->
             </div>
 
             <!-- Code block with Prism highlighting -->
@@ -209,17 +186,7 @@ private void Update()
 
 
         
-        function loadList(selector, taal, skills){
-            selector.innerHTML = "";
-            info[taal]["AboutPage"][skills].forEach(function(e){
-                let li = document.createElement('li');
-                let p = document.createElement("p");
-                p.innerText = e;
-                console.log(li);
-                li.appendChild(p);
-                selector.appendChild(li);
-            })
-        }
+        
         function loadDescription(selector, taal){
             selector.innerHTML = "";
             info[taal]["NotJustGoldDiggers"]["details"].forEach(function(e){
