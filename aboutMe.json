@@ -213,6 +213,36 @@
                     "Haptic feedback voor lopen, wapens en interacties."
                 ]
             }
+        },
+        "GhostShooter":{
+            "mini-description":"-Red de wereld van geesten-",
+            "max-description":"Dit project is een vervolg op het café-spel, waarin je een geest-invasie moest veroorzaken en twee NPC's moest beschermen. Voor het eerst werkte ik met statemachines, coroutines en NavMeshAgents, wat veel leermomenten gaf over tijdsbeheer en AI-bewegingen.\n\nMijn focus lag op het programmeren van gameplay-mechanics in Unity. Ik gebruikte coroutines voor het spawnen van geesten en waves, Random.Range voor willekeurige spawnlocaties, en hield de game state bij zodat de speler pas faalt als beide NPC's dood zijn.",
+            "details":[
+                "Uitgekomen: Juni 2025",
+                "Engine: Unity (VR)",
+                "Taal: C#",
+                "Teamgrootte: 1",
+                "Rol: Gameplay Developer",
+                "Tijd: 4 weken"
+            ],
+            "contributions":{
+                "Gameplay & Mechanics":[
+                    "Speler kan pistool, gitaar, granaat en eten gebruiken om vijanden te bestrijden en NPC's te beschermen.",
+                    "Healthpacks en cooldowns werken per gamemode (protect customers vs ghost invasion)."
+                ],
+                "Enemy AI & Waves":[
+                    "Vijanden volgen speler en NPC’s via NavMeshAgents en coroutines, waves worden steeds moeilijker met extra health en spawn."
+                ],
+                "Health & UI":[
+                    "Player en enemy healthbars met visuele feedback, plus UI voor klantenstatus, health en pistool reload tijd."
+                ],
+                "Systems & Effects":[
+                    "Startmenu, win/game-over schermen, post-processing, geluiden en particle effects voor chaotische sfeer."
+                ]
+
+
+
+            }
         }
     },
     "English":{
@@ -427,6 +457,36 @@
                     "Menu, win/death screens, post-processing, and particle effects.",
                     "Haptic feedback for walking, weapons, and interactions."
                 ]
+            }
+        },
+        "GhostShooter":{
+            "mini-description":"-Save the world from ghosts-",
+            "max-description":"This project is a follow-up to the bar game, in which you had to trigger a ghost invasion and protect two NPCs. It was my first time working with state machines, coroutines, and NavMeshAgents, which taught me a lot about time management and AI movement.\n\nMy focus was on programming gameplay mechanics in Unity. I used coroutines to spawn ghosts and waves, Random.Range for random spawn locations, and tracked the game state so that the player only fails once both NPCs are dead.",
+            "details":[
+                "Released: June 2025",
+                "Engine: Unity (VR)",
+                "Language: C#",
+                "Team Size: 1",
+                "Role: Gameplay Developer",
+                "Duration: 4 weken"
+            ],
+            "contributions":{
+                "Gameplay & Mechanics":[
+                    "The player can use a pistol, guitar, grenade, and food to fight enemies and protect NPCs.",
+                    "Health packs and cooldowns work differently depending on the game mode (Protect Customers vs. Ghost Invasion)."
+                ],
+                "Enemy AI & Waves":[
+                    "Enemies track the player and NPCs via NavMeshAgents and coroutines; waves become increasingly difficult with additional health and spawns."
+                ],
+                "Health & UI":[
+                    "Player and enemy health bars with visual feedback, plus UI for customer status, health, and pistol reload time."
+                ],
+                "Systems & Effects":[
+                    "Start menu, win/game-over screens, post-processing, sounds, and particle effects for a chaotic atmosphere."
+                ]
+
+
+
             }
         }
         
