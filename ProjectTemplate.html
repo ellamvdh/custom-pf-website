@@ -66,7 +66,7 @@
          
         <div class="contribution-section">
             <div class="project-contribution white-text">
-                <h2>Mijn bijdrage</h2>
+                <h2 data-description="MijnBijdrageTXT">Mijn bijdrage</h2>
                 <div data-description="project-contribution"></div>
             </div>
 
@@ -175,6 +175,7 @@ private void Update()
         let MaxDetails = document.querySelector('[data-description="maxDetails"]')
         let MiniDetails = document.querySelector('[data-description="miniDetails"]')
         let projectContribution = document.querySelector('[data-description="project-contribution"]')
+        let MijnBijdragenText = document.querySelector('[data-description="MijnBijdrageTXT"]')
 
         //general
         let rechten = document.querySelector('[data-description="rechten"]');
@@ -220,10 +221,6 @@ private void Update()
                 selector.appendChild(ul);
             }
         }
-        
-    
-        
-        
 
         function loadDutch(){
             
@@ -231,6 +228,7 @@ private void Update()
             MiniDetails.textContent = info["Dutch"]["NotJustGoldDiggers"]["mini-description"];
             loadDescription(projectDetails, "Dutch");
             loadContributions(projectContribution, "Dutch");
+            MijnBijdragenText.textContent = info["Dutch"]["General"]["MijnBijdragenTXT"];
             //general
             rechten.textContent = info["Dutch"]["General"]["rechtenVoorbehouden"];
             portfolioNAV.textContent = info["Dutch"]["General"]["nav"]["portfolio"];
@@ -243,8 +241,9 @@ private void Update()
             MaxDetails.textContent = info["English"]["NotJustGoldDiggers"]["max-description"];
             MiniDetails.textContent = info["English"]["NotJustGoldDiggers"]["mini-description"];
             loadDescription(projectDetails, "English")
-            //general
             loadContributions(projectContribution, "English");
+            MijnBijdragenText.textContent = info["English"]["General"]["MijnBijdragenTXT"];
+            //general
             rechten.textContent = info["English"]["General"]["rechtenVoorbehouden"];
             portfolioNAV.textContent = info["English"]["General"]["nav"]["portfolio"];
             projectsNAV.textContent = info["English"]["General"]["nav"]["projects"];

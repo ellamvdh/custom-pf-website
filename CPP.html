@@ -34,10 +34,10 @@
     <header>
         
          <nav>
-            <div class = "nav-stuff"><a href="index.html">Portfolio</a></div>
-            <div class = "nav-stuff"><a href="index.html#projects">Projects</a></div>
-            <div class = "nav-stuff"><a href="AboutMe.html">About Me</a></div>
-            <div class = "nav-stuff"><a href="ContactMe.html">Contact Me</a></div>
+            <div class = "nav-stuff"><a href="index.html" data-name="portfolioNAV" >Portfolio</a></div>
+            <div class = "nav-stuff"><a href="index.html#projects" data-name="projectsNav">Projects</a></div>
+            <div class = "nav-stuff"><a href="AboutMe.html"data-name="AboutMeNAV">About Me</a></div>
+            <div class = "nav-stuff"><a href="ContactMe.html" data-name="ContactMeNAV">Contact Me</a></div>
             <div class  = "nav-stuff" ><button id = "language-button"><img id = "englishButtonPNG"src = "images/eng.png"></button></div>
             
          </nav>
@@ -47,57 +47,29 @@
         <div class="project-hero">
             <div class="hero-content">
                 <h1 class="lilac-text text-center game-title">C++ turn based stategy</h1>
-                <p class="white-text text-center">-Een klein console-gebaseerd vechtspel-</p>
+                <p class="white-text text-center" data-description="miniDetails">-Een klein console-gebaseerd vechtspel-</p>
             </div>
         </div>
 
         <div class = "project-info">
             <img class = "project-page-img"src="images/cpp.jpg" alt="'not just gold diggers' GAME">
-            <div class="text-center white-text project-text">
-    Voor dit project heb ik zelfstandig een kleine turn-based strategy game ontwikkeld in C++ en getest op mobiel met CxxDroid. In het spel heeft elke speler een normale en een speciale aanval, waarbij de speciale aanval slechts één keer gebruikt kan worden. Spelers hebben daarnaast verschillende stats zoals health, attack, defense en special, wat zorgt voor strategische keuzes tijdens de beurt.  
-</div>
+            <div class="text-center white-text project-text" data-description="maxDetails">
+            </div>
             <div class="white-text text-center project-details">
                 <div><b>Details</b></div>
-                <p>Uitgekomen: Augustus 2025</p>
-                <p>Engine: cxxdroid</p>
-                <p>Taal: C++</p>
-                <p>Teamgrootte: 1</p>
-                <p>Rol: Gameplay Developer</p>
-                <p>Tijd: zomervakantie</p>
+                <div data-description="project-details"></div>
             </div>
         </div>
          
         <div class="contribution-section">
             <div class="project-contribution white-text">
-                <h2>Mijn bijdrage</h2>
-                <p>Turn-Based Combat</p>
-                <ul>
-                    <li>Beurtensysteem waarin spelers kiezen tussen normale en speciale aanvallen.</li>
-                    <li>Invoercontrole zodat alleen geldige keuzes (‘a’ of ‘s’) worden geaccepteerd.</li>
-                </ul>
-
-                <p>Speciale Aanvallen</p>
-                <ul>
-                    <li>Unieke speciale aanvallen per karakter met éénmalig gebruik per gevecht.</li>
-                    <li>Voorbeelden: HP herstellen, dubbele schade, verdediging vijand verlagen, of hoge aanval tegen eigen verdediging.</li>
-                </ul>
-
-                <p>Enemy Logic</p>
-                <ul>
-                    <li>Vijand reageert op speleracties.</li>
-                    <li>Health en stats worden dynamisch aangepast na elke actie.</li>
-                </ul>
-
-                <p>Stat Management & Feedback</p>
-                <ul>
-                    <li>Bijhouden van speler- en vijandstats: health, attack, defense en special.</li>
-                    <li>Console-uitvoer toont schade en acties van speler en vijand, inclusief meldingen bij speciale aanval.</li>
-                </ul>
+                <h2 data-description="MijnBijdrageTXT">Mijn bijdrage</h2>
+                <div data-description="project-contribution"></div>
             </div>
 
             <!-- Code block with Prism highlighting -->
             <pre class="code language-csharp"><code class="language-csharp">
-            // Laat de speler aanvallen of speciale aanval gebruiken
+            // Let the player use their special attack
             do {
                 cout << "Type 'a' to attack and 's' to special attack\n\n";
                 cin >> userInput;
@@ -127,7 +99,7 @@
 
             } else if (SpecialRemaing == 1) {
                 cout << "You chose to use your special! \n";
-
+                //use special depending on chosen character
                 switch (ChosenCharachter) {
                     case 0:
                         // Heal self
@@ -202,6 +174,132 @@
     <footer class = "lilac-text text-center">
         © 2026 Ella Marije van den Hoogenband. All rights reserved.
     </footer>
+
+    <script>
+        
+        let language = localStorage.getItem("language") || "Dutch";
+        
+        let languageIMG= document.getElementById("englishButtonPNG");
+        const languageButton = document.getElementById("language-button");
+        let info; //the found json data
+
+        //this page
+        let MijnBijdragenText = document.querySelector('[data-description="MijnBijdrageTXT"]')
+        let projectDetails = document.querySelector('[data-description="project-details"]');
+        let MaxDetails = document.querySelector('[data-description="maxDetails"]')
+        let MiniDetails = document.querySelector('[data-description="miniDetails"]')
+        let projectContribution = document.querySelector('[data-description="project-contribution"]')
+
+        //general
+        let rechten = document.querySelector('[data-description="rechten"]');
+        let portfolioNAV = document.querySelector('[data-name="portfolioNAV"]');
+        let projectsNAV = document.querySelector('[data-name="projectsNav"]');
+        let aboutMeNAV = document.querySelector('[data-name="AboutMeNAV"]');
+        let contectMeNAV = document.querySelector('[data-name="ContactMeNAV"]');
+        
+
+
+        
+        
+        function loadDescription(selector, taal){
+            selector.innerHTML = "";
+            info[taal]["ConsoleGame"]["details"].forEach(function(e){
+                let p = document.createElement("p");
+                p.innerText = e;
+                selector.appendChild(p);
+                
+            })
+        }
+
+        function loadContributions(selector, taal, project){
+            selector.innerHTML = "";
+
+            const contributions = info[taal][project]["contributions"];
+
+            // Loop through each section in the object
+            for (const section in contributions) {
+                // Create a title for the section
+                const pTitle = document.createElement("p");
+                pTitle.innerText = section;
+                selector.appendChild(pTitle);
+
+                // Create a list for the items
+                const ul = document.createElement("ul");
+                contributions[section].forEach(item => {
+                    const li = document.createElement("li");
+                    li.innerText = item;
+                    ul.appendChild(li);
+                });
+
+                selector.appendChild(ul);
+            }
+        }
+        
+    
+        
+        
+
+        function loadDutch(){
+            
+            MaxDetails.textContent = info["Dutch"]["ConsoleGame"]["max-description"];
+            MiniDetails.textContent = info["Dutch"]["ConsoleGame"]["mini-description"];
+            loadDescription(projectDetails, "Dutch");
+            loadContributions(projectContribution, "Dutch" , "ConsoleGame");
+            MijnBijdragenText.textContent = info["Dutch"]["General"]["MijnBijdragenTXT"];
+            //general
+            rechten.textContent = info["Dutch"]["General"]["rechtenVoorbehouden"];
+            portfolioNAV.textContent = info["Dutch"]["General"]["nav"]["portfolio"];
+            projectsNAV.textContent = info["Dutch"]["General"]["nav"]["projects"];
+            aboutMeNAV.textContent = info["Dutch"]["General"]["nav"]["about me"];
+            contectMeNAV.textContent = info["Dutch"]["General"]["nav"]["contact me"];
+        }
+        function loadEnglish(){
+            
+            MaxDetails.textContent = info["English"]["ConsoleGame"]["max-description"];
+            MiniDetails.textContent = info["English"]["ConsoleGame"]["mini-description"];
+            loadDescription(projectDetails, "English")
+            loadContributions(projectContribution, "English","ConsoleGame");
+            MijnBijdragenText.textContent = info["English"]["General"]["MijnBijdragenTXT"];
+            //general
+            
+            rechten.textContent = info["English"]["General"]["rechtenVoorbehouden"];
+            portfolioNAV.textContent = info["English"]["General"]["nav"]["portfolio"];
+            projectsNAV.textContent = info["English"]["General"]["nav"]["projects"];
+            aboutMeNAV.textContent = info["English"]["General"]["nav"]["about me"];
+            contectMeNAV.textContent = info["English"]["General"]["nav"]["contact me"];
+            
+        }
+        //fetch json and set initial data
+        fetch('./aboutMe.json')
+        .then(res => res.json())
+        .then(data=>{
+            //about text
+            info = data;
+            if(language == "Dutch"){
+                loadDutch();
+                languageIMG.src = "images/eng.png"
+            }else {
+                loadEnglish();
+                languageIMG.src = "images/nl.png"
+            }
+        })
+
+        //if button is clicked chnage the language
+        languageButton.onclick = function(){
+        if(language == "Dutch"){
+            language = "English";
+            languageIMG.src = "images/nl.png"
+            loadEnglish();
+        }else if(language == "English"){
+            language = "Dutch";
+            languageIMG.src = "images/eng.png"
+            loadDutch();
+        }
+        //save in local storgage for other pages too
+         localStorage.setItem("language", language);
+        
+    }
+    </script>
     
 </body>
 </html>

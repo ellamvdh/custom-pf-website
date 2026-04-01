@@ -64,20 +64,9 @@
          
         <div class="contribution-section">
             <div class="project-contribution white-text" >
-                <h2>Mijn bijdrage</h2>
+                <h2 data-description="MijnBijdrageTXT">Mijn bijdrage</h2>
                 <div data-description="project-contribution"></div>
-                <!-- <p>Mini Games</p>
-                <ul>
-                    <li>Snake mini-game ontwikkeld en geïmplementeerd</li>
-                    <li>Bat mini-game ontwikkeld en geïmplementeerd</li>
-                    <li>Color matching mini-game ontwikkeld (kameleon puzzel)</li>
-                    
-                    <li>Alle mini-games volledig geïmplementeerd op een Canvas-based UI systeem</li>
-                </ul>
-                <p>Masker</p>
-                <ul>
-                <li>Camouflage-masker mechanic geprogrammeerd waarmee spelers door lasers kunnen bewegen</li>
-                </ul> -->
+                
             </div>
 
             <!-- Code block with Prism highlighting -->
@@ -155,6 +144,7 @@
         let info; //the found json data
 
         //this page
+        let MijnBijdragenText = document.querySelector('[data-description="MijnBijdrageTXT"]')
         let projectDetails = document.querySelector('[data-description="project-details"]');
         let MaxDetails = document.querySelector('[data-description="maxDetails"]')
         let MiniDetails = document.querySelector('[data-description="miniDetails"]')
@@ -215,6 +205,7 @@
             MiniDetails.textContent = info["Dutch"]["MasksEye"]["mini-description"];
             loadDescription(projectDetails, "Dutch");
             loadContributions(projectContribution, "Dutch" , "MasksEye");
+            MijnBijdragenText.textContent = info["Dutch"]["General"]["MijnBijdragenTXT"];
             //general
             rechten.textContent = info["Dutch"]["General"]["rechtenVoorbehouden"];
             portfolioNAV.textContent = info["Dutch"]["General"]["nav"]["portfolio"];
@@ -227,7 +218,8 @@
             MaxDetails.textContent = info["English"]["MasksEye"]["max-description"];
             MiniDetails.textContent = info["English"]["MasksEye"]["mini-description"];
             loadDescription(projectDetails, "English")
-            loadContributions(projectContribution, "English", "MasksEye");
+            loadContributions(projectContribution, "English","MasksEye");
+            MijnBijdragenText.textContent = info["English"]["General"]["MijnBijdragenTXT"];
             //general
             
             rechten.textContent = info["English"]["General"]["rechtenVoorbehouden"];
