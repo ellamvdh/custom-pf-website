@@ -53,20 +53,10 @@
 
         <div class = "project-info">
             <img class = "project-page-img"src="images/GhostShooter.jpg" alt="'not just gold diggers' GAME">
-            <div class="text-center white-text project-text" data-description="maxDetails">
-    <!-- Dit project is een vervolg op het café-spel, waarin je een geest-invasie moest veroorzaken en twee NPC’s moest beschermen. Voor het eerst werkte ik met statemachines, coroutines en NavMeshAgents, wat veel leermomenten gaf over tijdsbeheer en AI-bewegingen.  
-<br><br>
-Mijn focus lag op het programmeren van gameplay-mechanics in Unity. Ik gebruikte coroutines voor het spawnen van geesten en waves, Random.Range voor willekeurige spawnlocaties, en hield de game state bij zodat de speler pas faalt als beide NPC’s dood zijn. -->
-</div>
+            <div class="text-center white-text project-text" data-description="maxDetails"></div>
             <div class="white-text text-center project-details">
                 <div><b>Details</b></div>
                 <div data-description="project-details"></div>
-                <!-- <p>Uitgekomen: Juni 2025</p>
-                <p>Engine: Unity (VR)</p>
-                <p>Taal: C#</p>
-                <p>Teamgrootte: 1</p>
-                <p>Rol: Gameplay Developer</p>
-                <p>Tijd: 4 weken</p> -->
                 <p><a href="https://github.com/GLU-CSD/vr-store-ellamvdh.git" class = "project-link">Github</a></p>
             </div>
         </div>
@@ -75,31 +65,11 @@ Mijn focus lag op het programmeren van gameplay-mechanics in Unity. Ik gebruikte
             <div class="project-contribution white-text">
                 <h2 data-description="MijnBijdrageTXT">Mijn bijdrage</h2>
                 <div data-description="project-contribution"></div>
-                <!-- <p>Gameplay & Mechanics</p>
-                <ul>
-                    <li>Speler kan pistool, gitaar, granaat en eten gebruiken om vijanden te bestrijden en NPC’s te beschermen.</li>
-                    <li>Healthpacks en cooldowns werken per gamemode (protect customers vs ghost invasion).</li>
-                </ul>
-
-                <p>Enemy AI & Waves</p>
-                <ul>
-                    <li>Vijanden volgen speler en NPC’s via NavMeshAgents en coroutines, waves worden steeds moeilijker met extra health en spawn.</li>
-                </ul>
-
-                <p>Health & UI</p>
-                <ul>
-                    <li>Player en enemy healthbars met visuele feedback, plus UI voor klantenstatus, health en pistool reload tijd.</li>
-                </ul>
-
-                <p>Systems & Effects</p>
-                <ul>
-                    <li>Startmenu, win/game-over schermen, post-processing, geluiden en particle effects voor chaotische sfeer.</li>
-                </ul> -->
             </div>
 
             <!-- Code block with Prism highlighting -->
             <pre class="code language-csharp"><code class="language-csharp">
-//Dit script regelt het inspawnen van de vijanden
+//This script handles the spawning of enemies
 IEnumerator SpawnWaves()
 {
     for (int wave = 1; wave <= totalWaves; wave++, waveCount++) // Go through each wave
@@ -142,7 +112,6 @@ void SpawnEnemy()
     }
 
     int randomLoc = Random.Range(1, 6);
-    Debug.Log(randomLoc);
     //choose which location to spawn at
     switch (randomLoc)
     {

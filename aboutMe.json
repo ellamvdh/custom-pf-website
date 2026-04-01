@@ -239,7 +239,33 @@
                 "Systems & Effects":[
                     "Startmenu, win/game-over schermen, post-processing, geluiden en particle effects voor chaotische sfeer."
                 ]
-
+            }
+        },
+        "CafeGame":{
+            "mini-description":"-VR-café met mini-game en interactie-",
+            "max-description":"Voor dit project bouwden we een VR-supermarkt in ProBuilder, maar ik koos voor een café met dezelfde functionaliteit. Ik voegde interactieve elementen toe zoals betaalbaar eten, een alarmsysteem, speelbare instrumenten en een café-mini-game, waar ik het meest trots op ben.",
+            "details":[
+                "Uitgekomen: Maart 2025",
+                "Engine: Unity (VR)",
+                "Taal: C#",
+                "Teamgrootte: 1",
+                "Rol: Gameplay Developer",
+                "Tijd: 4 weken"
+            ],
+            "contributions":{
+                "VR Tutorial & Intro":[
+                    "Een tutorial scene waarin spelers leren hoe VR werkt."
+                ],
+                "Interactieve Café-elementen":[
+                    "Betaalbaar eten toegevoegd dat spelers kunnen oppakken.",
+                    "Alarmsysteem geprogrammeerd: gaat af als spelers proberen de deur uit te gaan zonder te betalen.",
+                    "Speelbare instrumenten geïmplementeerd voor extra interactie en sfeer."
+                ],
+                "Mini-game & Gameplay":[
+                    "Mini-game ontworpen waarbij spelers zelf eten kunnen bereiden door ingrediënten te combineren.",
+                    "Spawning van gerechten afhankelijk gemaakt van de juiste ingrediëntencombinaties.",
+                    "Klanten laten verschijnen met verschillende bestellingen die de speler in de mini-game moet bereiden."
+                ]
 
 
             }
@@ -407,7 +433,7 @@
                 "Language: C++",
                 "Team Size: 1",
                 "Role: Gameplay Developer",
-                "Duratio: summer vacation"
+                "Duration: summer vacation"
             ],
             "contributions":{
                 "Turn-Based Combat":[
@@ -485,6 +511,35 @@
                     "Start menu, win/game-over screens, post-processing, sounds, and particle effects for a chaotic atmosphere."
                 ]
 
+
+
+            }
+        },
+        "CafeGame":{
+            "mini-description":"-VR café with a mini-game and interativity",
+            "max-description":"For this project, we built a VR supermarket in ProBuilder, but I opted for a café with the same functionality. I added interactive elements such as food you can buy, an alarm system, playable instruments, and a café mini-game—which I'm most proud of.",
+            "details":[
+                "Released: March 2025",
+                "Engine: Unity (VR)",
+                "Language: C#",
+                "Team Size: 1",
+                "Role: Gameplay Developer",
+                "Duration: 4 weken"
+            ],
+            "contributions":{
+                "VR Tutorial & Intro":[
+                    "A tutorial scene where players learn how VR works."
+                ],
+                "Interactive Café Elements": [
+                    "Added food that players can buy and pick up.",
+                    "Alarm system programmed: goes off if players try to leave without paying.",
+                    "Implemented playable instruments for extra interaction and atmosphere."
+                ],
+                "Mini-game & Gameplay": [
+                    "Designed a mini-game where players can prepare food themselves by combining ingredients.",
+                    "Made the spawning of dishes dependent on the correct ingredient combinations.",
+                    "Have customers appear with different orders that the player must prepare in the mini-game."
+                ]
 
 
             }
