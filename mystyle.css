@@ -628,7 +628,7 @@ a:active {
     width: 100%;
     max-width: 800px;
     height: auto;
-    /* Optional: A slight hue adjustment can further tune the colors, but rshah already accepts hex codes */
+    filter: invert(1) hue-rotate(180deg) brightness(1.1) contrast(1.1);
 }
 
 @media (max-width: 1000px) {
