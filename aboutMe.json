@@ -38,6 +38,7 @@
             "discoShooter": "Een disco-shooter met robots en een eindbaas",
             "ghostShooter": "Red de wereld van geesten",
             "cafeMiniGame": "VR-café met mini-game en interactie",
+            "Butterfly": "Interactieve vlinderinstallatie",
             "githubActivty":"Mijn GitHub Activiteit"
         },
         "MasksEye":{
@@ -269,6 +270,36 @@
 
 
             }
+        },
+        "VlinderThuin":{
+            "mini-description":"-Interactieve vlinderinstallatie-",
+            "max-description":"Voor dit project maakten we een interactieve installatie waarbij bezoekers via een QR-code een vlinder tekenen op hun telefoon. De vlinders verschijnen op een scherm en kunnen met handtracking worden aangeraakt, waarna ze veranderen in een bloemenanimatie.",       
+            "details":[
+                "Uitgekomen: April 2026",
+                "Library: OpenCV & MediaPipe",
+                "Taal: Python",
+                "Teamgrootte: 3",
+                "Rol: Developer",
+                "Tijd: 8 weken"
+            ],
+            "contributions":{
+            "Handtracking & Interactie":[
+                "Handtracking geïmplementeerd zodat bezoekers met hun hand kunnen interageren met de vlinders.",
+                "Vlinders geprogrammeerd om weg te bewegen van de hand van de gebruiker.",
+                "Vlinders laten exploderen en transformeren bij aanraking."
+            ],
+            "Raspberry Pi & Systeemintegratie":[
+                "De volledige applicatie geschikt gemaakt voor uitvoering op een Raspberry Pi.",
+                "Communicatie opgezet tussen de installatie en externe systemen."
+            ],
+            "Vlinders & API-integratie":[
+                "Dynamisch aanmaken van vlinders binnen de installatie.",
+                "Vlindergegevens opgehaald via een API en automatisch laten inspawnen in de omgeving."
+            ],
+            "Gebruikerservaring":[
+                "Idle-tekst toegevoegd die bezoekers informeert en uitnodigt om deel te nemen wanneer de installatie niet actief wordt gebruikt."
+            ]
+            }
         }
     },
     "English":{
@@ -310,7 +341,8 @@
             "discoShooter": "A disco shooter featuring robots and a final boss",
             "ghostShooter": "Save the world from ghosts",
             "cafeMiniGame": "VR-café with mini-game and interaction",
-            "githubActivty":"My GitHub Activity"
+            "githubActivty":"My GitHub Activity",
+            "Butterfly":"Interactive butterfly exhibit"
 
         },
         "MasksEye":{
@@ -543,9 +575,41 @@
 
 
             }
+        },
+       "VlinderThuin":{
+            "mini-description":"-Interactive butterfly exhibit-",
+            "max-description":"For this project, we created an interactive installation where visitors use a QR code to draw a butterfly on their phone. The butterflies appear on a screen and can be touched using hand tracking, after which they transform into a flower animation.",
+            "details":[
+                "Released: April 2026",
+                "Libraries: OpenCV & MediaPipe",
+                "Language: Python",
+                "Team size: 3",
+                "Role: Developer",
+                "Duration: 8 weeks"
+            ],
+            
+            "contributions":{
+            "Hand Tracking & Interaction":[
+                "Hand tracking implemented so that visitors can interact with the butterflies using their hands.",
+                "Butterflies programmed to move away from the user's hand.",
+                "Butterflies explode and transform upon contact."
+            ],
+            "Raspberry Pi & System Integration":[
+                "Made the entire application suitable for running on a Raspberry Pi.",
+                "Set up communication between the installation and external systems."
+            ],
+            "Butterflies & API Integration":[
+                "Dynamically generate butterflies within the installation.",
+                "Retrieve butterfly data via an API and automatically spawn them in the environment."
+            ],
+            "User Experience":[
+                "Added idle text that informs visitors and invites them to participate when the installation is not actively in use."
+            ]
+            }
         }
+
+    }
         
         
 
-    }
 }

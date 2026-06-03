@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-okaidia.css" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-csharp.min.js"></script>
+    <link rel="stylesheet" href="mystyle.css" >
+    <script src="language.js" defer></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Funnel+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Doto:wght@100..900&family=Funnel+Sans:ital,wght@0,300..800;1,300..800&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=VT323&display=swap'); 
+   
+        pre[class*="language-"],
+        code[class*="language-"] {
+        background: rgb(29,29,29)!important; /* removes the dark box */
+        padding: 10 !important;       /* optional: remove theme padding */
+        margin-top: 20px;   
+        margin-bottom: 20px;     /* optional */
+        border: none !important;
+        border-radius: 20px;
+        box-shadow: none !important;
+        font-family: 'Fira Code', monospace;
+        font-size: inherit;
+
+        
+    }
+   </style>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ella's Portfolio</title>
+</head>
+<body>
+    <header>
+        
+         <nav>
+            <div class = "nav-stuff"><a href="index.html" data-name="portfolioNAV" >Portfolio</a></div>
+            <div class = "nav-stuff"><a href="index.html#projects" data-name="projectsNav">Projects</a></div>
+            <div class = "nav-stuff"><a href="AboutMe.html"data-name="AboutMeNAV">About Me</a></div>
+            <div class = "nav-stuff"><a href="ContactMe.html" data-name="ContactMeNAV">Contact Me</a></div>
+            <div class  = "nav-stuff" ><button id = "language-button"><img id = "englishButtonPNG"src = "images/eng.png"></button></div>
+            
+         </nav>
+    </header>
+    <main>
+        
+        <div class="project-hero">
+            <div class="hero-content">
+                <h1 class="lilac-text text-center game-title">Butterfly Garden</h1>
+                <p class="white-text text-center" data-description="miniDetails">-VR-café met mini-game en interactie-</p>
+            </div>
+        </div>
+
+        <div class = "project-info">
+            <img class = "project-page-img"src="images/Vlinder.jpg" alt="'not just gold diggers' GAME">
+            <div class="text-center white-text project-text" data-description="maxDetails">
+            </div>
+            <div class="white-text text-center project-details">
+                <div><b>Details</b></div>
+                <div data-description="project-details"></div>
+                <p><a href="https://github.com/ellamvdh/py-hand-tracker.git" class = "project-link">Github</a></p>
+            </div>
+        </div>
+         
+        <div class="contribution-section">
+            <div class="project-contribution white-text">
+                <h2 data-description="MijnBijdrageTXT">Mijn bijdrage</h2>
+                <div data-description="project-contribution"></div>
+                
+
+            </div>
+
+            <!-- Code block with Prism highlighting -->
+            <pre class="code language-csharp"><code class="language-csharp">
+# ---------------------------
+# Butterfly cache
+# ---------------------------
+
+# Lijst waarin de geladen vlinderafbeeldingen worden opgeslagen
+butterfly_images = []
+
+# Lijst met bron-URL's/base64 strings om dubbele afbeeldingen te voorkomen
+butterfly_sources = []
+
+
+def fetch_butterflies():
+    """
+    Haalt vlinders op uit de API en slaat ze lokaal op in de cache.
+    Nieuwe afbeeldingen worden gedownload, verwerkt en toegevoegd
+    aan butterfly_images.
+    """
+    
+    global butterfly_images, butterfly_sources
+
+    try:
+        # Vraag data op van de API
+        response = requests.get(API_URL, timeout=5)
+        response.raise_for_status()
+
+        # Zet JSON-response om naar Python-object
+        data = response.json()
+
+        added = 0
+
+        # Verwerk maximaal de eerste 10 vlinders uit de API-response
+        for b in data[:10]:
+
+            # Zoek naar een afbeelding in verschillende mogelijke velden
+            img_str = b.get("image") or b.get("img") or b.get("url")
+
+            # Sla over als er geen afbeelding is
+            # of als deze al in de cache zit
+            if not img_str or img_str in butterfly_sources:
+                continue
+
+            try:
+                # Controleer of de afbeelding base64-encoded is
+                if img_str.startswith("data:image"):
+
+                    # Decode base64 afbeelding naar bytes
+                    img_data = base64.b64decode(img_str.split(",")[1])
+
+                else:
+                    # Download afbeelding vanaf URL
+                    img_data = requests.get(img_str, timeout=5).content
+
+                # Zet bytes om naar numpy-array
+                img_array = np.frombuffer(img_data, np.uint8)
+
+                # Decode afbeelding naar OpenCV-formaat
+                img = cv2.imdecode(img_array, cv2.IMREAD_UNCHANGED)
+
+                # Sla over als afbeelding niet correct geladen kon worden
+                if img is None:
+                    continue
+
+                # Resize afbeelding naar gewenste vlindergrootte
+                img = cv2.resize(img, (BUTTERFLY_SIZE, BUTTERFLY_SIZE))
+
+                # Voeg afbeelding toe aan cache
+                butterfly_images.append(img)
+
+                # Bewaar bron zodat duplicaten voorkomen worden
+                butterfly_sources.append(img_str)
+
+                added += 1
+
+                # Houd cachegrootte beperkt
+                if len(butterfly_images) > MAX_CACHED_BUTTERFLIES:
+                    butterfly_images.pop(0)
+                    butterfly_sources.pop(0)
+
+            except:
+                # Sla foutieve afbeelding over en ga verder
+                continue
+
+        # Toon hoeveel nieuwe vlinders zijn toegevoegd
+        if added:
+            print(
+                f"Fetched {added} new butterflies, "
+                f"cache size: {len(butterfly_images)}"
+            )
+
+    except Exception as e:
+        # Fout bij API-aanroep
+        print("API error:", e)
+
+
+# Start een achtergrondthread die continu nieuwe vlinders ophaalt
+threading.Thread(
+
+    # Oneindige loop:
+    # 1. Haal nieuwe vlinders op
+    # 2. Wacht API_FETCH_INTERVAL seconden
+    target=lambda: [
+        fetch_butterflies() or time.sleep(API_FETCH_INTERVAL)
+        for _ in iter(int, 1)
+    ],
+
+    # Daemon=True zorgt ervoor dat de thread stopt wanneer het programma stopt
+    daemon=True
+
+).start()
+            </code></pre>
+
+
+        </div>
+            
+        <div class="project-contribution-images">
+            <img src="images/Vlinder1.png" alt="img 1">
+            <img src="images/Vlinder2.png" alt="img 2">
+            <img src="images/Vlinder3.png" alt="img 3">
+            
+            <div class="video-wrapper">
+                <iframe 
+                    src="https://www.youtube.com/embed/EqZ5Rib_qzo" 
+                    title="YouTube video" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </div> 
+    </div>
+
+    </main>
+    <footer class = "lilac-text text-center" data-description="rechten">
+        <!-- © 2026 Ella Marije van den Hoogenband. All rights reserved. -->
+    </footer>
+
+     <script>
+        
+        let language = localStorage.getItem("language") || "Dutch";
+        
+        let languageIMG= document.getElementById("englishButtonPNG");
+        const languageButton = document.getElementById("language-button");
+        let info; //the found json data
+
+        //this page
+        let MijnBijdragenText = document.querySelector('[data-description="MijnBijdrageTXT"]')
+        let projectDetails = document.querySelector('[data-description="project-details"]');
+        let MaxDetails = document.querySelector('[data-description="maxDetails"]')
+        let MiniDetails = document.querySelector('[data-description="miniDetails"]')
+        let projectContribution = document.querySelector('[data-description="project-contribution"]')
+
+        //general
+        let rechten = document.querySelector('[data-description="rechten"]');
+        let portfolioNAV = document.querySelector('[data-name="portfolioNAV"]');
+        let projectsNAV = document.querySelector('[data-name="projectsNav"]');
+        let aboutMeNAV = document.querySelector('[data-name="AboutMeNAV"]');
+        let contectMeNAV = document.querySelector('[data-name="ContactMeNAV"]');
+        
+
+
+        
+        
+        function loadDescription(selector, taal){
+            selector.innerHTML = "";
+            info[taal]["VlinderThuin"]["details"].forEach(function(e){
+                let p = document.createElement("p");
+                p.innerText = e;
+                selector.appendChild(p);
+                
+            })
+        }
+
+        function loadContributions(selector, taal, project){
+            selector.innerHTML = "";
+
+            const contributions = info[taal][project]["contributions"];
+
+            // Loop through each section in the object
+            for (const section in contributions) {
+                // Create a title for the section
+                const pTitle = document.createElement("p");
+                pTitle.innerText = section;
+                selector.appendChild(pTitle);
+
+                // Create a list for the items
+                const ul = document.createElement("ul");
+                contributions[section].forEach(item => {
+                    const li = document.createElement("li");
+                    li.innerText = item;
+                    ul.appendChild(li);
+                });
+
+                selector.appendChild(ul);
+            }
+        }
+        
+    
+        
+        
+
+        function loadDutch(){
+            
+            MaxDetails.textContent = info["Dutch"]["VlinderThuin"]["max-description"];
+            MiniDetails.textContent = info["Dutch"]["VlinderThuin"]["mini-description"];
+            loadDescription(projectDetails, "Dutch");
+            loadContributions(projectContribution, "Dutch" , "VlinderThuin");
+            MijnBijdragenText.textContent = info["Dutch"]["General"]["MijnBijdragenTXT"];
+            //general
+            rechten.textContent = info["Dutch"]["General"]["rechtenVoorbehouden"];
+            portfolioNAV.textContent = info["Dutch"]["General"]["nav"]["portfolio"];
+            projectsNAV.textContent = info["Dutch"]["General"]["nav"]["projects"];
+            aboutMeNAV.textContent = info["Dutch"]["General"]["nav"]["about me"];
+            contectMeNAV.textContent = info["Dutch"]["General"]["nav"]["contact me"];
+        }
+        function loadEnglish(){
+            
+            MaxDetails.textContent = info["English"]["VlinderThuin"]["max-description"];
+            MiniDetails.textContent = info["English"]["VlinderThuin"]["mini-description"];
+            loadDescription(projectDetails, "English")
+            loadContributions(projectContribution, "English","VlinderThuin");
+            MijnBijdragenText.textContent = info["English"]["General"]["MijnBijdragenTXT"];
+            //general
+            
+            rechten.textContent = info["English"]["General"]["rechtenVoorbehouden"];
+            portfolioNAV.textContent = info["English"]["General"]["nav"]["portfolio"];
+            projectsNAV.textContent = info["English"]["General"]["nav"]["projects"];
+            aboutMeNAV.textContent = info["English"]["General"]["nav"]["about me"];
+            contectMeNAV.textContent = info["English"]["General"]["nav"]["contact me"];
+            
+        }
+        //fetch json and set initial data
+        fetch('./aboutMe.json')
+        .then(res => res.json())
+        .then(data=>{
+            //about text
+            info = data;
+            if(language == "Dutch"){
+                loadDutch();
+                languageIMG.src = "images/eng.png"
+            }else {
+                loadEnglish();
+                languageIMG.src = "images/nl.png"
+            }
+        })
+
+        //if button is clicked chnage the language
+        languageButton.onclick = function(){
+        if(language == "Dutch"){
+            language = "English";
+            languageIMG.src = "images/nl.png"
+            loadEnglish();
+        }else if(language == "English"){
+            language = "Dutch";
+            languageIMG.src = "images/eng.png"
+            loadDutch();
+        }
+        //save in local storgage for other pages too
+         localStorage.setItem("language", language);
+        
+    }
+    </script>
+    
+</body>
+</html>
