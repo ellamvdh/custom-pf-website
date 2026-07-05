@@ -39,7 +39,8 @@
             "ghostShooter": "Red de wereld van geesten",
             "cafeMiniGame": "VR-café met mini-game en interactie",
             "Butterfly": "Interactieve vlinderinstallatie",
-            "githubActivty":"Mijn GitHub Activiteit"
+            "githubActivty":"Mijn GitHub Activiteit",
+            "BodyInvader" :"Actiespel over het overnemen van een lichaam"
         },
         "MasksEye":{
             "mini-description":"-Puzzelgame waar je maskers gebruikt-",
@@ -300,6 +301,32 @@
                 "Idle-tekst toegevoegd die bezoekers informeert en uitnodigt om deel te nemen wanneer de installatie niet actief wordt gebruikt."
             ]
             }
+        },
+        "BodyInvader":{
+            "mini-description":"-Actiespel over het overnemen van een lichaam-",
+            "max-description":"Dit spel heb ik gemaakt tijdens een internationaal project met studenten uit Finland. We zijn twee weken naar Finland geweest om samen aan het project te werken. Daarna kwamen de Finse studenten twee weken naar Nederland om het spel verder af te maken. \n\nIn het spel speel je als een virus dat het menselijk lichaam binnendringt. Je begint in de blaas en werkt je een weg naar de hersenen. Onderweg versla je eindbazen die verschillende lichaamsdelen voorstellen, kun je jezelf upgraden en kom je verschillende cellen tegen waarmee je kunt communiceren. \n\nDoor dit project heb ik niet alleen veel geleerd over het maken van games, maar ook over samenwerken met mensen uit een ander land. Omdat we allemaal een andere taal en achtergrond hadden, heb ik mijn communicatievaardigheden flink verbeterd. Het was een leuke en leerzame ervaring waar ik veel van heb meegenomen.",
+
+            "details":[
+                "Uitgekomen: Juni 2026",
+                "Engine: Unity",
+                "Taal: C#",
+                "Teamgrootte: 5",
+                "Rol: Developer",
+                "Tijd: 4 weken"
+            ],
+            "contributions": { 
+                "Gameplay & Player": 
+                [ "Beweging en aanval van de speler ontwikkeld en geïmplementeerd.", 
+                "Schietmechaniek gemaakt en geïntegreerd.", "Upgradesysteem voor de speler ontwikkeld." ], 
+                "Bosses & Combat": 
+                [ "Originele aanvalspatronen voor de eindbazen bedacht en geïmplementeerd.", 
+                "Systeem gemaakt om verslagen eindbazen op te slaan, zodat ze niet opnieuw verschijnen wanneer de speler terugkeert naar een level." ], 
+                "UI & Visuals": 
+                [ "De gebruikersinterface (UI) ontworpen en geïmplementeerd.", 
+                "Animaties gemaakt en toegevoegd aan verschillende onderdelen van het spel.", "Particle systems ontwikkeld voor visuele effecten." ], 
+                "Audio": 
+                [ "Geluidseffecten toegevoegd om de gameplay en feedback te verbeteren." ] 
+            }
         }
     },
     "English":{
@@ -342,7 +369,8 @@
             "ghostShooter": "Save the world from ghosts",
             "cafeMiniGame": "VR-café with mini-game and interaction",
             "githubActivty":"My GitHub Activity",
-            "Butterfly":"Interactive butterfly exhibit"
+            "Butterfly":"Interactive butterfly exhibit",
+            "BodyInvader" :"Action game about taking over a body"
 
         },
         "MasksEye":{
@@ -605,6 +633,31 @@
             "User Experience":[
                 "Added idle text that informs visitors and invites them to participate when the installation is not actively in use."
             ]
+            }
+        },
+        "BodyInvader":{
+            "mini-description":"-Action game about taking over a body-",
+            "max-description":"I created this game as part of an international project with students from Finland. We spent two weeks in Finland working on the project together. After that, the Finnish students came to the Netherlands for two weeks to finish the game. \n\nIn the game, you play as a virus that invades the human body. You start in the bladder and work your way up to the brain. Along the way, you defeat bosses representing different body parts, you can upgrade yourself, and you encounter various cells with which you can communicate. \n\nThrough this project, I not only learned a lot about game development, but also about collaborating with people from another country. Because we all spoke different languages and came from different backgrounds, I significantly improved my communication skills. It was a fun and educational experience from which I gained a lot.",
+          "details":[
+                "Released: June 2026",
+                "Engine: Unity",
+                "Language: C#",
+                "Team size: 5",
+                "Role: Developer",
+                "Duration: 4 weeks"
+            ],
+            "contributions": { 
+                "Gameplay & Player": 
+                [ "Developed and implemented the player's movement and attacks.", 
+                "Created and integrated the shooting mechanics.”, “Developed the player's upgrade system." ], 
+                "Bosses & Combat": 
+                [ "Conceived and implemented original attack patterns for the bosses.", 
+                "Created a system to save defeated bosses so they do not reappear when the player returns to a level." ], 
+                "UI & Visuals": 
+                [ "Designed and implemented the user interface (UI).", 
+                "Created and added animations to various parts of the game.”, “Developed particle systems for visual effects." ], 
+                "Audio": 
+                [ "Added sound effects to enhance gameplay and feedback." ] 
             }
         }
 

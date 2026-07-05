@@ -55,6 +55,25 @@
 
     
     <div class="project-parent">
+
+       
+
+        <div class="div1 lilac-text">
+            <a href="BodyInvader.html" >
+                <img class= "project-img" src="images/BodyInvader.png" alt="Body Invader" data-name="Unity">
+            </a>
+            <div><b>Body Invader</b></div>
+            <div data-description="BodyInvader"></div>
+            <br>
+            <div class ="project-tags">
+                <div class="project-tag">Unity</div>
+                <div class="project-tag">2D</div>
+                <div class="project-tag">International Project</div>
+            </div>
+        </div>
+
+
+        
         <div class="div1 lilac-text">
             <a href="ButterflyGarden.html" >
                 <img class= "project-img" src="images/Vlinder.jpg" alt="ButterflyGarden" data-name="Web">
@@ -232,6 +251,8 @@
         let GhostShooter = document.querySelector('[data-description="GhostShooter"]');
         //let CafeGame = document.querySelector('[data-description="cafeMiniGame"]');
         let ButterflyGarden =document.querySelector('[data-description="ButterflyGarden"]');
+        let BodyInvader = document.querySelector('[data-description="BodyInvader"]');
+
         //general
         let github = document.querySelector('[data-description="githubActivity"]');
         let rechten = document.querySelector('[data-description="rechten"]');
@@ -261,6 +282,7 @@
             //CafeGame.textContent = info["Dutch"]["Index"]["cafeMiniGame"];
             ButterflyGarden.textContent = info["Dutch"]["Index"]["Butterfly"];
             github.textContent = info["Dutch"]["Index"]["githubActivty"];
+            BodyInvader.textContent = info["Dutch"]["Index"]["BodyInvader"];
 
             //general
             rechten.textContent = info["Dutch"]["General"]["rechtenVoorbehouden"];
@@ -288,6 +310,7 @@
             //CafeGame.textContent = info["English"]["Index"]["cafeMiniGame"];
             ButterflyGarden.textContent = info["English"]["Index"]["Butterfly"];
             github.textContent = info["English"]["Index"]["githubActivty"];
+            BodyInvader.textContent = info["English"]["Index"]["BodyInvader"];
 
             //general
             rechten.textContent = info["English"]["General"]["rechtenVoorbehouden"];

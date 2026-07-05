@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-okaidia.css" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-csharp.min.js"></script>
+
+    <link rel="stylesheet" href="mystyle.css" >
+    <script src="language.js" defer></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Funnel+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Doto:wght@100..900&family=Funnel+Sans:ital,wght@0,300..800;1,300..800&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=VT323&display=swap'); 
+   
+        pre[class*="language-"],
+        code[class*="language-"] {
+        background: rgb(29,29,29)!important; /* removes the dark box */
+        padding: 10 !important;       /* optional: remove theme padding */
+        margin-top: 20px;   
+        margin-bottom: 20px;     /* optional */
+        border: none !important;
+        border-radius: 20px;
+        box-shadow: none !important;
+        font-family: 'Fira Code', monospace;
+        font-size: inherit;
+
+        
+    }
+   </style>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ella's Portfolio</title>
+</head>
+<body>
+    <header>
+        
+         <nav>
+            <div class = "nav-stuff"><a href="index.html" data-name="portfolioNAV" >Portfolio</a></div>
+            <div class = "nav-stuff"><a href="index.html#projects" data-name="projectsNav">Projects</a></div>
+            <div class = "nav-stuff"><a href="AboutMe.html"data-name="AboutMeNAV">About Me</a></div>
+            <div class = "nav-stuff"><a href="ContactMe.html" data-name="ContactMeNAV">Contact Me</a></div>
+            <div class  = "nav-stuff" ><button id = "language-button"><img id = "englishButtonPNG"src = "images/eng.png"></button></div>
+            
+         </nav>
+    </header>
+    <main>
+        
+        <div class="project-hero">
+            <div class="hero-content">
+                <h1 class="lilac-text text-center game-title">Body Invader</h1>
+                <p class="white-text text-center" data-description="miniDetails"></p>
+            </div>
+        </div>
+
+        <div class = "project-info">
+            <img class = "project-page-img"src="images/BodyInvader.png" alt="'Body Invader Game img">
+            <div class="text-center white-text project-text" data-description="maxDetails">
+            </div>
+            <div class="white-text text-center project-details">
+                <div><b>Details</b></div>
+                <div data-description="project-details"></div>
+                <p><a href="https://github.com/ellamvdh/BodyInvader" class = "project-link">Github</a></p>
+            </div>
+        </div>
+         
+        <div class="contribution-section">
+            <div class="project-contribution white-text">
+                <h2 data-description="MijnBijdrageTXT">Mijn bijdrage</h2>
+                <div data-description="project-contribution"></div>
+                
+
+            </div>
+
+            <!-- Code block with Prism highlighting -->
+            <pre class="code language-csharp"><code class="language-csharp">
+// ---------------------------
+// Boss Defeat Tracking
+// ---------------------------
+
+// Dictionary that stores whether each boss has been defeated.
+// The key is the boss name and the value is its defeat status.
+[Header("Bosses Defeated")]
+public Dictionary<string, bool> BossDefeated = new Dictionary<string, bool>()
+{
+    { "Bladder", false },
+    { "Intestine", false },
+    { "Liver", false },
+    { "Lung", false },
+    { "Throat", false }
+};
+
+// ---------------------------
+// Boss Death Handling
+// ---------------------------
+
+public void Death(bool isDead)
+{
+    // Only execute the death logic if the boss has died.
+    if (isDead)
+    {
+        // If this is the final boss, mark the game as completed.
+        if (this.gameObject.name == "Brain Enemy")
+        {
+            PlayerHealth.Instance.GameBeat = true;
+        }
+
+        // Update the player's defeated boss list.
+        CheckDefeatedBosses();
+
+        // Spawn the reward after the boss dies if this component exists.
+        SpawnAfterBossDeath spawnHeal = gameObject.GetComponent<SpawnAfterBossDeath>();
+
+        if (spawnHeal != null)
+        {
+            spawnHeal.SpawnTheRedBloodCells();
+        }
+
+        // Remove the boss from the scene.
+        Destroy(gameObject);
+
+        Debug.Log("Boss is dead");
+    }
+}
+
+// Checks which boss was defeated and updates its status
+// in the player's BossDefeated dictionary.
+public void CheckDefeatedBosses()
+{
+    switch (this.gameObject.name)
+    {
+        case "Bladder Enemy":
+            UpdateBossStatus("Bladder");
+            break;
+
+        case "Intestines Enemy":
+            UpdateBossStatus("Intestine");
+            break;
+
+        case "Liver Enemy":
+            UpdateBossStatus("Liver");
+            break;
+
+        case "Lung Boss":
+            UpdateBossStatus("Lung");
+            break;
+
+        case "Throat Enemy":
+            UpdateBossStatus("Throat");
+            break;
+    }
+}
+
+// Marks the boss as defeated in the player's dictionary.
+// This allows the game to remember that the boss has already
+// been defeated and prevents it from respawning later.
+private void UpdateBossStatus(string bossName)
+{
+    PlayerHealth.Instance.BossDefeated[bossName] = true;
+
+    Debug.Log(bossName + " defeated value is now " +
+              PlayerHealth.Instance.BossDefeated[bossName]);
+
+    // Enable the exit arrow after defeating the boss.
+    ExitArrow.SetActive(true);
+}
+            </code></pre>
+
+
+        </div>
+            
+        <div class="project-contribution-images">
+            <img src="images/bi1.png" alt="img 1">
+            <img src="images/bi2.png" alt="img 2">
+            <img src="images/bi3.png" alt="img 3">
+            
+            <div class="video-wrapper">
+                <iframe 
+                    src="https://www.youtube.com/embed/sF3KnNdFogo" 
+                    title="YouTube video" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </div> 
+    </div>
+
+    </main>
+    <footer class = "lilac-text text-center" data-description="rechten">
+        <!-- © 2026 Ella Marije van den Hoogenband. All rights reserved. -->
+    </footer>
+
+     <script>
+        
+        let language = localStorage.getItem("language") || "Dutch";
+        
+        let languageIMG= document.getElementById("englishButtonPNG");
+        const languageButton = document.getElementById("language-button");
+        let info; //the found json data
+
+        //this page
+        let MijnBijdragenText = document.querySelector('[data-description="MijnBijdrageTXT"]')
+        let projectDetails = document.querySelector('[data-description="project-details"]');
+        let MaxDetails = document.querySelector('[data-description="maxDetails"]')
+        let MiniDetails = document.querySelector('[data-description="miniDetails"]')
+        let projectContribution = document.querySelector('[data-description="project-contribution"]')
+
+        //general
+        let rechten = document.querySelector('[data-description="rechten"]');
+        let portfolioNAV = document.querySelector('[data-name="portfolioNAV"]');
+        let projectsNAV = document.querySelector('[data-name="projectsNav"]');
+        let aboutMeNAV = document.querySelector('[data-name="AboutMeNAV"]');
+        let contectMeNAV = document.querySelector('[data-name="ContactMeNAV"]');
+        
+
+
+        
+        
+        function loadDescription(selector, taal){
+            selector.innerHTML = "";
+            info[taal]["BodyInvader"]["details"].forEach(function(e){
+                let p = document.createElement("p");
+                p.innerText = e;
+                selector.appendChild(p);
+                
+            })
+        }
+
+        function loadContributions(selector, taal, project){
+            selector.innerHTML = "";
+
+            const contributions = info[taal][project]["contributions"];
+
+            // Loop through each section in the object
+            for (const section in contributions) {
+                // Create a title for the section
+                const pTitle = document.createElement("p");
+                pTitle.innerText = section;
+                selector.appendChild(pTitle);
+
+                // Create a list for the items
+                const ul = document.createElement("ul");
+                contributions[section].forEach(item => {
+                    const li = document.createElement("li");
+                    li.innerText = item;
+                    ul.appendChild(li);
+                });
+
+                selector.appendChild(ul);
+            }
+        }
+        
+    
+        
+        
+
+        function loadDutch(){
+            
+            MaxDetails.textContent = info["Dutch"]["BodyInvader"]["max-description"];
+            MiniDetails.textContent = info["Dutch"]["BodyInvader"]["mini-description"];
+            loadDescription(projectDetails, "Dutch");
+            loadContributions(projectContribution, "Dutch" , "BodyInvader");
+            MijnBijdragenText.textContent = info["Dutch"]["General"]["MijnBijdragenTXT"];
+            //general
+            rechten.textContent = info["Dutch"]["General"]["rechtenVoorbehouden"];
+            portfolioNAV.textContent = info["Dutch"]["General"]["nav"]["portfolio"];
+            projectsNAV.textContent = info["Dutch"]["General"]["nav"]["projects"];
+            aboutMeNAV.textContent = info["Dutch"]["General"]["nav"]["about me"];
+            contectMeNAV.textContent = info["Dutch"]["General"]["nav"]["contact me"];
+        }
+        function loadEnglish(){
+            
+            MaxDetails.textContent = info["English"]["BodyInvader"]["max-description"];
+            MiniDetails.textContent = info["English"]["BodyInvader"]["mini-description"];
+            loadDescription(projectDetails, "English")
+            loadContributions(projectContribution, "English","BodyInvader");
+            MijnBijdragenText.textContent = info["English"]["General"]["MijnBijdragenTXT"];
+            //general
+            
+            rechten.textContent = info["English"]["General"]["rechtenVoorbehouden"];
+            portfolioNAV.textContent = info["English"]["General"]["nav"]["portfolio"];
+            projectsNAV.textContent = info["English"]["General"]["nav"]["projects"];
+            aboutMeNAV.textContent = info["English"]["General"]["nav"]["about me"];
+            contectMeNAV.textContent = info["English"]["General"]["nav"]["contact me"];
+            
+        }
+        //fetch json and set initial data
+        fetch('./aboutMe.json')
+        .then(res => res.json())
+        .then(data=>{
+            //about text
+            info = data;
+            if(language == "Dutch"){
+                loadDutch();
+                languageIMG.src = "images/eng.png"
+            }else {
+                loadEnglish();
+                languageIMG.src = "images/nl.png"
+            }
+        })
+
+        //if button is clicked chnage the language
+        languageButton.onclick = function(){
+        if(language == "Dutch"){
+            language = "English";
+            languageIMG.src = "images/nl.png"
+            loadEnglish();
+        }else if(language == "English"){
+            language = "Dutch";
+            languageIMG.src = "images/eng.png"
+            loadDutch();
+        }
+        //save in local storgage for other pages too
+         localStorage.setItem("language", language);
+        
+    }
+    </script>
+    
+</body>
+</html>
